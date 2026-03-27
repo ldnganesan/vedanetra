@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VedaNetra — Vedic Astrology for iOS &amp; Android</title>
-  <meta name="description" content="Precise Vedic astrology calculator. South Indian charts, Dasha, Gochara, Panchangam & Horoscope Matching — Ashtakoot and 10 Porutham. Available on iOS and Android.">
+  <title>VedaNetra — Drik Panchanga &amp; Vedic Calendar</title>
+  <meta name="description" content="VedaNetra: Drik Panchanga computation engine for iOS &amp; Android. Tithi, Nakshatra, Yoga, Karana, Gochara, Kundali &amp; Muhurtham — precise, offline, location-aware.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -137,7 +137,7 @@
     }
 
     .hero-desc {
-      max-width: 560px;
+      max-width: 580px;
       font-size: clamp(1rem, 2vw, 1.2rem);
       color: rgba(250,247,240,0.75);
       font-style: italic;
@@ -393,7 +393,8 @@
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
-    /* ── HOROSCOPE MATCHING ── */
+
+    /* ── MATCHING SECTION ── */
     .matching-section {
       position: relative;
       z-index: 1;
@@ -492,14 +493,13 @@
 
     /* ── MATCHING TABS ── */
     .match-tabs {
-      display: flex;
+      display: inline-flex;
       justify-content: center;
       gap: 0;
       margin-bottom: 32px;
       border: 1px solid rgba(212,168,67,0.25);
       border-radius: 6px;
       overflow: hidden;
-      display: inline-flex;
     }
 
     .match-tab {
@@ -541,26 +541,6 @@
       .koot-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .match-tab { padding: 10px 18px; font-size: 0.75rem; }
     }
-
-    .launch-tag {
-      display: inline-block;
-      background: #C62828;
-      color: #fff;
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      padding: 3px 10px;
-      border-radius: 3px;
-      vertical-align: middle;
-      animation: pulse-red 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-red {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(198,40,40,0.5); }
-      50%       { box-shadow: 0 0 0 6px rgba(198,40,40,0); }
-    }
-
   </style>
   <script>
     function showTab(id, btn) {
@@ -578,11 +558,11 @@
     <div class="mandala-bg"></div>
     <span class="om-symbol fade-in">ॐ</span>
     <h1 class="hero-title fade-in">VedaNetra</h1>
-    <p class="hero-subtitle fade-in">Vedic Astrology for iOS &amp; Android</p>
+    <p class="hero-subtitle fade-in">Panchanga &middot; Jyotish for iOS &amp; Android</p>
     <p class="hero-desc fade-in">
-      A precise Jyotish calculator faithful to classical tradition —
-      South Indian charts, Vimshottari Dasha, Gochara, Panchangam &amp;
-      Horoscope Matching in both Ashtakoot and 10 Porutham traditions.
+      A precise Drik Panchanga computation engine faithful to classical tradition —
+      Tithi, Nakshatra, Yoga, Karana, Gochara, Kundali &amp; Muhurtham
+      for any location on Earth.
     </p>
     <div class="cta-group fade-in">
       <a class="cta-btn" href="https://apps.apple.com/app/vedanetra/id6744089661" target="_blank" rel="noopener">
@@ -604,63 +584,68 @@
   <!-- FEATURES -->
   <div class="section">
     <p class="section-label">Features</p>
-    <h2 class="section-title">Ancient wisdom, precise calculation</h2>
+    <h2 class="section-title">Classical computation. Modern precision.</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <span class="feature-icon">♑</span>
-        <div class="feature-title">South Indian Charts</div>
-        <p class="feature-desc">D1 Rasi &amp; D9 Navamsa rendered in traditional South Indian square grid style.</p>
+        <span class="feature-icon">📅</span>
+        <div class="feature-title">Drik Panchanga</div>
+        <p class="feature-desc">Five limbs of Vedic time — Tithi, Vara, Nakshatra (with Pada), Yoga &amp; Karana — computed for any location. Includes Hora, Rahu Kalam, Yamagandam &amp; Abhijit Muhurta.</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">🌙</span>
-        <div class="feature-title">Vimshottari Dasha</div>
-        <p class="feature-desc">Maha Dasha and Antardasha periods calculated with precision from Swiss Ephemeris data.</p>
+        <span class="feature-icon">♑</span>
+        <div class="feature-title">Janma Kundali</div>
+        <p class="feature-desc">South Indian grid-style chart (D1–D60) using Lahiri Ayanamsa &amp; Swiss Ephemeris. Vimshottari Dasha/Antardasha timelines with precise start and end dates.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">☿</span>
         <div class="feature-title">Gochara Transits</div>
-        <p class="feature-desc">Current planetary transits overlaid on your natal chart in real time.</p>
+        <p class="feature-desc">Real-time planetary transit positions overlaid on the natal chart. Interactive date/time slider spanning ±50 years for consultation and research.</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">📅</span>
-        <div class="feature-title">Panchangam</div>
-        <p class="feature-desc">Daily Tithi, Nakshatra, Yoga, Karana and Vara — the five limbs of Vedic time.</p>
+        <span class="feature-icon">🕐</span>
+        <div class="feature-title">Muhurtham Timing</div>
+        <p class="feature-desc">Compute auspicious windows hour by hour — eclipse periods, combustion (Moudyami), Chandra Bala, Tara Bala &amp; Lagna lord strength for any chosen date.</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">🏙️</span>
-        <div class="feature-title">50,000+ Cities</div>
-        <p class="feature-desc">Comprehensive city database with automatic timezone detection worldwide.</p>
+        <span class="feature-icon">📄</span>
+        <div class="feature-title">Panchanga PDF Report</div>
+        <p class="feature-desc">Multi-day printable almanac with Gochara chart, Hora Schedule, Tara Bala table, Muhurtham Score Timeline &amp; Lagna Transit table. Professional-grade output.</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">🔒</span>
-        <div class="feature-title">100% Private</div>
-        <p class="feature-desc">All data stored locally on your device. No analytics, no ads, no cloud upload.</p>
+        <span class="feature-icon">🗓️</span>
+        <div class="feature-title">Upcoming Events</div>
+        <p class="feature-desc">90-day scan for Ekadashi, Purnima, Amavasya, Sankranti &amp; all 27 Hindu festivals. Custom personal events tracked by Paksha, Tithi or Nakshatra.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">💞</span>
-        <div class="feature-title">Horoscope Matching</div>
-        <p class="feature-desc">Both Ashtakoot (North Indian, 36 Gunas) and 10 Porutham (South Indian) compatibility systems supported.</p>
+        <div class="feature-title">Kundali Poruttam</div>
+        <p class="feature-desc">10 Porutham (South Indian) with Rasi Poruttam rules &amp; Ashtakoota (North Indian, 36 Gunas) compatibility — both traditions in one app.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔒</span>
+        <div class="feature-title">100% Private &amp; Offline</div>
+        <p class="feature-desc">All astronomical calculations run entirely on-device. No analytics, no ads, no cloud upload. Your data never leaves your hands.</p>
       </div>
     </div>
   </div>
 
-  <!-- HOROSCOPE MATCHING -->
+  <!-- KUNDALI PORUTTAM MATCHING -->
   <section class="matching-section">
     <div class="matching-inner">
       <p class="section-label">Vivah Compatibility</p>
-      <h2 class="section-title" style="margin-bottom:16px">Horoscope Matching</h2>
+      <h2 class="section-title" style="margin-bottom:16px">Kundali Poruttam</h2>
       <p class="matching-desc">
-        Two classical compatibility traditions in one app — North Indian Ashtakoot
+        Two classical compatibility traditions in one app — North Indian Ashtakoota
         and South Indian 10 Porutham. Faithful to each tradition's original methodology.
       </p>
 
       <!-- Tab switcher -->
       <div class="match-tabs">
-        <button class="match-tab active" onclick="showTab('ashta', this)">Ashtakoot <span>North Indian</span></button>
+        <button class="match-tab active" onclick="showTab('ashta', this)">Ashtakoota <span>North Indian · 36 Gunas</span></button>
         <button class="match-tab" onclick="showTab('porutham', this)">10 Porutham <span>South Indian</span></button>
       </div>
 
-      <!-- Ashtakoot -->
+      <!-- Ashtakoota -->
       <div id="tab-ashta" class="tab-content">
         <div class="koot-grid">
           <div class="koot-item"><span class="koot-name">Varna</span><span class="koot-pts">1 pt</span></div>
@@ -705,18 +690,18 @@
   <!-- PRO -->
   <section class="pro-section">
     <div class="pro-inner">
-      <span class="pro-badge">VedaNetra Pro &nbsp;·&nbsp; Launch Price</span>
+      <span class="pro-badge">VedaNetra Pro</span>
       <p class="section-label">Unlock everything</p>
       <h2 class="section-title" style="margin-bottom:16px">One purchase. Forever.</h2>
-      <p class="pro-price">£9.99</p>
-      <p class="pro-price-note">
-        <span class="launch-tag">LAUNCH PRICE</span>
-        &nbsp; Increasing to £14.99 &nbsp;·&nbsp; One-time purchase, no subscription
-      </p>
+      <p class="pro-price">£14.99</p>
+      <p class="pro-price-note">One-time purchase &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; Lifetime access</p>
       <div class="pro-features">
         <div class="pro-feature-item"><span>All divisional charts D2 through D60</span></div>
-        <div class="pro-feature-item"><span>Gochara date slider — travel ±50 years</span></div>
-        <div class="pro-feature-item"><span>PDF chart export for printing &amp; sharing</span></div>
+        <div class="pro-feature-item"><span>Gochara date/time slider — travel ±50 years</span></div>
+        <div class="pro-feature-item"><span>Muhurtham auspicious timing windows</span></div>
+        <div class="pro-feature-item"><span>Custom upcoming events by Tithi &amp; Nakshatra</span></div>
+        <div class="pro-feature-item"><span>Panchanga PDF Report — multi-day almanac</span></div>
+        <div class="pro-feature-item"><span>PDF chart &amp; Kundali Poruttam export</span></div>
         <div class="pro-feature-item"><span>Unlimited saved charts</span></div>
       </div>
       <div class="cta-group">
@@ -742,6 +727,10 @@
     <div class="footer-name">VedaNetra</div>
     <div class="footer-links">
       <a href="privacy.html">Privacy Policy</a>
-      <a href="/cdn-cgi/l/email-protection#3c4a59585d5259484e5d5d4c4c7c5b515d5550125f5351">Contact</a>
+      <a href="mailto:vedanetraapp@gmail.com">Contact</a>
     </div>
-    <p class="foot
+    <p class="footer-copy">© 2026 VedaNetra. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
