@@ -383,6 +383,7 @@
       <a class="toc-item" href="#birth-chart"><span class="toc-icon">♑</span> Birth Chart</a>
       <a class="toc-item" href="#dasha"><span class="toc-icon">⏳</span> Dasha</a>
       <a class="toc-item" href="#gochara"><span class="toc-icon">☿</span> Gochara</a>
+      <a class="toc-item" href="#pakshi"><span class="toc-icon">🦅</span> Pancha Pakshi</a>
       <a class="toc-item" href="#match"><span class="toc-icon">💞</span> Horoscope Match</a>
       <a class="toc-item" href="#saved-charts"><span class="toc-icon">🔖</span> Saved Charts</a>
       <a class="toc-item" href="#pdf-export"><span class="toc-icon">📄</span> PDF Export</a>
@@ -396,28 +397,32 @@
       <span class="section-icon-lg">🚀</span>
     </div>
     <h2>Getting Started</h2>
-    <p class="tagline">Your home screen and first steps</p>
+    <p class="tagline">Opening the app and your first steps</p>
     <div class="guide-row">
       <div class="screenshot-col">
         <img src="assets/screenshots/landing.png" alt="VedaNetra Home Screen">
-        <span class="screenshot-caption">Home screen — iPhone</span>
+        <span class="screenshot-caption">VedaNetra — Panchanga tab</span>
       </div>
       <div class="text-col">
-        <h3>The Dashboard</h3>
-        <p>When you open VedaNetra you land on the dashboard — a grid of all major features. Tap any card to enter that section immediately. No account, no login, no setup required.</p>
+        <h3>Navigation</h3>
+        <p>VedaNetra uses a bottom navigation bar with five tabs: <strong>Panchanga, Charts, Gochara, Match</strong> and <strong>Settings</strong>. Tap any tab to switch sections instantly. No account required to use the app.</p>
 
         <h3>Free vs Pro</h3>
         <p>VedaNetra is fully usable for free. The core features — D1 Rasi chart, Panchanga for any date, Vimshottari Dasha, D9 Navamsa, and Horoscope Match — are all free. <span class="pro-tag">PRO</span> unlocks deeper tools:</p>
         <ul>
           <li>All divisional charts D2 through D60</li>
           <li>Gochara transit date/time slider (±50 years)</li>
-          <li>Muhurtham auspicious timing</li>
+          <li>Custom upcoming events by Tithi &amp; Nakshatra</li>
+          <li>Pancha Pakshi birth bird &amp; daily yama timeline</li>
           <li>PDF export for all reports</li>
           <li>Unlimited saved charts</li>
         </ul>
 
-        <h3>Adding your first location</h3>
-        <p>Tap <strong>Manage Locations</strong> and search for your city. VedaNetra uses your chosen location for all sunrise, sunset, Kala, and Panchanga calculations. You can save multiple cities.</p>
+        <h3>Signing in to unlock Pro</h3>
+        <p>Go to <strong>Settings → Account</strong> and tap <strong>Sign in</strong>. Once you complete a purchase, your Pro status is linked to your account and restores automatically whenever you sign in — on any device or browser.</p>
+
+        <h3>Setting your default location</h3>
+        <p>Go to <strong>Settings → Default Location</strong> and tap <strong>Change</strong> to search for your city. VedaNetra uses this location for all sunrise, sunset, Kala, and Panchanga calculations.</p>
 
         <div class="tip-box">
           <strong>Tip</strong><br>
@@ -569,10 +574,45 @@
     </div>
   </div>
 
-  <!-- 6. MATCH -->
-  <div class="guide-section" id="match">
+  <!-- 6. PANCHA PAKSHI -->
+  <div class="guide-section" id="pakshi">
     <div class="section-anchor">
       <span class="section-num">06</span>
+      <span class="section-icon-lg">🦅</span>
+    </div>
+    <h2>Pancha Pakshi <span class="pro-tag">PRO</span></h2>
+    <p class="tagline">Tamil Siddha bird system — birth bird &amp; daily activity timing</p>
+    <div class="guide-row">
+      <div class="screenshot-col">
+        <img src="assets/screenshots/pakshi.png" alt="Pancha Pakshi Screen">
+        <span class="screenshot-caption">Pancha Pakshi — daily yama view</span>
+      </div>
+      <div class="text-col">
+        <h3>What is Pancha Pakshi?</h3>
+        <p>Pancha Pakshi is a Tamil Siddha system that assigns one of five birds — Vulture, Owl, Crow, Cock, or Peacock — to each person based on their birth nakshatra and paksha (lunar fortnight). Each bird rules specific yama periods during the day, cycling through five activity states: Ruling, Eating, Walking, Sleeping, and Dying.</p>
+
+        <h3>Finding your birth bird</h3>
+        <p>Tap <strong>Find my bird</strong> on the Pancha Pakshi screen. Enter your date of birth, time of birth, and place of birth. VedaNetra calculates your birth nakshatra and paksha from your chart and identifies your Janma Pakshi (birth bird).</p>
+        <p>Your birth bird is saved to Settings and used for all future daily timelines — you only need to enter it once.</p>
+
+        <h3>Daily yama timeline</h3>
+        <p>The screen shows today's five yama periods with the activity state of your bird in each. <strong>Ruling</strong> is the most auspicious time for important work; <strong>Dying</strong> should be avoided for new beginnings. The timeline updates automatically for the selected date and location.</p>
+
+        <h3>Changing the date</h3>
+        <p>Use the date picker at the top of the screen to view the bird timeline for any past or future date. The sunrise-relative yama boundaries recalculate for that date and your default location.</p>
+
+        <div class="tip-box">
+          <strong>Tip</strong><br>
+          If you already know your Janma Nakshatra and Paksha, go to <strong>Settings → Default Janma Nakshatra</strong> to set it directly without entering full birth details.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. MATCH -->
+  <div class="guide-section" id="match">
+    <div class="section-anchor">
+      <span class="section-num">07</span>
       <span class="section-icon-lg">💞</span>
     </div>
     <h2>Horoscope Match</h2>
@@ -608,10 +648,10 @@
     </div>
   </div>
 
-  <!-- 7. SAVED CHARTS -->
+  <!-- 8. SAVED CHARTS -->
   <div class="guide-section" id="saved-charts">
     <div class="section-anchor">
-      <span class="section-num">07</span>
+      <span class="section-num">08</span>
       <span class="section-icon-lg">🔖</span>
     </div>
     <h2>Saved Charts</h2>
@@ -642,10 +682,10 @@
     </div>
   </div>
 
-  <!-- 8. PDF EXPORT -->
+  <!-- 9. PDF EXPORT -->
   <div class="guide-section" id="pdf-export">
     <div class="section-anchor">
-      <span class="section-num">08</span>
+      <span class="section-num">09</span>
       <span class="section-icon-lg">📄</span>
     </div>
     <h2>PDF Export <span class="pro-tag">PRO</span></h2>
