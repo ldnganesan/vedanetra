@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VedaNetra — Rasi Chart (House Details)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2b2340; --muted:#6f6a80; --bg:#f6f2ea; --card:#ffffff; --line:#e7e0d2;
+  --gold:#b8860b; --gold-bg:#fdf3d3;
+  --green:#1e7d43; --green-bg:#e2f4e8;
+  --red:#c0392b; --red-bg:#fbe4e0;
+  --blue:#2b5fa8; --blue-bg:#e4edfa;
+  --gray:#66657a; --gray-bg:#eeedf2;
+  --fire:#e2571f; --earth:#8d6e3a; --air:#5b8bd0; --water:#199b94;
+  --brand1:#5b2d91; --brand2:#8e3fd1; --accent:#ff8c1a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans Tamil','Inter',sans-serif;background:var(--bg);color:var(--ink);padding:22px 16px 40px}
+.wrap{max-width:1240px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.titleblock h1{font-size:26px;font-weight:800;letter-spacing:.2px}
+.titleblock p{color:var(--muted);font-size:14px;margin-top:2px}
+.toggle{display:flex;background:#fff;border:1px solid var(--line);border-radius:999px;overflow:hidden;box-shadow:0 1px 4px rgba(43,35,64,.08)}
+.toggle button{border:0;background:transparent;padding:9px 20px;font-family:inherit;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer}
+.toggle button.active{background:linear-gradient(135deg,var(--brand1),var(--brand2));color:#fff}
+.chart-scroll{overflow-x:auto;padding-bottom:6px}
+.chart{display:grid;min-width:980px;gap:10px;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-areas:"s12 s1 s2 s3" "s11 c c s4" "s10 c c s5" "s9 s8 s7 s6"}
+.sign-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 12px 10px;box-shadow:0 1px 5px rgba(43,35,64,.06);border-top:4px solid var(--elc,#ccc);transition:transform .15s,box-shadow .15s}
+.sign-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(43,35,64,.13)}
+.el-fire{--elc:var(--fire)} .el-earth{--elc:var(--earth)} .el-air{--elc:var(--air)} .el-water{--elc:var(--water)}
+.sign-head{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.sign-num{background:var(--elc);color:#fff;font-weight:800;font-size:12px;min-width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center}
+.sign-name{font-weight:800;font-size:15px;flex:1;line-height:1.15}
+.sign-sym{font-size:18px;color:var(--elc)}
+.badges{display:flex;gap:6px;margin-bottom:9px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:#faf8f3}
+.badge.q{background:var(--elc);border-color:var(--elc);color:#fff;opacity:.92}
+.dig{display:flex;gap:7px;align-items:flex-start;padding:3px 0}
+.dicon{flex:0 0 20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;margin-top:1px}
+.dicon.own{background:var(--gold-bg);color:var(--gold)}
+.dicon.ex{background:var(--green-bg);color:var(--green)}
+.dicon.de{background:var(--red-bg);color:var(--red)}
+.dicon.fr{background:var(--blue-bg);color:var(--blue)}
+.dicon.ne{background:var(--gray-bg);color:var(--gray)}
+.chips{display:flex;flex-wrap:wrap;gap:4px;flex:1}
+.chip{font-size:11.5px;font-weight:600;padding:1.5px 8px;border-radius:999px;line-height:1.5}
+.chip.own{background:var(--gold-bg);color:#8a6508}
+.chip.ex{background:var(--green-bg);color:var(--green)}
+.chip.de{background:var(--red-bg);color:var(--red)}
+.chip.fr{background:var(--blue-bg);color:var(--blue)}
+.chip.ne{background:var(--gray-bg);color:var(--gray)}
+.none{color:#c9c4d4;font-size:12px;margin-top:2px}
+/* center panel */
+.center{grid-area:c;background:linear-gradient(160deg,#3d1f66,#6d2fae 55%,#4a2580);border-radius:18px;padding:18px;color:#f3ecff;display:flex;flex-direction:column;align-items:center;box-shadow:inset 0 0 60px rgba(0,0,0,.25),0 2px 10px rgba(43,35,64,.2)}
+.logo-wrap{width:104px;height:104px;margin-bottom:6px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
+.logo-wrap img,.logo-wrap svg{width:100%;height:100%;border-radius:22px}
+.brand{font-family:'Inter','Noto Sans Tamil',sans-serif;font-weight:800;font-size:20px;letter-spacing:.5px;background:linear-gradient(90deg,#ffd98a,#ff9d3a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-sub{font-size:12px;color:#cdb9ef;margin-bottom:12px}
+.legend{width:100%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.legend h3,.camps h3{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#ffc46b;margin-bottom:7px}
+.lrow{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:2.5px 0}
+.lrow .dicon{background:rgba(255,255,255,.92)}
+.camps{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.camp{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 12px}
+.camp ul{list-style:none;font-size:12.5px;line-height:1.75}
+/* info cards */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px;margin-top:16px}
+.info-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 1px 5px rgba(43,35,64,.06)}
+.info-card h3{font-size:13px;font-weight:800;letter-spacing:.4px;color:var(--brand1);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.info-card h3::before{content:"";width:8px;height:8px;border-radius:3px;background:linear-gradient(135deg,var(--accent),var(--brand2))}
+.irow{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:4.5px 0;border-bottom:1px dashed var(--line)}
+.irow:last-child{border-bottom:0}
+.irow b{font-weight:600}
+.irow span{color:var(--muted);white-space:nowrap}
+.pill-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+table.mk{width:100%;border-collapse:collapse;font-size:13px}
+table.mk th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)}
+table.mk td{padding:6px;border-bottom:1px dashed var(--line)}
+table.mk tr:last-child td{border-bottom:0}
+footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px}
+@media print{.toggle{display:none}body{background:#fff;padding:0}.sign-card:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="titleblock"><h1 id="t-title"></h1><p id="t-sub"></p></div>
+    <div class="toggle">
+      <button id="btn-ta" onclick="setLang('ta')">தமிழ்</button>
+      <button id="btn-en" onclick="setLang('en')">English</button>
+    </div>
+  </header>
+  <div class="chart-scroll"><div class="chart" id="chart"></div></div>
+  <div class="info-grid" id="info"></div>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+const PL={su:['சூரியன்','Sun'],mo:['சந்திரன்','Moon'],ma:['செவ்வாய்','Mars'],me:['புதன்','Mercury'],
+ju:['குரு','Jupiter'],ve:['சுக்கிரன்','Venus'],sa:['சனி','Saturn'],ra:['ராகு','Rahu'],ke:['கேது','Ketu'],rk:['ராகு / கேது','Rahu / Ketu']};
+
+const SIGNS=[
+{n:1, ta:'மேஷம்', en:'Aries · Mesham', sym:'♈', q:'chara', el:'fire', own:['ma'],ex:['su'],de:['sa'],fr:['ju'],ne:['mo','me','ve','rk']},
+{n:2, ta:'ரிஷபம்', en:'Taurus · Rishabam', sym:'♉', q:'sthira', el:'earth', own:['ve'],ex:['mo','ra'],de:['ke'],fr:['me','sa'],ne:['ma','su','ju']},
+{n:3, ta:'மிதுனம்', en:'Gemini · Mithunam', sym:'♊', q:'ubhaya', el:'air', own:['me'],ex:[],de:[],fr:['mo','ve','sa','rk'],ne:['su','ju','ma']},
+{n:4, ta:'கடகம்', en:'Cancer · Katagam', sym:'♋', q:'chara', el:'water', own:['mo'],ex:['ju'],de:['ma'],fr:['su'],ne:['me','ve','sa','rk']},
+{n:5, ta:'சிம்மம்', en:'Leo · Simham', sym:'♌', q:'sthira', el:'fire', own:['su'],ex:[],de:[],fr:['mo','ma','me','ju'],ne:['ve','sa','rk']},
+{n:6, ta:'கன்னி', en:'Virgo · Kanni', sym:'♍', q:'ubhaya', el:'earth', own:['me'],ex:['me'],de:['ve'],fr:['mo','ju','sa','rk'],ne:['su','ma']},
+{n:7, ta:'துலாம்', en:'Libra · Thulam', sym:'♎', q:'chara', el:'air', own:['ve'],ex:['sa'],de:['su'],fr:['me','rk'],ne:['mo','ma','ju']},
+{n:8, ta:'விருச்சிகம்', en:'Scorpio · Viruchigam', sym:'♏', q:'sthira', el:'water', own:['ma'],ex:['ke'],de:['mo'],fr:['su','ju'],ne:['me','ve','sa','ra']},
+{n:9, ta:'தனுசு', en:'Sagittarius · Danus', sym:'♐', q:'ubhaya', el:'fire', own:['ju'],ex:[],de:[],fr:['su','ma','ve','rk'],ne:['mo','me','sa']},
+{n:10, ta:'மகரம்', en:'Capricorn · Makaram', sym:'♑', q:'chara', el:'earth', own:['sa'],ex:['ma'],de:['ju'],fr:['ve','rk'],ne:['mo','me','su']},
+{n:11, ta:'கும்பம்', en:'Aquarius · Kumbam', sym:'♒', q:'sthira', el:'air', own:['sa'],ex:[],de:[],fr:['ve'],ne:['mo','ma','me','ju','su','rk']},
+{n:12, ta:'மீனம்', en:'Pisces · Meenam', sym:'♓', q:'ubhaya', el:'water', own:['ju'],ex:['ve'],de:['me'],fr:['su','ma','sa','mo'],ne:[]}
+];
+
+const L={
+ta:{title:'ராசி சக்கரம்',sub:'வீடு விவரங்கள் — கிரக ஆட்சி, உச்சம், நீச்சம், நட்பு நிலைகள்',
+ legend:'குறியீடுகள்',own:'வீடு (ஆட்சி)',ex:'உச்சம்',de:'நீச்சம்',fr:'நட்பு',ne:'சமம் / பகை',
+ guru:'குரு அணி',sukra:'சுக்ர அணி',
+ aspects:'கிரகப் பார்வை',all:'எல்லா கிரகங்களும்',seventh:'7-ஆம் பார்வை',
+ groups:'வீடு வகைகள்',trikona:'திரிகோணஸ்தானம் (லக்ஷ்மி)',kendra:'கேந்திர வீடுகள் (விஷ்ணு)',hidden:'மறைவு வீடுகள்',
+ subha:'சுபர்கள் & அசுபர்கள்',benefics:'சுபர்கள்',malefics:'அசுபர்கள்',
+ blist:'குரு, சுக்கிரன், தனித்த புதன், வளர்பிறை & பௌர்ணமி சந்திரன்',
+ mlist:'சூரியன் (50%), செவ்வாய் (75%), சனி, ராகு, கேது',
+ maraka:'மாரக / பாதக ஸ்தானங்கள்',type:'ராசி வகை',mcol:'மாரகம்',bcol:'பாதகம்',
+ chara:'சரம்',sthira:'ஸ்திரம்',ubhaya:'உபயம்',
+ fire:'நெருப்பு',earth:'மண்',air:'காற்று',water:'நீர்',
+ foot:'VedaNetra · ஜோதிட குறிப்பு அட்டவணை — திரிக் சித்தாந்தம்'},
+en:{title:'Rasi Chart',sub:'House details — planetary rulership, exaltation, debilitation & friendship',
+ legend:'Legend',own:'Own House',ex:'Exalted',de:'Debilitated',fr:'Friendly',ne:'Neutral / Enemy',
+ guru:"Jupiter's Camp",sukra:"Venus's Camp",
+ aspects:'Planetary Aspects',all:'All planets',seventh:'7th aspect',
+ groups:'House Groups',trikona:'Trikona — Lakshmi (trines)',kendra:'Kendra — Vishnu (angles)',hidden:'Hidden houses',
+ subha:'Benefics & Malefics',benefics:'Benefics (Subhas)',malefics:'Malefics (Asubhas)',
+ blist:'Jupiter, Venus, unafflicted Mercury, waxing & full Moon',
+ mlist:'Sun (50%), Mars (75%), Saturn, Rahu, Ketu',
+ maraka:'Maraka / Badhaka Houses',type:'Sign type',mcol:'Maraka',bcol:'Badhaka',
+ chara:'Chara (Movable)',sthira:'Sthira (Fixed)',ubhaya:'Ubhaya (Dual)',
+ fire:'Fire',earth:'Earth',air:'Air',water:'Water',
+ foot:'VedaNetra · Jyotisha reference chart — Drik Siddhanta'}
+};
+const ELICON={fire:'🔥',earth:'⛰️',air:'💨',water:'💧'};
+const DICONS={own:'⌂',ex:'▲',de:'▼',fr:'✓',ne:'⊘'};
+const MK=[['chara','2, 7','11'],['sthira','3, 8','9'],['ubhaya','7, 11','7']];
+
+const LOGO_SVG=`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <radialGradient id="gbg" cx="35%" cy="30%" r="90%">
+  <stop offset="0%" stop-color="#b06ae8"/><stop offset="55%" stop-color="#7a2fc0"/><stop offset="100%" stop-color="#3c1470"/>
+ </radialGradient>
+ <linearGradient id="ggold" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0%" stop-color="#ffd98a"/><stop offset="100%" stop-color="#e8940f"/>
+ </linearGradient>
+</defs>
+<rect x="4" y="4" width="192" height="192" rx="42" fill="url(#gbg)" stroke="url(#ggold)" stroke-width="6"/>
+<circle cx="100" cy="100" r="72" fill="none" stroke="#ff7a1a" stroke-width="5" opacity=".9"/>
+<g fill="url(#ggold)">
+ <path d="M100 18 l8 12 -8 12 -8 -12z"/><path d="M100 158 l8 12 -8 12 -8 -12z"/>
+ <path d="M18 100 l12 -8 12 8 -12 8z"/><path d="M158 100 l12 -8 12 8 -12 8z"/>
+ <circle cx="43" cy="43" r="5"/><circle cx="157" cy="43" r="5"/><circle cx="43" cy="157" r="5"/><circle cx="157" cy="157" r="5"/>
+</g>
+<g>
+ <path d="M100 44 l7 14 -7 8 -7 -8z" fill="url(#ggold)"/>
+ <ellipse cx="66" cy="92" rx="20" ry="26" fill="#e9defc"/>
+ <ellipse cx="134" cy="92" rx="20" ry="26" fill="#e9defc"/>
+ <circle cx="100" cy="92" r="26" fill="#f6f0ff"/>
+ <path d="M100 100 c0 22 -4 30 12 34 c10 2 14 -6 8 -10 c-10 -6 -8 -14 -8 -24z" fill="url(#ggold)"/>
+ <circle cx="90" cy="88" r="3.2" fill="#3c1470"/><circle cx="110" cy="88" r="3.2" fill="#3c1470"/>
+ <path d="M84 64 q16 -14 32 0 l-4 8 q-12 -8 -24 0z" fill="#e8940f"/>
+ <path d="M64 122 q36 26 72 0 q4 22 -14 30 q-22 10 -44 0 q-18 -8 -14 -30z" fill="#e9defc"/>
+ <path d="M78 132 q22 14 44 0" stroke="#e8940f" stroke-width="5" fill="none" stroke-linecap="round"/>
+</g>
+</svg>`;
+
+let lang='ta';
+const name=k=>PL[k][lang==='ta'?0:1];
+const chips=(arr,cls)=>arr.length?arr.map(k=>`<span class="chip ${cls}">${name(k)}</span>`).join(''):`<span class="none">—</span>`;
+
+function digRow(cls,arr){return `<div class="dig"><span class="dicon ${cls}" title="${L[lang][cls]}">${DICONS[cls]}</span><span class="chips">${chips(arr,cls)}</span></div>`;}
+
+function render(){
+ const t=L[lang];
+ document.documentElement.lang=lang;
+ document.getElementById('t-title').textContent=t.title;
+ document.getElementById('t-sub').textContent=t.sub;
+ document.getElementById('btn-ta').classList.toggle('active',lang==='ta');
+ document.getElementById('btn-en').classList.toggle('active',lang==='en');
+ document.getElementById('foot').textContent=t.foot;
+
+ let html='';
+ for(const s of SIGNS){
+  html+=`<div class="sign-card el-${s.el}" style="grid-area:s${s.n}">
+   <div class="sign-head"><span class="sign-num">${s.n}</span><div class="sign-name">${lang==='ta'?s.ta:s.en}</div><span class="sign-sym">${s.sym}</span></div>
+   <div class="badges"><span class="badge q">${t[s.q]}</span><span class="badge">${ELICON[s.el]} ${t[s.el]}</span></div>
+   <div class="digs">${digRow('own',s.own)}${digRow('ex',s.ex)}${digRow('de',s.de)}${digRow('fr',s.fr)}${digRow('ne',s.ne)}</div>
+  </div>`;
+ }
+ html+=`<div class="center">
+   <div class="logo-wrap"><img src="vedanetra-logo.png" alt="VedaNetra" onerror="this.outerHTML=LOGO_SVG"></div>
+   <div class="brand">VedaNetra</div><div class="brand-sub">${lang==='ta'?'வேத நேத்ரா — ஜோதிடக் கண்':'The Eye of the Vedas'}</div>
+   <div class="legend"><h3>${t.legend}</h3>
+    ${['own','ex','de','fr','ne'].map(k=>`<div class="lrow"><span class="dicon ${k}">${DICONS[k]}</span>${t[k]}</div>`).join('')}
+   </div>
+   <div class="camps">
+    <div class="camp"><h3>${t.guru}</h3><ul>${['su','mo','ma','ke'].map(k=>`<li>${name(k)}</li>`).join('')}</ul></div>
+    <div class="camp"><h3>${t.sukra}</h3><ul>${['sa','me','ra'].map(k=>`<li>${name(k)}</li>`).join('')}</ul></div>
+   </div>
+ </div>`;
+ document.getElementById('chart').innerHTML=html;
+
+ document.getElementById('info').innerHTML=`
+ <div class="info-card"><h3>${t.aspects}</h3>
+  <div class="irow"><b>${t.all}</b><span>${t.seventh}</span></div>
+  <div class="irow"><b>${name('sa')}</b><span>3, 10</span></div>
+  <div class="irow"><b>${name('ma')}</b><span>4, 8</span></div>
+  <div class="irow"><b>${name('ju')}</b><span>5, 9</span></div>
+ </div>
+ <div class="info-card"><h3>${t.groups}</h3>
+  <div class="irow"><b>${t.trikona}</b><span>1, 5, 9</span></div>
+  <div class="irow"><b>${t.kendra}</b><span>1, 4, 7, 10</span></div>
+  <div class="irow"><b>${t.hidden}</b><span>3, 6, 8, 12</span></div>
+ </div>
+ <div class="info-card"><h3>${t.subha}</h3>
+  <div class="irow" style="flex-direction:column;gap:2px"><b style="color:var(--green)">${t.benefics}</b><span style="white-space:normal">${t.blist}</span></div>
+  <div class="irow" style="flex-direction:column;gap:2px"><b style="color:var(--red)">${t.malefics}</b><span style="white-space:normal">${t.mlist}</span></div>
+ </div>
+ <div class="info-card"><h3>${t.maraka}</h3>
+  <table class="mk"><tr><th>${t.type}</th><th>${t.mcol}</th><th>${t.bcol}</th></tr>
+  ${MK.map(r=>`<tr><td><b>${t[r[0]]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}
+  </table>
+ </div>`;
+}
+function setLang(l){lang=l;render();}
+render();
+</script>
+</body>
+</html>
