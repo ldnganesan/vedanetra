@@ -18,72 +18,85 @@
   --brand1:#5b2d91; --brand2:#8e3fd1; --accent:#ff8c1a;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans Tamil','Inter',sans-serif;background:var(--bg);color:var(--ink);padding:22px 16px 40px}
-.wrap{max-width:1240px;margin:0 auto}
-header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
-.titleblock h1{font-size:26px;font-weight:800;letter-spacing:.2px}
-.titleblock p{color:var(--muted);font-size:14px;margin-top:2px}
+body{font-family:'Noto Sans Tamil','Inter',sans-serif;background:var(--bg);color:var(--ink);padding:20px 14px 32px}
+.wrap{max-width:1280px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.titleblock h1{font-size:25px;font-weight:800;letter-spacing:.2px}
+.titleblock p{color:var(--muted);font-size:13px;margin-top:2px}
 .toggle{display:flex;background:#fff;border:1px solid var(--line);border-radius:999px;overflow:hidden;box-shadow:0 1px 4px rgba(43,35,64,.08)}
 .toggle button{border:0;background:transparent;padding:9px 20px;font-family:inherit;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer}
 .toggle button.active{background:linear-gradient(135deg,var(--brand1),var(--brand2));color:#fff}
-.chart-scroll{overflow-x:auto;padding-bottom:6px}
-.chart{display:grid;min-width:980px;gap:10px;
+.chart-scroll{overflow-x:auto;padding-bottom:4px}
+.chart{display:grid;min-width:1020px;gap:9px;
   grid-template-columns:repeat(4,1fr);
   grid-template-areas:"s12 s1 s2 s3" "s11 c c s4" "s10 c c s5" "s9 s8 s7 s6"}
-.sign-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 12px 10px;box-shadow:0 1px 5px rgba(43,35,64,.06);border-top:4px solid var(--elc,#ccc);transition:transform .15s,box-shadow .15s}
+.sign-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px 11px 8px;box-shadow:0 1px 5px rgba(43,35,64,.06);border-top:4px solid var(--elc,#ccc);transition:transform .15s,box-shadow .15s}
 .sign-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(43,35,64,.13)}
 .el-fire{--elc:var(--fire)} .el-earth{--elc:var(--earth)} .el-air{--elc:var(--air)} .el-water{--elc:var(--water)}
-.sign-head{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.sign-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .sign-num{background:var(--elc);color:#fff;font-weight:800;font-size:12px;min-width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center}
-.sign-name{font-weight:800;font-size:15px;flex:1;line-height:1.15}
-.sign-sym{font-size:18px;color:var(--elc)}
-.badges{display:flex;gap:6px;margin-bottom:9px;flex-wrap:wrap}
-.badge{font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:#faf8f3}
+.sign-name{font-weight:800;font-size:14.5px;flex:1;line-height:1.15}
+.sign-sym{font-size:17px;color:var(--elc)}
+.badges{display:flex;gap:4px;margin-bottom:7px;flex-wrap:wrap}
+.badge{font-size:10.5px;font-weight:600;padding:1.5px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:#faf8f3;white-space:nowrap}
 .badge.q{background:var(--elc);border-color:var(--elc);color:#fff;opacity:.92}
-.dig{display:flex;gap:7px;align-items:flex-start;padding:3px 0}
-.dicon{flex:0 0 20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;margin-top:1px}
+.badge.g-m{color:#2b5fa8;background:#eef4fc;border-color:#d4e2f5}
+.badge.g-f{color:#b03a72;background:#fceef5;border-color:#f3d7e5}
+.dig{display:flex;gap:6px;align-items:flex-start;padding:2.5px 0}
+.dicon{flex:0 0 19px;height:19px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-top:1px}
 .dicon.own{background:var(--gold-bg);color:var(--gold)}
 .dicon.ex{background:var(--green-bg);color:var(--green)}
 .dicon.de{background:var(--red-bg);color:var(--red)}
 .dicon.fr{background:var(--blue-bg);color:var(--blue)}
 .dicon.ne{background:var(--gray-bg);color:var(--gray)}
-.chips{display:flex;flex-wrap:wrap;gap:4px;flex:1}
-.chip{font-size:11.5px;font-weight:600;padding:1.5px 8px;border-radius:999px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:3.5px;flex:1}
+.chip{font-size:11px;font-weight:600;padding:1px 7px;border-radius:999px;line-height:1.5}
 .chip.own{background:var(--gold-bg);color:#8a6508}
 .chip.ex{background:var(--green-bg);color:var(--green)}
 .chip.de{background:var(--red-bg);color:var(--red)}
 .chip.fr{background:var(--blue-bg);color:var(--blue)}
 .chip.ne{background:var(--gray-bg);color:var(--gray)}
-.none{color:#c9c4d4;font-size:12px;margin-top:2px}
-/* center panel */
-.center{grid-area:c;background:linear-gradient(160deg,#3d1f66,#6d2fae 55%,#4a2580);border-radius:18px;padding:18px;color:#f3ecff;display:flex;flex-direction:column;align-items:center;box-shadow:inset 0 0 60px rgba(0,0,0,.25),0 2px 10px rgba(43,35,64,.2)}
-.logo-wrap{width:104px;height:104px;margin-bottom:6px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
-.logo-wrap img,.logo-wrap svg{width:100%;height:100%;border-radius:22px}
-.brand{font-family:'Inter','Noto Sans Tamil',sans-serif;font-weight:800;font-size:20px;letter-spacing:.5px;background:linear-gradient(90deg,#ffd98a,#ff9d3a);-webkit-background-clip:text;background-clip:text;color:transparent}
-.brand-sub{font-size:12px;color:#cdb9ef;margin-bottom:12px}
-.legend{width:100%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 12px;margin-bottom:10px}
-.legend h3,.camps h3{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#ffc46b;margin-bottom:7px}
-.lrow{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:2.5px 0}
-.lrow .dicon{background:rgba(255,255,255,.92)}
-.camps{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.camp{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 12px}
-.camp ul{list-style:none;font-size:12.5px;line-height:1.75}
-/* info cards */
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px;margin-top:16px}
-.info-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 1px 5px rgba(43,35,64,.06)}
-.info-card h3{font-size:13px;font-weight:800;letter-spacing:.4px;color:var(--brand1);margin-bottom:9px;display:flex;align-items:center;gap:7px}
-.info-card h3::before{content:"";width:8px;height:8px;border-radius:3px;background:linear-gradient(135deg,var(--accent),var(--brand2))}
-.irow{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:4.5px 0;border-bottom:1px dashed var(--line)}
+.none{color:#c9c4d4;font-size:12px;margin-top:1px}
+/* ---------- center panel ---------- */
+.center{grid-area:c;background:linear-gradient(160deg,#3d1f66,#6d2fae 55%,#4a2580);border-radius:16px;padding:12px;color:#f3ecff;display:flex;flex-direction:column;gap:8px;box-shadow:inset 0 0 60px rgba(0,0,0,.25),0 2px 10px rgba(43,35,64,.2)}
+.c-top{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:stretch}
+.cbox{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:11px;padding:7px 10px;min-width:0}
+.cbox h3{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#ffc46b;margin-bottom:4px}
+.camp ul{list-style:none;font-size:11.5px;line-height:1.6}
+.logo-block{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 4px}
+.logo-wrap{width:82px;height:82px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
+.logo-wrap img,.logo-wrap svg{width:100%;height:100%;border-radius:18px}
+.brand{font-family:'Inter','Noto Sans Tamil',sans-serif;font-weight:800;font-size:17px;letter-spacing:.4px;background:linear-gradient(90deg,#ffd98a,#ff9d3a);-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:3px}
+.brand-sub{font-size:10.5px;color:#cdb9ef;text-align:center}
+.legend-strip{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;justify-content:center;padding:6px 8px}
+.lrow{display:flex;align-items:center;gap:5px;font-size:11px;white-space:nowrap}
+.lrow .dicon{background:rgba(255,255,255,.92);flex-basis:17px;height:17px;font-size:10px}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1}
+.irow{display:flex;justify-content:space-between;gap:8px;font-size:11px;padding:2.5px 0;border-bottom:1px dashed rgba(255,255,255,.15)}
 .irow:last-child{border-bottom:0}
 .irow b{font-weight:600}
-.irow span{color:var(--muted);white-space:nowrap}
-.pill-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
-table.mk{width:100%;border-collapse:collapse;font-size:13px}
-table.mk th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)}
-table.mk td{padding:6px;border-bottom:1px dashed var(--line)}
+.irow span{color:#d9c9f5;white-space:nowrap}
+.blk{font-size:11px;line-height:1.45}
+.blk b{display:block;font-weight:700}
+.blk b.g{color:#8fe6ae}.blk b.r{color:#ff9d8f}
+.blk span{color:#d9c9f5}
+table.mk{width:100%;border-collapse:collapse;font-size:11px}
+table.mk th{font-size:9px;text-transform:uppercase;letter-spacing:.4px;color:#cdb9ef;text-align:left;padding:2px 4px;border-bottom:1px solid rgba(255,255,255,.2)}
+table.mk td{padding:3px 4px;border-bottom:1px dashed rgba(255,255,255,.15)}
 table.mk tr:last-child td{border-bottom:0}
-footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px}
-@media print{.toggle{display:none}body{background:#fff;padding:0}.sign-card:hover{transform:none}}
+footer{margin-top:14px;text-align:center;color:var(--muted);font-size:12px}
+/* ---------- print: single page landscape ---------- */
+@page{size:A4 landscape;margin:6mm}
+@media print{
+  .toggle{display:none}
+  body{background:#fff;padding:0}
+  .sign-card:hover{transform:none}
+  .sign-card{box-shadow:none;break-inside:avoid}
+  .wrap{transform:scale(.72);transform-origin:top left;width:139%}
+  header{margin-bottom:8px}
+  footer{margin-top:6px}
+  .chart-scroll{overflow:visible}
+}
 </style>
 </head>
 <body>
@@ -96,7 +109,6 @@ footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px}
     </div>
   </header>
   <div class="chart-scroll"><div class="chart" id="chart"></div></div>
-  <div class="info-grid" id="info"></div>
   <footer id="foot"></footer>
 </div>
 
@@ -104,6 +116,7 @@ footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px}
 const PL={su:['சூரியன்','Sun'],mo:['சந்திரன்','Moon'],ma:['செவ்வாய்','Mars'],me:['புதன்','Mercury'],
 ju:['குரு','Jupiter'],ve:['சுக்கிரன்','Venus'],sa:['சனி','Saturn'],ra:['ராகு','Rahu'],ke:['கேது','Ketu'],rk:['ராகு / கேது','Rahu / Ketu']};
 
+/* gender: odd signs male, even female. direction: fire=East, earth=South, air=West, water=North */
 const SIGNS=[
 {n:1, ta:'மேஷம்', en:'Aries · Mesham', sym:'♈', q:'chara', el:'fire', own:['ma'],ex:['su'],de:['sa'],fr:['ju'],ne:['mo','me','ve','rk']},
 {n:2, ta:'ரிஷபம்', en:'Taurus · Rishabam', sym:'♉', q:'sthira', el:'earth', own:['ve'],ex:['mo','ra'],de:['ke'],fr:['me','sa'],ne:['ma','su','ju']},
@@ -118,34 +131,40 @@ const SIGNS=[
 {n:11, ta:'கும்பம்', en:'Aquarius · Kumbam', sym:'♒', q:'sthira', el:'air', own:['sa'],ex:[],de:[],fr:['ve'],ne:['mo','ma','me','ju','su','rk']},
 {n:12, ta:'மீனம்', en:'Pisces · Meenam', sym:'♓', q:'ubhaya', el:'water', own:['ju'],ex:['ve'],de:['me'],fr:['su','ma','sa','mo'],ne:[]}
 ];
+const DIR={fire:'east',earth:'south',air:'west',water:'north'};
 
 const L={
 ta:{title:'ராசி சக்கரம்',sub:'வீடு விவரங்கள் — கிரக ஆட்சி, உச்சம், நீச்சம், நட்பு நிலைகள்',
  legend:'குறியீடுகள்',own:'வீடு (ஆட்சி)',ex:'உச்சம்',de:'நீச்சம்',fr:'நட்பு',ne:'சமம் / பகை',
  guru:'குரு அணி',sukra:'சுக்ர அணி',
  aspects:'கிரகப் பார்வை',all:'எல்லா கிரகங்களும்',seventh:'7-ஆம் பார்வை',
- groups:'வீடு வகைகள்',trikona:'திரிகோணஸ்தானம் (லக்ஷ்மி)',kendra:'கேந்திர வீடுகள் (விஷ்ணு)',hidden:'மறைவு வீடுகள்',
- subha:'சுபர்கள் & அசுபர்கள்',benefics:'சுபர்கள்',malefics:'அசுபர்கள்',
+ groups:'வீடு வகைகள்',trikona:'திரிகோணம் (லக்ஷ்மி)',kendra:'கேந்திரம் (விஷ்ணு)',hidden:'மறைவு வீடுகள்',
+ subha:'சுபர் / அசுபர்',benefics:'சுபர்கள்',malefics:'அசுபர்கள்',
  blist:'குரு, சுக்கிரன், தனித்த புதன், வளர்பிறை & பௌர்ணமி சந்திரன்',
  mlist:'சூரியன் (50%), செவ்வாய் (75%), சனி, ராகு, கேது',
- maraka:'மாரக / பாதக ஸ்தானங்கள்',type:'ராசி வகை',mcol:'மாரகம்',bcol:'பாதகம்',
+ maraka:'மாரக / பாதக',type:'வகை',mcol:'மாரகம்',bcol:'பாதகம்',
  chara:'சரம்',sthira:'ஸ்திரம்',ubhaya:'உபயம்',
  fire:'நெருப்பு',earth:'மண்',air:'காற்று',water:'நீர்',
- foot:'VedaNetra · ஜோதிட குறிப்பு அட்டவணை — திரிக் சித்தாந்தம்'},
+ male:'ஆண்',female:'பெண்',
+ east:'கிழக்கு',south:'தெற்கு',west:'மேற்கு',north:'வடக்கு',
+ foot:'VedaNetra · ஜோதிட குறிப்பு அட்டவணை — திரிக் சித்தாந்தம் | <a href="https://vedanetra.com" target="_blank" rel="noopener noreferrer">vedanetra.com</a>'},
 en:{title:'Rasi Chart',sub:'House details — planetary rulership, exaltation, debilitation & friendship',
  legend:'Legend',own:'Own House',ex:'Exalted',de:'Debilitated',fr:'Friendly',ne:'Neutral / Enemy',
  guru:"Jupiter's Camp",sukra:"Venus's Camp",
  aspects:'Planetary Aspects',all:'All planets',seventh:'7th aspect',
- groups:'House Groups',trikona:'Trikona — Lakshmi (trines)',kendra:'Kendra — Vishnu (angles)',hidden:'Hidden houses',
- subha:'Benefics & Malefics',benefics:'Benefics (Subhas)',malefics:'Malefics (Asubhas)',
+ groups:'House Groups',trikona:'Trikona — Lakshmi',kendra:'Kendra — Vishnu',hidden:'Hidden houses',
+ subha:'Benefics / Malefics',benefics:'Benefics (Subhas)',malefics:'Malefics (Asubhas)',
  blist:'Jupiter, Venus, unafflicted Mercury, waxing & full Moon',
  mlist:'Sun (50%), Mars (75%), Saturn, Rahu, Ketu',
- maraka:'Maraka / Badhaka Houses',type:'Sign type',mcol:'Maraka',bcol:'Badhaka',
+ maraka:'Maraka / Badhaka',type:'Type',mcol:'Maraka',bcol:'Badhaka',
  chara:'Chara (Movable)',sthira:'Sthira (Fixed)',ubhaya:'Ubhaya (Dual)',
  fire:'Fire',earth:'Earth',air:'Air',water:'Water',
- foot:'VedaNetra · Jyotisha reference chart — Drik Siddhanta'}
+ male:'Male',female:'Female',
+ east:'East',south:'South',west:'West',north:'North',
+ foot:'VedaNetra · Jyotisha reference chart — Drik Siddhanta | <a href="https://vedanetra.com" target="_blank" rel="noopener noreferrer">vedanetra.com</a>'}
 };
 const ELICON={fire:'🔥',earth:'⛰️',air:'💨',water:'💧'};
+const DIRICON={east:'⬆',south:'➡',west:'⬇',north:'⬅'};
 const DICONS={own:'⌂',ex:'▲',de:'▼',fr:'✓',ne:'⊘'};
 const MK=[['chara','2, 7','11'],['sthira','3, 8','9'],['ubhaya','7, 11','7']];
 
@@ -181,7 +200,6 @@ const LOGO_SVG=`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 let lang='ta';
 const name=k=>PL[k][lang==='ta'?0:1];
 const chips=(arr,cls)=>arr.length?arr.map(k=>`<span class="chip ${cls}">${name(k)}</span>`).join(''):`<span class="none">—</span>`;
-
 function digRow(cls,arr){return `<div class="dig"><span class="dicon ${cls}" title="${L[lang][cls]}">${DICONS[cls]}</span><span class="chips">${chips(arr,cls)}</span></div>`;}
 
 function render(){
@@ -191,50 +209,59 @@ function render(){
  document.getElementById('t-sub').textContent=t.sub;
  document.getElementById('btn-ta').classList.toggle('active',lang==='ta');
  document.getElementById('btn-en').classList.toggle('active',lang==='en');
- document.getElementById('foot').textContent=t.foot;
-
+document.getElementById('foot').innerHTML=t.foot;
  let html='';
  for(const s of SIGNS){
+  const male=s.n%2===1, dir=DIR[s.el];
   html+=`<div class="sign-card el-${s.el}" style="grid-area:s${s.n}">
    <div class="sign-head"><span class="sign-num">${s.n}</span><div class="sign-name">${lang==='ta'?s.ta:s.en}</div><span class="sign-sym">${s.sym}</span></div>
-   <div class="badges"><span class="badge q">${t[s.q]}</span><span class="badge">${ELICON[s.el]} ${t[s.el]}</span></div>
+   <div class="badges">
+     <span class="badge q">${t[s.q]}</span>
+     <span class="badge">${ELICON[s.el]} ${t[s.el]}</span>
+     <span class="badge ${male?'g-m':'g-f'}">${male?'♂':'♀'} ${male?t.male:t.female}</span>
+     <span class="badge">🧭 ${t[dir]}</span>
+   </div>
    <div class="digs">${digRow('own',s.own)}${digRow('ex',s.ex)}${digRow('de',s.de)}${digRow('fr',s.fr)}${digRow('ne',s.ne)}</div>
   </div>`;
  }
+
  html+=`<div class="center">
-   <div class="logo-wrap"><img src="vedanetra-logo.png" alt="VedaNetra" onerror="this.outerHTML=LOGO_SVG"></div>
-   <div class="brand">VedaNetra</div><div class="brand-sub">${lang==='ta'?'வேத நேத்ரா — ஜோதிடக் கண்':'The Eye of the Vedas'}</div>
-   <div class="legend"><h3>${t.legend}</h3>
-    ${['own','ex','de','fr','ne'].map(k=>`<div class="lrow"><span class="dicon ${k}">${DICONS[k]}</span>${t[k]}</div>`).join('')}
+   <div class="c-top">
+     <div class="cbox camp"><h3>${t.guru}</h3><ul>${['su','mo','ma','ke'].map(k=>`<li>${name(k)}</li>`).join('')}</ul></div>
+     <div class="logo-block">
+       <div class="logo-wrap"><img src="vedanetra-logo.png" alt="VedaNetra" onerror="this.outerHTML=LOGO_SVG"></div>
+       <div class="brand">VedaNetra</div>
+       <div class="brand-sub">${lang==='ta'?'வேத நேத்ரா — ஜோதிடக் கண்':'The Eye of the Vedas'}</div>
+     </div>
+     <div class="cbox camp"><h3>${t.sukra}</h3><ul>${['sa','me','ra'].map(k=>`<li>${name(k)}</li>`).join('')}</ul></div>
    </div>
-   <div class="camps">
-    <div class="camp"><h3>${t.guru}</h3><ul>${['su','mo','ma','ke'].map(k=>`<li>${name(k)}</li>`).join('')}</ul></div>
-    <div class="camp"><h3>${t.sukra}</h3><ul>${['sa','me','ra'].map(k=>`<li>${name(k)}</li>`).join('')}</ul></div>
+   <div class="cbox legend-strip">
+     ${['own','ex','de','fr','ne'].map(k=>`<span class="lrow"><span class="dicon ${k}">${DICONS[k]}</span>${t[k]}</span>`).join('')}
+   </div>
+   <div class="c-grid">
+     <div class="cbox"><h3>${t.aspects}</h3>
+       <div class="irow"><b>${t.all}</b><span>${t.seventh}</span></div>
+       <div class="irow"><b>${name('sa')}</b><span>3, 10</span></div>
+       <div class="irow"><b>${name('ma')}</b><span>4, 8</span></div>
+       <div class="irow"><b>${name('ju')}</b><span>5, 9</span></div>
+     </div>
+     <div class="cbox"><h3>${t.groups}</h3>
+       <div class="irow"><b>${t.trikona}</b><span>1, 5, 9</span></div>
+       <div class="irow"><b>${t.kendra}</b><span>1, 4, 7, 10</span></div>
+       <div class="irow"><b>${t.hidden}</b><span>3, 6, 8, 12</span></div>
+     </div>
+     <div class="cbox"><h3>${t.subha}</h3>
+       <div class="blk"><b class="g">${t.benefics}</b><span>${t.blist}</span></div>
+       <div class="blk" style="margin-top:5px"><b class="r">${t.malefics}</b><span>${t.mlist}</span></div>
+     </div>
+     <div class="cbox"><h3>${t.maraka}</h3>
+       <table class="mk"><tr><th>${t.type}</th><th>${t.mcol}</th><th>${t.bcol}</th></tr>
+       ${MK.map(r=>`<tr><td><b>${t[r[0]]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}
+       </table>
+     </div>
    </div>
  </div>`;
  document.getElementById('chart').innerHTML=html;
-
- document.getElementById('info').innerHTML=`
- <div class="info-card"><h3>${t.aspects}</h3>
-  <div class="irow"><b>${t.all}</b><span>${t.seventh}</span></div>
-  <div class="irow"><b>${name('sa')}</b><span>3, 10</span></div>
-  <div class="irow"><b>${name('ma')}</b><span>4, 8</span></div>
-  <div class="irow"><b>${name('ju')}</b><span>5, 9</span></div>
- </div>
- <div class="info-card"><h3>${t.groups}</h3>
-  <div class="irow"><b>${t.trikona}</b><span>1, 5, 9</span></div>
-  <div class="irow"><b>${t.kendra}</b><span>1, 4, 7, 10</span></div>
-  <div class="irow"><b>${t.hidden}</b><span>3, 6, 8, 12</span></div>
- </div>
- <div class="info-card"><h3>${t.subha}</h3>
-  <div class="irow" style="flex-direction:column;gap:2px"><b style="color:var(--green)">${t.benefics}</b><span style="white-space:normal">${t.blist}</span></div>
-  <div class="irow" style="flex-direction:column;gap:2px"><b style="color:var(--red)">${t.malefics}</b><span style="white-space:normal">${t.mlist}</span></div>
- </div>
- <div class="info-card"><h3>${t.maraka}</h3>
-  <table class="mk"><tr><th>${t.type}</th><th>${t.mcol}</th><th>${t.bcol}</th></tr>
-  ${MK.map(r=>`<tr><td><b>${t[r[0]]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}
-  </table>
- </div>`;
 }
 function setLang(l){lang=l;render();}
 render();
