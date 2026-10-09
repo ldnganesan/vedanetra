@@ -1,0 +1,485 @@
+<!doctype html><html><head><meta charset=utf8><meta name="robots" content="noindex, nofollow"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Navagraha Primer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Mukta:wght@300;400;600;700&family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Serif+Tamil:wght@400;600&family=Noto+Sans+Symbols:wght@400;700&display=swap">
+
+<style>
+/* Layout: full-viewport vertical scroll-snap sections; fixed glyph rail for jumping between grahas.
+   Single deliberately-dark cosmic theme (a projected teaching presentation). */
+:root{
+  --bg:#0a0e24; --bg2:#0d1230;
+  --ink:#f2ecd8;            /* warm parchment */
+  --soft:#b7bcdd;           /* muted lavender-grey body */
+  --mute:#7e85ad;           /* captions */
+  --gold:#e7c36a;           /* primary accent */
+  --panel:rgba(255,255,255,0.045);
+  --panel2:rgba(255,255,255,0.07);
+  --stroke:rgba(255,255,255,0.12);
+  --accent:#e7c36a;         /* per-section overridden */
+  color-scheme:dark;
+  --serif:'EB Garamond','Noto Serif Tamil','Noto Serif Devanagari',Georgia,serif;
+  --display:'Cormorant Garamond','EB Garamond','Noto Serif Devanagari',Georgia,serif;
+  --sans:'Mukta',system-ui,-apple-system,sans-serif;
+  --glyphf:'Noto Sans Symbols','EB Garamond',serif;
+}
+*{box-sizing:border-box}
+html{scroll-snap-type:y proximity; scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--serif); font-size:clamp(17px,1.15vw,21px); line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.tamil{font-family:'Noto Serif Tamil','EB Garamond',serif}
+.deva{font-family:'Noto Serif Devanagari','EB Garamond',serif}
+.glyph{font-family:var(--glyphf); line-height:1}
+.sans{font-family:var(--sans)}
+em{color:var(--soft); font-style:italic}
+b,strong{color:var(--ink); font-weight:500}
+
+/* ---- section shell ---- */
+section{
+  position:relative; min-height:100svh; width:100%;
+  scroll-snap-align:start;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(40px,6vh,90px) clamp(20px,6vw,120px);
+  padding-right:clamp(20px,6vw,120px);
+  overflow:hidden;
+}
+@supports not (min-height:100svh){ section{min-height:100vh} }
+.wrap{width:100%; max-width:1180px; margin:0 auto; position:relative; z-index:2}
+
+/* giant faint glyph watermark behind a graha */
+.watermark{
+  position:absolute; right:clamp(-30px,-1vw,0px); top:50%; transform:translateY(-50%);
+  font-family:var(--glyphf); font-size:min(78vh,760px); line-height:1;
+  color:var(--accent); opacity:0.07; z-index:1; pointer-events:none; user-select:none;
+}
+.eyebrow{
+  font-family:var(--sans); font-weight:600; font-size:clamp(13px,1vw,16px);
+  letter-spacing:0.28em; text-transform:uppercase; color:var(--accent);
+}
+
+/* ---- hero ---- */
+#hero{background:radial-gradient(ellipse at 50% 32%, #182250 0%, #0b1030 52%, #070a1e 100%); text-align:center}
+#hero .wrap{max-width:1000px; display:flex; flex-direction:column; align-items:center; gap:clamp(22px,3.2vh,40px)}
+.om{font-family:var(--deva,'Noto Serif Devanagari'); font-size:clamp(46px,7vw,86px); color:var(--gold)}
+.sloka{
+  font-family:'Noto Serif Devanagari',serif; font-size:clamp(23px,3vw,40px); line-height:1.75;
+  color:var(--ink); font-weight:400;
+}
+.sloka-tr{font-family:var(--display); font-style:italic; font-size:clamp(17px,1.7vw,24px); color:var(--soft); line-height:1.7}
+.sloka-en{font-family:var(--serif); font-size:clamp(15px,1.3vw,19px); color:var(--mute); max-width:62ch; line-height:1.6}
+.hero-title{font-family:var(--display); font-weight:600; font-size:clamp(44px,8vw,104px); line-height:1.02; color:var(--ink); margin:0}
+.hero-sub{font-family:var(--serif); font-size:clamp(17px,1.6vw,23px); color:var(--soft)}
+.hero-names{font-family:var(--serif); font-size:clamp(16px,1.5vw,22px); color:var(--gold); letter-spacing:0.02em}
+.scrollcue{font-family:var(--sans); font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--mute); margin-top:6px}
+
+/* ---- intro blocks ---- */
+.lead{font-size:clamp(20px,1.7vw,27px); line-height:1.55; color:var(--ink); max-width:30ch}
+h2.secttl{font-family:var(--display); font-weight:600; font-size:clamp(34px,5vw,64px); line-height:1.06; margin:0.2em 0 0.5em; text-wrap:balance; color:var(--ink)}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,1.6vw,26px)}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:clamp(16px,1.6vw,26px)}
+.card{background:var(--panel); border:1px solid var(--stroke); border-radius:18px; padding:clamp(22px,2vw,32px); min-width:0}
+.card h3{font-family:var(--sans); font-weight:700; font-size:clamp(15px,1.1vw,18px); letter-spacing:0.12em; text-transform:uppercase; margin:0 0 12px; color:var(--accent)}
+.card p,.card li{color:var(--soft); font-size:clamp(16px,1.15vw,20px); line-height:1.5}
+.card ul{margin:0; padding-left:1.1em}
+.card li{margin:4px 0}
+
+/* cabinet table */
+.mini{width:100%; border-collapse:collapse; font-family:var(--serif)}
+.mini td{padding:9px 8px; border-bottom:1px solid var(--stroke); color:var(--soft); font-size:clamp(15px,1.1vw,19px)}
+.mini td:first-child{color:var(--ink); white-space:nowrap; padding-right:20px}
+
+/* ---- graha section ---- */
+.graha-head{display:flex; align-items:baseline; gap:24px; flex-wrap:wrap}
+.g-glyph{font-family:var(--glyphf); font-size:clamp(64px,8vw,110px); color:var(--accent); line-height:0.9}
+.g-ord{font-family:var(--sans); font-weight:700; font-size:clamp(14px,1vw,17px); letter-spacing:0.25em; color:var(--mute); text-transform:uppercase}
+.g-name{font-family:var(--display); font-weight:600; font-size:clamp(46px,7.5vw,96px); line-height:1; color:var(--ink); margin:0}
+.g-en{font-family:var(--serif); font-style:italic; font-size:clamp(20px,2vw,30px); color:var(--accent)}
+.namerow{display:flex; gap:clamp(18px,3vw,54px); flex-wrap:wrap; margin-top:14px; font-size:clamp(16px,1.3vw,21px)}
+.namerow .lbl{font-family:var(--sans); font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--mute); display:block; margin-bottom:2px}
+.namerow .val{color:var(--ink)}
+.chips{display:flex; flex-wrap:wrap; gap:9px; margin:20px 0}
+.chip{font-family:var(--sans); font-size:clamp(13px,0.95vw,16px); font-weight:400; color:var(--ink);
+  background:var(--panel2); border:1px solid var(--stroke); border-radius:100px; padding:6px 15px}
+.chip b{color:var(--accent); font-weight:600}
+.karaka{font-size:clamp(18px,1.45vw,25px); line-height:1.55; color:var(--soft); max-width:70ch; margin:18px 0 22px}
+.karaka b{color:var(--ink)}
+.props{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 36px; margin-top:6px}
+.prop{display:flex; gap:14px; padding:7px 0; border-bottom:1px solid var(--stroke); font-size:clamp(14px,1.05vw,18px); min-width:0}
+.prop .k{font-family:var(--sans); font-weight:600; font-size:clamp(11px,0.85vw,13px); letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); width:118px; flex-shrink:0; padding-top:3px}
+.prop .v{color:var(--ink); min-width:0}
+.keynote{font-family:var(--display); font-style:italic; font-size:clamp(19px,1.9vw,30px); line-height:1.4;
+  color:var(--accent); margin-top:24px; padding-left:20px; border-left:3px solid var(--accent); max-width:62ch}
+.disputed{background:rgba(231,195,106,0.09); border:1px solid rgba(231,195,106,0.28); border-radius:14px;
+  padding:14px 20px; margin-top:18px; font-size:clamp(14px,1.05vw,18px); color:var(--soft); max-width:78ch}
+.disputed b{color:var(--gold)}
+
+/* ---- comparison table ---- */
+.tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--stroke); border-radius:16px}
+table.cmp{border-collapse:collapse; width:100%; min-width:760px; font-size:clamp(13px,1vw,17px)}
+table.cmp th,table.cmp td{padding:11px 14px; text-align:left; border-bottom:1px solid var(--stroke); white-space:nowrap}
+table.cmp thead th{position:sticky; top:0; background:#141a3e; color:var(--gold); font-family:var(--sans); font-weight:600; font-size:clamp(12px,0.9vw,15px); letter-spacing:0.04em}
+table.cmp td:first-child{color:var(--ink)}
+table.cmp td{color:var(--soft)}
+table.cmp .gl{font-family:var(--glyphf); margin-right:7px}
+.tnote{font-size:clamp(13px,1vw,16px); color:var(--mute); margin-top:14px; max-width:80ch}
+
+/* ---- closing ---- */
+#closing{background:radial-gradient(ellipse at 50% 60%, #15204c 0%, #0a0e26 60%, #070a1e 100%); text-align:center}
+
+/* ---- fixed glyph nav rail ---- */
+nav.rail{
+  position:fixed; right:14px; top:50%; transform:translateY(-50%); z-index:50;
+  display:flex; flex-direction:column; gap:5px; padding:10px 8px;
+  background:rgba(10,14,36,0.55); backdrop-filter:blur(8px);
+  border:1px solid var(--stroke); border-radius:100px;
+}
+nav.rail a{
+  width:38px; height:38px; display:flex; align-items:center; justify-content:center;
+  font-family:var(--glyphf); font-size:19px; color:var(--mute); text-decoration:none;
+  border-radius:50%; transition:color .2s, background .2s; position:relative;
+}
+nav.rail a:hover{color:var(--ink); background:var(--panel2)}
+nav.rail a[aria-current="true"]{color:var(--g, var(--gold)); background:var(--panel2)}
+nav.rail a:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+nav.rail a .tip{
+  position:absolute; right:46px; top:50%; transform:translateY(-50%);
+  font-family:var(--sans); font-size:13px; white-space:nowrap; color:var(--ink);
+  background:rgba(10,14,36,0.92); border:1px solid var(--stroke); border-radius:8px;
+  padding:4px 10px; opacity:0; pointer-events:none; transition:opacity .15s;
+}
+nav.rail a:hover .tip{opacity:1}
+
+/* back to lesson hub */
+a.backhub{
+  position:fixed; left:14px; top:calc(14px + env(safe-area-inset-top,0px)); z-index:50;
+  font-family:var(--sans); font-size:13px; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--soft); text-decoration:none; padding:7px 14px;
+  background:rgba(10,14,36,0.55); backdrop-filter:blur(8px);
+  border:1px solid var(--stroke); border-radius:100px;
+}
+a.backhub:hover{color:var(--ink)}
+a.backhub:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+
+@media (max-width:860px){
+  nav.rail{ right:0; left:0; top:auto; bottom:0; transform:none; flex-direction:row;
+    justify-content:flex-start; border-radius:0; gap:2px; overflow-x:auto; padding:7px 10px;
+    padding-bottom:calc(7px + env(safe-area-inset-bottom,0px));
+    border-left:none; border-right:none; border-bottom:none; }
+  nav.rail a{width:36px; height:36px; flex:0 0 auto}
+  nav.rail a .tip{display:none}
+  section{padding-bottom:80px}
+  .props{grid-template-columns:1fr; gap:4px 0}
+  .grid3,.grid2{grid-template-columns:1fr}
+  .graha-head{gap:14px}
+}
+</style>
+
+<a class="backhub" href="index.html">← Lessons</a>
+<nav class="rail" id="rail" aria-label="Jump to section"></nav>
+
+<main id="main"></main>
+
+<script>
+const G = [
+ {id:"hero"},
+ {id:"intro", glyph:"✦", nav:"Intro", title:"intro"},
+ {id:"framings", glyph:"☗", nav:"Framings", title:"framings"},
+ {ord:"Graha One", glyph:"☉", id:"surya", accent:"#f0b43c",
+  tamil:"ஞாயிறு / சூரியன்", tamilT:"Ñāyiṟu / Sūriyaṉ", en:"the Sun",
+  sa:"सूर्य Sūrya", epi:"Ravi · Āditya · Bhānu · Arka",
+  name:"Sūrya",
+  chips:["<b>Malefic</b> (mild)","Sattva","Masculine","Kṣatriya","Fire · agni","Pitta","The King"],
+  karaka:"Sūrya is the <b>Ātmakāraka — the soul, the self, the “I.”</b> He signifies the <b>father</b>, the king, government and authority, status and fame, vitality and health, the will and the ego, the right eye, the bones and the heart. He is the steady centre a life turns around, as the planets turn around him. Where the Sun sits, a person seeks to <em>shine and be seen.</em>",
+  props:[["Owns","Leo (Siṃha)"],["Exalts","Aries 10°"],["Debilitates","Libra 10°"],["Mūlatrikoṇa","Leo 0°–20°"],
+   ["Friends","Moon · Mars · Jupiter"],["Enemies","Venus · Saturn"],["Dig-bala","10th house (south)"],["Aspect","7th"],
+   ["Day","Sunday"],["Direction","East"],["Colour","Copper-red / orange"],["Metal","Gold / copper"],
+   ["Gem","Ruby · māṇikya"],["Grain","Wheat"],["Deity","Agni / Śiva"],["Dhātu","Bones · asthi"],
+   ["Nakṣatras","Kṛttikā · U. Phalgunī · Uttarāṣāḍhā"],["Daśā","6 years"]],
+  key:"The soul and the sovereign — the light everything else reflects."},
+
+ {ord:"Graha Two", glyph:"☽", id:"chandra", accent:"#cdd4ee",
+  tamil:"திங்கள் / சந்திரன்", tamilT:"Tiṅkaḷ / Chandiraṉ", en:"the Moon",
+  sa:"चन्द्र Chandra", epi:"Soma · Indu · Śaśī",
+  name:"Chandra",
+  chips:["<b>Benefic</b> (waxing)","Sattva","Feminine","Vaiśya","Water · jala","Kapha","The Queen"],
+  karaka:"Chandra is the <b>Manaḥ-kāraka — the mind, emotions and feeling-nature.</b> She signifies the <b>mother</b>, nourishment and comfort, the public and the masses, the home, water and all liquids, the breasts and blood, fertility, moods and memory. As the fastest graha and the nearest to Earth, the Moon is weighted very heavily — the Moon-sign and its nakṣatra often matter more than the Sun-sign.",
+  props:[["Owns","Cancer (Karka)"],["Exalts","Taurus 3°"],["Debilitates","Scorpio 3°"],["Mūlatrikoṇa","Taurus 4°–30°"],
+   ["Friends","Sun · Mercury"],["Enemies","None"],["Dig-bala","4th house (north)"],["Aspect","7th"],
+   ["Day","Monday"],["Direction","Northwest"],["Colour","White"],["Metal","Silver"],
+   ["Gem","Pearl · muktā"],["Grain","Rice"],["Deity","Pārvatī / Varuṇa"],["Dhātu","Blood & fluids · rasa"],
+   ["Nakṣatras","Rohiṇī · Hasta · Śravaṇa"],["Daśā","10 years"]],
+  key:"The mind and the mother — the tide the whole chart rises and falls with."},
+
+ {ord:"Graha Three", glyph:"♂", id:"mangala", accent:"#e0705f",
+  tamil:"செவ்வாய்", tamilT:"Sevvāy", en:"Mars",
+  sa:"मङ्गल Maṅgala", epi:"Kuja · Aṅgāraka · Bhauma · Bhūmi-putra",
+  name:"Maṅgala",
+  chips:["<b>Malefic</b>","Tamas","Masculine","Kṣatriya","Fire · agni","Pitta","The Commander"],
+  karaka:"Maṅgala is the <b>kāraka of energy, courage and drive (parākrama)</b> — strength, initiative, aggression and the will to fight. He signifies <b>younger siblings</b>, <b>land and property</b> — hence <em>Bhūmi-putra</em>, “son of the Earth” — soldiers, engineers and surgeons, blood and muscle, accidents and surgery, fire and weapons, logic and enemies. Where Mars sits, a person <em>acts, competes and defends.</em>",
+  props:[["Owns","Aries · Scorpio"],["Exalts","Capricorn 28°"],["Debilitates","Cancer 28°"],["Mūlatrikoṇa","Aries 0°–12°"],
+   ["Friends","Sun · Moon · Jupiter"],["Enemies","Mercury"],["Dig-bala","10th house (south)"],["Aspects","4th · 7th · 8th"],
+   ["Day","Tuesday"],["Direction","South"],["Colour","Red"],["Metal","Copper"],
+   ["Gem","Red coral · pravāḷa"],["Grain","Toor / red gram"],["Deity","Subrahmaṇya / Kārttikeya"],["Dhātu","Marrow · majjā"],
+   ["Nakṣatras","Mṛgaśīrṣa · Chitrā · Dhaniṣṭhā"],["Daśā","7 years"]],
+  key:"The warrior and the engineer — courage, land, and the cutting edge."},
+
+ {ord:"Graha Four", glyph:"☿", id:"budha", accent:"#74c98a",
+  tamil:"புதன்", tamilT:"Budhaṉ", en:"Mercury",
+  sa:"बुध Budha", epi:"Saumya · Kumāra",
+  name:"Budha",
+  chips:["<b>Benefic</b> (mutable)","Rajas","Neuter","Vaiśya","Earth · pṛthvī","Tri-doṣa","The Prince"],
+  karaka:"Budha is the <b>kāraka of intellect and speech (buddhi & vāk)</b> — reasoning, analysis, wit, communication. He signifies <b>learning and education</b>, writing and languages, mathematics and logic, <b>commerce and trade</b>, messengers and merchants, the nervous system and the skin, dexterity and youthfulness. The quick, adaptable mind — he takes on the nature of whatever graha he joins, translating between the others' impulses.",
+  props:[["Owns","Gemini · Virgo"],["Exalts","Virgo 15°"],["Debilitates","Pisces 15°"],["Mūlatrikoṇa","Virgo 16°–20°"],
+   ["Friends","Sun · Venus"],["Enemies","Moon"],["Dig-bala","1st house (east)"],["Aspect","7th"],
+   ["Day","Wednesday"],["Direction","North"],["Colour","Green"],["Metal","Brass / bronze"],
+   ["Gem","Emerald · marakata"],["Grain","Green gram · moong"],["Deity","Viṣṇu"],["Dhātu","Skin · tvak"],
+   ["Nakṣatras","Āśleṣā · Jyeṣṭhā · Revatī"],["Daśā","17 years"]],
+  key:"The messenger and the merchant — the quick, chameleon mind."},
+
+ {ord:"Graha Five", glyph:"♃", id:"guru", accent:"#f0cf6a",
+  tamil:"வியாழன் / குரு", tamilT:"Viyāḻaṉ / Kuru", en:"Jupiter",
+  sa:"गुरु Guru", epi:"Bṛhaspati · Deva-guru · Jīva",
+  name:"Guru",
+  chips:["<b>Benefic</b> (greatest)","Sattva","Masculine","Brāhmaṇa","Ether · ākāśa","Kapha","A Minister"],
+  karaka:"Guru is the <b>kāraka of wisdom, dharma and grace (jñāna & dharma).</b> He signifies the <b>teacher and guru</b>, higher knowledge, philosophy and scripture, law and ethics, devotion and faith; <b>children</b> and, for a woman, the <b>husband</b>; wealth and good fortune; expansion, optimism and generosity. Jupiter is the graha of <em>blessing and increase</em> — wherever he sits or aspects, he protects and enlarges.",
+  props:[["Owns","Sagittarius · Pisces"],["Exalts","Cancer 5°"],["Debilitates","Capricorn 5°"],["Mūlatrikoṇa","Sagittarius 0°–10°"],
+   ["Friends","Sun · Moon · Mars"],["Enemies","Mercury · Venus"],["Dig-bala","1st house (east)"],["Aspects","5th · 7th · 9th"],
+   ["Day","Thursday"],["Direction","Northeast"],["Colour","Yellow / gold"],["Metal","Gold"],
+   ["Gem","Yellow sapphire · pukhrāj"],["Grain","Chana / Bengal gram"],["Deity","Bṛhaspati / Brahmā"],["Dhātu","Fat · medas"],
+   ["Nakṣatras","Punarvasu · Viśākhā · P. Bhādrapadā"],["Daśā","16 years"]],
+  key:"The guru and the benefactor — wisdom, dharma, and the blessing of increase."},
+
+ {ord:"Graha Six", glyph:"♀", id:"shukra", accent:"#e6a0cf",
+  tamil:"வெள்ளி / சுக்கிரன்", tamilT:"Veḷḷi / Chukkiraṉ", en:"Venus",
+  sa:"शुक्र Śukra", epi:"Bhārgava · Daitya-guru · Kavi",
+  name:"Śukra",
+  chips:["<b>Benefic</b>","Rajas","Feminine","Brāhmaṇa","Water · jala","Kapha · vāta","A Minister"],
+  karaka:"Śukra is the <b>kāraka of love, marriage and pleasure (kalatra-kāraka).</b> She signifies the <b>spouse</b> — the wife in a man's chart — romance and attraction, beauty, art, music, dance and poetry, luxury and refinement, vehicles and ornaments, sensual enjoyment, diplomacy and charm, the reproductive fluids, the kidneys, and taste itself. The graha of <em>value, harmony and delight</em> — what a person loves, and how they seek beauty and union.",
+  props:[["Owns","Taurus · Libra"],["Exalts","Pisces 27°"],["Debilitates","Virgo 27°"],["Mūlatrikoṇa","Libra 0°–15°"],
+   ["Friends","Mercury · Saturn"],["Enemies","Sun · Moon"],["Dig-bala","4th house (north)"],["Aspect","7th"],
+   ["Day","Friday"],["Direction","Southeast"],["Colour","White / variegated"],["Metal","Silver / platinum"],
+   ["Gem","Diamond · vajra"],["Grain","White beans / avarai"],["Deity","Lakṣmī / Śukrācārya"],["Dhātu","Reproductive fluid · śukra"],
+   ["Nakṣatras","Bharaṇī · P. Phalgunī · Pūrvāṣāḍhā"],["Daśā","20 years (longest)"]],
+  key:"The beloved and the artist — love, beauty, and the pleasures of union."},
+
+ {ord:"Graha Seven", glyph:"♄", id:"shani", accent:"#8fa6d8",
+  tamil:"சனி", tamilT:"Chaṉi", en:"Saturn",
+  sa:"शनि Śani", epi:"Manda · Śanaiścara · Kāla",
+  name:"Śani",
+  chips:["<b>Malefic</b> (greatest)","Tamas","Neuter","Śūdra","Air · vāyu","Vāta","The Servant"],
+  karaka:"Śani is the <b>kāraka of longevity, discipline, karma and sorrow (āyuṣ-kāraka).</b> He signifies <b>time and old age</b>, labour and duty, delay and endurance, the poor and the working masses, servants and service, chronic illness, detachment and renunciation, loss and grief, justice and consequence — everything old, dark and slow. The great teacher-through-hardship: what Śani gives is <em>earned slowly and kept long.</em>",
+  props:[["Owns","Capricorn · Aquarius"],["Exalts","Libra 20°"],["Debilitates","Aries 20°"],["Mūlatrikoṇa","Aquarius 0°–20°"],
+   ["Friends","Mercury · Venus"],["Enemies","Sun · Moon · Mars"],["Dig-bala","7th house (west)"],["Aspects","3rd · 7th · 10th"],
+   ["Day","Saturday"],["Direction","West"],["Colour","Black / dark blue"],["Metal","Iron / lead"],
+   ["Gem","Blue sapphire · nīlam"],["Grain","Sesame & black gram"],["Deity","Yama / Brahmā"],["Dhātu","Muscle & nerves · snāyu"],
+   ["Nakṣatras","Puṣya · Anurādhā · U. Bhādrapadā"],["Daśā","19 years"]],
+  key:"Time, karma and the long road — the strict teacher who rewards endurance."},
+
+ {ord:"Graha Eight · chāyā", glyph:"☊", id:"rahu", accent:"#b79be8",
+  tamil:"ராகு", tamilT:"Rāku", en:"North Node · ascending",
+  sa:"राहु Rāhu", epi:"Svarbhānu · Tama",
+  name:"Rāhu",
+  chips:["<b>Malefic</b> (like Śani)","Tamas","Shadow · chāyā","No body","Ascending node","The Army"],
+  karaka:"Rāhu is the kāraka of <b>worldly desire, obsession and amplification.</b> He signifies <b>ambition without limit</b>, the foreign and unconventional, illusion and glamour (<em>māyā</em>), sudden events, smoke and shadow, epidemics and poisons, technology and research, addiction and manipulation, and the insatiable craving of the “hungry head.” Wherever Rāhu sits, its affairs grow <b>magnified, restless and hard to see clearly</b> — larger than life, and never quite satisfied.",
+  props:[["Owns","— (disputed)"],["Behaves like","Saturn"],["Dig-bala","By closeness of contact"],["Aspects","5th · 7th · 9th"],
+   ["Direction","Southwest"],["Colour","Smoky / black"],["Metal","Lead"],["Gem","Hessonite · gomeda"],
+   ["Grain","Black gram · uḷuntu"],["Deity","Durgā / the Nāga"],["Nakṣatras","Ārdrā · Svātī · Śatabhiṣā"],["Daśā","18 years"],
+   ["Myth","The severed head of Svarbhānu"]],
+  disputed:"<b>⚠ Disputed — rulership & dignity.</b> Rāhu owns no sign by consensus. Schools variously give his exaltation as Taurus or Gemini, his debilitation as Scorpio or Sagittarius, and some assign co-lordship of Aquarius. Having no light of his own, Rāhu is read chiefly through his <b>dispositor</b> and the planets he joins.",
+  key:"The hungry head — obsession, amplification, and the lure of the unknown."},
+
+ {ord:"Graha Nine · chāyā", glyph:"☋", id:"ketu", accent:"#86c7bd",
+  tamil:"கேது", tamilT:"Kētu", en:"South Node · descending",
+  sa:"केतु Ketu", epi:"Śikhī · Dhvaja",
+  name:"Ketu",
+  chips:["<b>Malefic</b> (like Maṅgala)","Tamas","Shadow · chāyā","Headless","Descending node","The Army"],
+  karaka:"Ketu is the kāraka of <b>liberation, detachment and past-life karma (mokṣa-kāraka).</b> He signifies <b>spirituality and renunciation</b>, mysticism, the occult and hidden knowledge, intuition and insight, healing and medicine, sudden losses and endings, isolation and non-attachment, and the sense of “having already done this before.” Where Rāhu grasps, <b>Ketu subtracts, spiritualises and lets go</b> — the flag pointing the soul homeward.",
+  props:[["Owns","— (disputed)"],["Behaves like","Mars"],["Dig-bala","By closeness of contact"],["Aspects","5th · 7th · 9th"],
+   ["Direction","Northwest (varies)"],["Colour","Grey / smoky"],["Metal","Mixed · pañca-loha"],["Gem","Cat's-eye · vaiḍūrya"],
+   ["Grain","Horse gram · koḷḷu"],["Deity","Gaṇeśa / Chitragupta"],["Nakṣatras","Aśvinī · Maghā · Mūla"],["Daśā","7 years"],
+   ["Myth","The severed body/tail of Svarbhānu"]],
+  disputed:"<b>⚠ Disputed — rulership & dignity.</b> Like Rāhu, Ketu owns no sign by consensus. Schools give his exaltation as Scorpio or Sagittarius, his debilitation as Taurus or Gemini, and some assign co-lordship of Scorpio. He too is read through his <b>dispositor</b> and contacts, always exactly 180° opposite Rāhu.",
+  key:"The headless flag — detachment, mokṣa, and the pull beyond the world."},
+
+ {id:"table", glyph:"▦", nav:"Table", title:"table"},
+ {id:"closing", glyph:"✦", nav:"Close", title:"closing"}
+];
+
+/* ---------- render ---------- */
+const main = document.getElementById("main");
+const rail = document.getElementById("rail");
+
+function el(html){ const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstElementChild; }
+
+/* hero */
+main.appendChild(el(`
+<section id="hero">
+  <div class="wrap">
+    <div class="om deva">ॐ</div>
+    <div class="eyebrow">Maṅgala Śloka · a prayer to the Gurus</div>
+    <div class="sloka deva">गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः ।<br>गुरुः साक्षात् परब्रह्म तस्मै श्रीगुरवे नमः ॥</div>
+    <div class="sloka-tr">Gurur Brahmā Gurur Viṣṇuḥ Gurur Devo Maheśvaraḥ&nbsp;|<br>Guruḥ sākṣāt Parabrahma tasmai śrī gurave namaḥ&nbsp;‖</div>
+    <div class="sloka-en">The Guru is Brahmā, the Guru is Viṣṇu, the Guru is the great Lord Śiva; the Guru is verily the Supreme Brahman — to that revered Guru, I bow.</div>
+    <h1 class="hero-title">The Nine Grahas</h1>
+    <div class="hero-names glyph">☉&nbsp; ☽&nbsp; ♂&nbsp; ☿&nbsp; ♃&nbsp; ♀&nbsp; ♄&nbsp; ☊&nbsp; ☋</div>
+    <div class="hero-sub">Navagraha · <span class="tamil">நவகிரகம்</span> · <span class="deva">नवग्रह</span> — a primer in Tamil, English &amp; Sanskrit</div>
+    <div class="scrollcue">scroll to begin ↓</div>
+  </div>
+</section>`));
+
+/* intro */
+main.appendChild(el(`
+<section id="intro">
+  <div class="wrap">
+    <div class="eyebrow">Orientation</div>
+    <h2 class="secttl">What is a <em style="color:var(--gold); font-style:normal">graha</em>?</h2>
+    <p class="lead" style="max-width:40ch">The word <b>graha</b> <span class="deva">(ग्रह)</span> does not mean “planet.” It means <b style="color:var(--gold)">“one who seizes, grasps, holds.”</b> A graha is a force that takes hold of the mind and the life.</p>
+    <div class="grid2" style="margin-top:30px">
+      <div class="card"><h3>Seven bodies, two shadows</h3><p>Seven are visible — the Sun, the Moon and the five star-planets. Two, <b>Rāhu and Ketu</b>, are not bodies at all but the points where the Moon's orbit crosses the ecliptic: the <b>chāyā grahas</b>, “shadow seizers.”</p></div>
+      <div class="card"><h3>The weekday order</h3><p>The nine are counted as they lord the days, the nodes appended: <b>Sūrya · Chandra · Maṅgala · Budha · Guru · Śukra · Śani · Rāhu · Ketu.</b> In Tamil the weekday names <em>are</em> the planet names — <span class="tamil">ஞாயிறு</span> (Sun), <span class="tamil">திங்கள்</span> (Moon), <span class="tamil">செவ்வாய்</span> (Mars)… to name the day is to name the graha.</p></div>
+    </div>
+  </div>
+</section>`));
+
+/* framings */
+main.appendChild(el(`
+<section id="framings">
+  <div class="wrap">
+    <div class="eyebrow">Three framings to hold first</div>
+    <h2 class="secttl">How the nine are organised</h2>
+    <div class="grid3" style="margin-top:14px">
+      <div class="card">
+        <h3>The three guṇas</h3>
+        <ul>
+          <li><b>Sattva</b> — Sūrya, Chandra, Guru</li>
+          <li><b>Rajas</b> — Budha, Śukra</li>
+          <li><b>Tamas</b> — Maṅgala, Śani, Rāhu, Ketu</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>The royal cabinet</h3>
+        <table class="mini">
+          <tr><td>King</td><td>Sūrya</td></tr>
+          <tr><td>Queen</td><td>Chandra</td></tr>
+          <tr><td>Prince</td><td>Budha</td></tr>
+          <tr><td>Commander</td><td>Maṅgala</td></tr>
+          <tr><td>Ministers</td><td>Guru · Śukra</td></tr>
+          <tr><td>Servant</td><td>Śani</td></tr>
+          <tr><td>The army</td><td>Rāhu · Ketu</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Benefic &amp; malefic</h3>
+        <p><b>Benefics (śubha):</b> Guru, Śukra, waxing Chandra, unafflicted Budha.</p>
+        <p style="margin-top:12px"><b>Malefics (krūra):</b> Śani, Maṅgala, Sūrya, Rāhu, Ketu, waning Chandra.</p>
+        <p style="margin-top:12px; color:var(--mute); font-size:0.9em">The Moon and Mercury are conditional — they take colour from phase and company.</p>
+      </div>
+    </div>
+  </div>
+</section>`));
+
+/* grahas */
+for(const g of G){
+  if(!g.name) continue;
+  const props = g.props.map(([k,v])=>`<div class="prop"><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
+  const chips = g.chips.map(c=>`<span class="chip">${c}</span>`).join("");
+  const disputed = g.disputed ? `<div class="disputed">${g.disputed}</div>` : "";
+  main.appendChild(el(`
+<section id="${g.id}" style="--accent:${g.accent}; --g:${g.accent}">
+  <div class="watermark glyph" aria-hidden="true">${g.glyph}</div>
+  <div class="wrap">
+    <div class="graha-head">
+      <span class="g-glyph glyph">${g.glyph}</span>
+      <div>
+        <div class="g-ord">${g.ord}</div>
+        <h2 class="g-name">${g.name} <span class="g-en">— ${g.en}</span></h2>
+      </div>
+    </div>
+    <div class="namerow">
+      <div><span class="lbl sans">Tamil</span><span class="val tamil">${g.tamil}</span> <span style="color:var(--mute)">· ${g.tamilT}</span></div>
+      <div><span class="lbl sans">Sanskrit</span><span class="val deva">${g.sa.split(' ')[0]}</span> <span style="color:var(--ink)">${g.sa.split(' ').slice(1).join(' ')}</span></div>
+      <div><span class="lbl sans">Also</span><span class="val" style="color:var(--soft)">${g.epi}</span></div>
+    </div>
+    <div class="chips">${chips}</div>
+    <p class="karaka">${g.karaka}</p>
+    <div class="props">${props}</div>
+    ${disputed}
+    <div class="keynote">${g.key}</div>
+  </div>
+</section>`));
+}
+
+/* comparison table */
+const rows = [
+ ["☉","Sun","ஞாயிறு","Sūrya","Malefic · sattva","Leo","Aries 10°","Libra 10°","6 yr","Ruby"],
+ ["☽","Moon","திங்கள்","Chandra","Benefic* · sattva","Cancer","Taurus 3°","Scorpio 3°","10 yr","Pearl"],
+ ["♂","Mars","செவ்வாய்","Maṅgala","Malefic · tamas","Aries, Scorpio","Capricorn 28°","Cancer 28°","7 yr","Red coral"],
+ ["☿","Mercury","புதன்","Budha","Benefic† · rajas","Gemini, Virgo","Virgo 15°","Pisces 15°","17 yr","Emerald"],
+ ["♃","Jupiter","வியாழன்","Guru","Benefic · sattva","Sagittarius, Pisces","Cancer 5°","Capricorn 5°","16 yr","Yellow sapphire"],
+ ["♀","Venus","வெள்ளி","Śukra","Benefic · rajas","Taurus, Libra","Pisces 27°","Virgo 27°","20 yr","Diamond"],
+ ["♄","Saturn","சனி","Śani","Malefic · tamas","Capricorn, Aquarius","Libra 20°","Aries 20°","19 yr","Blue sapphire"],
+ ["☊","Rāhu","ராகு","Rāhu","Malefic · tamas","— ⚠","Taurus/Gemini ⚠","Scorpio/Sag. ⚠","18 yr","Hessonite"],
+ ["☋","Ketu","கேது","Ketu","Malefic · tamas","— ⚠","Scorpio/Sag. ⚠","Taurus/Gemini ⚠","7 yr","Cat's-eye"],
+];
+const head = ["","Graha","Tamil","Sanskrit","Nature","Owns","Exalts","Debilitates","Daśā","Gem"];
+const thead = head.map(h=>`<th>${h}</th>`).join("");
+const tbody = rows.map(r=>{
+  const cells = r.map((c,i)=>{
+    if(i===0) return `<td><span class="gl glyph">${c}</span></td>`;
+    if(i===2) return `<td class="tamil">${c}</td>`;
+    return `<td>${c}</td>`;
+  }).join("");
+  return `<tr>${cells}</tr>`;
+}).join("");
+main.appendChild(el(`
+<section id="table">
+  <div class="wrap">
+    <div class="eyebrow">Reference</div>
+    <h2 class="secttl">The nine at a glance</h2>
+    <div class="tablewrap">
+      <table class="cmp"><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table>
+    </div>
+    <p class="tnote">* Moon: benefic waxing, malefic waning. &nbsp;† Mercury: benefic alone, but takes the nature of its associates. &nbsp;⚠ The nodes' sign-rulership and dignity are disputed across schools.<br><b style="color:var(--soft)">Vimśottarī daśā total = 120 years</b> (Ketu 7 · Venus 20 · Sun 6 · Moon 10 · Mars 7 · Rāhu 18 · Jupiter 16 · Saturn 19 · Mercury 17).</p>
+  </div>
+</section>`));
+
+/* closing */
+main.appendChild(el(`
+<section id="closing">
+  <div class="wrap">
+    <div class="om deva" style="font-size:clamp(34px,5vw,60px)">☉ ☽ ♂ ☿ ♃ ♀ ♄ ☊ ☋</div>
+    <h2 class="secttl" style="margin-top:20px">The Ādityādi Navagraha</h2>
+    <p class="lead" style="max-width:52ch; margin:0 auto; color:var(--soft)">The same nine open most Jyotiṣa study, invoked in the <b>Navagraha Stotra</b> — <em>Sūrya, Chandra, Aṅgāraka, Budha, Guru, Śukra, Śani, Rāhu, Ketu.</em> To know the grahas is to begin reading the sky.</p>
+    <div class="sloka-tr" style="margin:34px auto 0; max-width:60ch">तस्मै श्रीगुरवे नमः — to that revered Guru, I bow.</div>
+    <p class="tnote" style="margin:30px auto 0; text-align:center; max-width:70ch">Classical Jyotiṣa, Lahiri / Chitrapakṣa framework. Properties follow Bṛhat Parāśara Horā Śāstra, Sārāvalī, Bṛhat Jātaka and Phaladīpikā. Gemstone, deity and grain associations follow common South-Indian usage and vary by lineage.</p>
+  </div>
+</section>`));
+
+/* ---------- nav rail ---------- */
+const navItems = G.filter(g=>g.glyph);
+for(const g of navItems){
+  const label = g.name || g.nav || "";
+  const a = el(`<a href="#${g.id}" style="--g:${g.accent||'var(--gold)'}"><span class="glyph">${g.glyph}</span><span class="tip">${label}</span></a>`);
+  rail.appendChild(a);
+}
+
+/* active state via IntersectionObserver */
+const links = Array.from(rail.querySelectorAll("a"));
+const byId = Object.fromEntries(links.map(a=>[a.getAttribute("href").slice(1), a]));
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.removeAttribute("aria-current"));
+      const a = byId[e.target.id];
+      if(a) a.setAttribute("aria-current","true");
+    }
+  });
+},{rootMargin:"-45% 0px -45% 0px", threshold:0});
+document.querySelectorAll("section").forEach(s=>{ if(byId[s.id]) obs.observe(s); });
+</script>
+
+</body></html>
