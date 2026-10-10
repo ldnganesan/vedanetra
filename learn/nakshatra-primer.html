@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="The 27 nakṣatras: degree spans, padas, Vimśottarī lords, deities, gaṇa, nature and yoni — with a South-Indian rāśi grid showing which nakṣatras fall in each sign.">
+<title>Nakshatra Primer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Mukta:wght@300;400;600;700&family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Serif+Tamil:wght@400;600&family=Noto+Sans+Symbols:wght@400;700&family=Noto+Sans+Symbols+2&display=swap">
+<link rel="stylesheet" href="lesson.css">
+<style>
+/* Lord colours follow the study-circle worksheet: Ketu grey, Venus & Moon white, Sun orange,
+   Mars brick red, Rāhu black, Jupiter yellow, Saturn blue, Mercury green. */
+:root{
+  --accent:#e7c36a;
+  --ke:#c8c8c8; --ve:#ffffff; --su:#f0a03c; --mo:#ffffff; --ma:#c0503a;
+  --ra:#000000; --ju:#f7f24d; --sa:#1f2ee6; --me:#77f24a;
+}
+.sloka{font-family:'Noto Serif Devanagari',serif; font-size:clamp(24px,3vw,40px); line-height:1.6; color:var(--ink)}
+.sloka-tr{font-family:var(--display); font-style:italic; font-size:clamp(17px,1.7vw,24px); color:var(--soft)}
+.sloka-en{font-size:clamp(15px,1.3vw,19px); color:var(--mute); max-width:62ch}
+.om{font-family:'Noto Serif Devanagari',serif; font-size:clamp(46px,7vw,86px); color:var(--gold)}
+
+/* lord swatches */
+.sw{display:inline-block; width:14px; height:14px; border-radius:4px; vertical-align:-2px; margin-right:6px; border:1px solid rgba(255,255,255,.35)}
+.legend{display:flex; flex-wrap:wrap; gap:8px 14px; font-family:var(--sans); font-size:14px; color:var(--soft)}
+.legend span{white-space:nowrap}
+
+/* ---- the rāśi–nakṣatra grid ---- */
+.nkgrid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:repeat(4,auto); gap:0;
+  border:2px solid var(--stroke2); border-radius:8px; overflow:visible; background:#0d1230; max-width:1100px; margin:0 auto}
+.rc{border:1px solid var(--stroke); padding:10px 10px 12px; min-width:0; display:flex; flex-direction:column; gap:7px}
+.rc-h{display:flex; align-items:baseline; gap:8px; font-family:var(--sans); font-size:13px; color:var(--soft); margin-bottom:2px}
+.rc-h .g{font-family:var(--glyphf); color:var(--gold); font-size:18px}
+.rc-h .en{color:var(--ink); font-weight:600}
+.rc-h .ta{font-family:'Noto Serif Tamil',serif; font-size:12px; color:var(--mute); margin-left:auto}
+.seg{display:flex; align-items:center; gap:6px; min-width:0}
+.seg .nm{font-family:var(--sans); font-size:13px; color:var(--ink); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.seg .nm small{color:var(--mute); font-size:11px}
+.seg .nm .ab{display:none}
+.padas{display:grid; grid-template-columns:repeat(4,26px); gap:3px; flex-shrink:0}
+button.pada{width:26px; height:26px; border-radius:5px; border:1px solid rgba(255,255,255,.28); font-family:var(--sans); font-size:12px; font-weight:700;
+  padding:0; cursor:pointer; color:#151515; background:var(--c); transition:transform .12s, box-shadow .12s}
+button.pada.dark{color:#fff}
+button.pada[data-l="ra"]{border-color:rgba(255,255,255,.6)}
+button.pada:hover,button.pada:focus-visible,button.pada.on{transform:translateY(-2px); box-shadow:0 0 0 2px var(--gold); outline:none}
+.seg.split .nm::after{content:" ⇆"; color:var(--gold)}
+.centre{grid-row:2/4; grid-column:2/4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:18px; text-align:center;
+  border:1px solid var(--stroke)}
+.centre .ct{font-family:var(--display); font-size:clamp(22px,2.2vw,32px); color:var(--gold)}
+.centre .ct .tamil{font-size:.8em}
+.centre p{margin:0; color:var(--soft); font-size:clamp(14px,1vw,17px); max-width:38ch}
+.readout{min-height:3.2em; font-family:var(--sans); font-size:14px; color:var(--ink); background:var(--panel); border:1px solid var(--stroke); border-radius:10px; padding:10px 14px; max-width:42ch}
+#tip{position:fixed; z-index:80; pointer-events:none; max-width:300px; background:rgba(8,11,30,.97); border:1px solid var(--gold); border-radius:10px; padding:10px 13px;
+  font-family:var(--sans); font-size:13.5px; line-height:1.45; color:var(--ink); box-shadow:0 8px 30px rgba(0,0,0,.5); opacity:0; transition:opacity .12s}
+#tip.show{opacity:1}
+#tip b{color:var(--gold)}
+#tip .t{font-family:var(--display); font-size:19px; font-weight:600; color:var(--ink); display:block; margin-bottom:2px}
+#tip .warn{color:#f08a6a}
+
+/* ---- nakṣatra cards ---- */
+.nkcards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(12px,1.3vw,20px)}
+.nk{background:var(--panel); border:1px solid var(--stroke); border-left:5px solid var(--c); border-radius:14px; padding:16px 18px; min-width:0}
+.nk[data-l="ra"]{border-left-color:#555}
+.nk-top{display:flex; align-items:baseline; gap:10px}
+.nk-num{font-family:var(--display); font-weight:600; font-size:28px; color:var(--gold); line-height:1}
+.nk-name{font-family:var(--display); font-weight:600; font-size:clamp(22px,1.8vw,28px); line-height:1.1; color:var(--ink); margin:0}
+.nk-ta{font-family:'Noto Serif Tamil',serif; font-size:14px; color:var(--soft)}
+.nk-span{font-family:var(--sans); font-size:13px; color:var(--gold); margin:6px 0 8px; letter-spacing:.02em}
+.nk-ess{font-style:italic; color:var(--soft); font-size:clamp(15px,1.05vw,18px); margin:0 0 10px; line-height:1.4}
+.nk dl{display:grid; grid-template-columns:auto 1fr; gap:3px 12px; margin:0; font-size:clamp(14px,.95vw,16px)}
+.nk dt{font-family:var(--sans); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); padding-top:3px}
+.nk dd{margin:0; color:var(--ink); min-width:0}
+
+table.cmp td.lc{white-space:nowrap}
+.mini{width:100%; border-collapse:collapse}
+.mini td{padding:8px 6px; border-bottom:1px solid var(--stroke); color:var(--soft); vertical-align:top}
+.mini td:first-child{color:var(--ink); white-space:nowrap; padding-right:14px}
+
+@media (max-width:980px){ .nkcards{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:760px){
+  .rc{padding:6px 4px 8px; gap:5px}
+  .rc-h .ta{display:none}
+  .rc-h{font-size:11px; gap:4px} .rc-h .g{font-size:14px}
+  .seg{flex-direction:column; align-items:flex-start; gap:2px}
+  .seg .nm{font-size:11px} .seg .nm .full{display:none} .seg .nm .ab{display:inline} .seg .nm small{display:none}
+  button.pada{width:17px; height:19px; font-size:9px; border-radius:3px}
+  .padas{gap:2px; grid-template-columns:repeat(4,17px)}
+  .centre{padding:8px} .centre p{display:none} .readout{font-size:12px}
+  .nkcards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a class="backhub" href="index.html">← Lessons</a>
+<nav class="rail" aria-label="Jump to section">
+  <a href="#title"><span class="glyph">✧</span><span class="tip">Title</span></a>
+  <a href="#what"><span class="glyph">☽</span><span class="tip">What is a nakṣatra?</span></a>
+  <a href="#numbers"><span class="glyph">◷</span><span class="tip">The arithmetic</span></a>
+  <a href="#lords"><span class="glyph">♃</span><span class="tip">The nine lords</span></a>
+  <a href="#grid"><span class="glyph">▦</span><span class="tip">Rāśi grid</span></a>
+  <a href="#splits"><span class="glyph">⇆</span><span class="tip">Split nakṣatras</span></a>
+  <a href="#classes"><span class="glyph">✦</span><span class="tip">Classifications</span></a>
+  <a href="#c1"><span class="rnum">I</span><span class="tip">Aśvinī → Āśleṣā</span></a>
+  <a href="#c2"><span class="rnum">II</span><span class="tip">Maghā → Jyeṣṭhā</span></a>
+  <a href="#c3"><span class="rnum">III</span><span class="tip">Mūla → Revatī</span></a>
+  <a href="#table"><span class="glyph">☰</span><span class="tip">All 27 at a glance</span></a>
+  <a href="#end"><span class="glyph">∎</span><span class="tip">Close</span></a>
+</nav>
+<div id="tip" role="tooltip"></div>
+
+<main id="main">
+
+<section id="title" class="hero">
+  <div class="wrap">
+    <div class="om">ॐ</div>
+    <div class="eyebrow">Vedic epigraph · Taittirīya Saṁhitā 4.4.10</div>
+    <div class="sloka">कृत्तिका नक्षत्रम् अग्निर्देवता</div>
+    <div class="sloka-tr">kṛttikā nakṣatram agnir devatā</div>
+    <div class="sloka-en">“Kṛttikā is the nakṣatra; Agni is its deity.” — the opening of the Vedic nakṣatra litany, which names each lunar mansion with its presiding god.</div>
+    <h1 class="hero-title">The Twenty-Seven<br>Nakṣatras</h1>
+    <p class="hero-sub">Nakṣatra · <span class="tamil">நட்சத்திரம்</span> · <span class="deva">नक्षत्र</span> — the lunar mansions: their degrees, lords, deities and natures, and how they sit inside the twelve rāśis.</p>
+    <div class="scrollcue">scroll or press → to begin</div>
+  </div>
+</section>
+
+<section id="what">
+  <div class="wrap">
+    <div class="eyebrow">Orientation</div>
+    <h2 class="secttl">What is a <span style="color:var(--gold)">nakṣatra</span>?</h2>
+    <p class="lead">A nakṣatra is a <b>lunar mansion</b> — one of 27 equal stations of the zodiac, each marked by a star or star-group. The Moon passes through roughly one a day; the sidereal month is about <b>27.3 days</b>, which is why the circle is divided into 27.</p>
+    <div class="grid" style="--cols:3">
+      <div class="card"><h3>Older than the rāśis</h3><p>The Vedas know the nakṣatras long before the twelve signs: the Taittirīya Saṁhitā and Brāhmaṇa list them with their deities, and the Atharvaveda (19.7) hymns 28, counting <b>Abhijit</b>. The rāśis came later; Jyotiṣa now reads both together.</p></div>
+      <div class="card"><h3>The Moon's own map</h3><p>The janma-nakṣatra — the mansion holding the Moon at birth — sets the starting <b>Vimśottarī daśā</b> (BPHS), names the child in many families, and is the basis of compatibility (porutham) and the daily pañcāṅga.</p></div>
+      <div class="card"><h3>Sidereal, star-fixed</h3><p>Nakṣatras are fixed to the stars, so they are always reckoned in the <b>sidereal (nirayana)</b> zodiac with an ayanāṁśa — here Lahiri / Chitrapakṣa, which keeps Chitrā's star, Spica, at 180°.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="numbers">
+  <div class="wrap">
+    <div class="eyebrow">The arithmetic</div>
+    <h2 class="secttl">27 mansions, 108 padas, 12 signs</h2>
+    <div class="grid stats" style="--cols:4; grid-template-columns:repeat(4,minmax(0,1fr))">
+      <div class="card stat"><div class="statn">13°20′</div><p>one nakṣatra · 360° ÷ 27</p></div>
+      <div class="card stat"><div class="statn">3°20′</div><p>one pada (quarter)</p></div>
+      <div class="card stat"><div class="statn">108</div><p>padas in the zodiac</p></div>
+      <div class="card stat"><div class="statn">2¼</div><p>nakṣatras per sign · 9 padas</p></div>
+    </div>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>A pada is a navāṁśa</h3><p>Each pada of 3°20′ is exactly one navāṁśa (D9) division. Counting padas from Aśvinī-1, the navāṁśa signs run Aries, Taurus, Gemini… and repeat every 12 padas — so <b>Aśvinī-1, Maghā-1 and Mūla-1</b> all fall in Aries navāṁśa. The tooltips on the grid show each pada's navāṁśa.</p></div>
+      <div class="card"><h3>Why the nakṣatras and signs mesh</h3><p>12 signs × 9 padas = 108 = 27 nakṣatras × 4 padas. Every sign therefore holds <b>exactly nine padas</b>, and the pattern of whole and split nakṣatras repeats three times around the wheel — once for each of the three fire signs that open a cycle: Aries, Leo and Sagittarius.</p></div>
+    </div>
+    <div class="keynote">The degree of a planet gives its sign, its nakṣatra, its pada and its navāṁśa all at once — four readings from one number.</div>
+  </div>
+</section>
+
+<section id="lords">
+  <div class="wrap">
+    <div class="eyebrow">The nine lords · Vimśottarī (BPHS)</div>
+    <h2 class="secttl">Nine lords, three rounds</h2>
+    <p class="lead" style="max-width:70ch">Each nakṣatra has a lord. Starting from Aśvinī, the nine grahas take the nakṣatras in a fixed order — Ketu, Venus, Sun, Moon, Mars, Rāhu, Jupiter, Saturn, Mercury — and the cycle runs three times. The same order, with its years, is the <b>Vimśottarī daśā</b> of 120 years.</p>
+    <div class="tablewrap"><table class="cmp" id="lordtable"><thead><tr><th>Lord</th><th>Round I</th><th>Round II</th><th>Round III</th><th>Daśā</th></tr></thead><tbody></tbody></table></div>
+    <div class="legend" id="legend" style="margin-top:6px"></div>
+    <p class="tnote" style="color:var(--mute); font-size:15px; margin-top:14px">Colours follow the study-circle worksheet. Venus and Moon nakṣatras are both white there — read the lord glyph to tell them apart.</p>
+  </div>
+</section>
+
+<section id="grid">
+  <div class="wrap" style="max-width:1180px">
+    <div class="eyebrow">The rāśi grid · South-Indian chart</div>
+    <h2 class="secttl">Which nakṣatras live in each sign</h2>
+    <div class="nkgrid" id="nkgrid" aria-label="South-Indian rāśi chart with the nakṣatra padas in each sign"></div>
+    <p style="color:var(--mute); font-size:15px; text-align:center; margin-top:14px">Each square is one pada, coloured by its nakṣatra lord. Hover, focus or tap a pada for its degree range. <span style="color:var(--gold)">⇆</span> marks a nakṣatra split across two signs.</p>
+  </div>
+</section>
+
+<section id="splits">
+  <div class="wrap">
+    <div class="eyebrow">Whole and split</div>
+    <h2 class="secttl">Nine nakṣatras straddle two signs</h2>
+    <div class="columns" style="--tmpl:1.2fr 1fr">
+      <div class="col">
+        <div class="tablewrap" style="margin:0"><table class="cmp" id="splittable"><thead><tr><th>Nakṣatra</th><th>Lord</th><th>Padas in first sign</th><th>Padas in next sign</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <div class="col">
+        <div class="card"><h3>The pattern</h3><p>Every split nakṣatra belongs to the <b>Sun, Mars or Jupiter</b> — the third, fifth and seventh lords in each round. The Sun's nakṣatras split 1 + 3, Mars's 2 + 2, and Jupiter's 3 + 1.</p></div>
+        <div class="card"><h3>Gaṇḍānta — where both edges meet</h3><p>At three points a sign boundary and a nakṣatra boundary coincide: <b>Āśleṣā → Maghā</b> (Cancer → Leo), <b>Jyeṣṭhā → Mūla</b> (Scorpio → Sagittarius) and <b>Revatī → Aśvinī</b> (Pisces → Aries). These water-to-fire junctions are the classical gaṇḍānta, treated with care in birth and muhūrta.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="classes">
+  <div class="wrap">
+    <div class="eyebrow">Classifications</div>
+    <h2 class="secttl">Gaṇa, nature and yoni</h2>
+    <div class="grid" style="--cols:3">
+      <div class="card"><h3>Gaṇa — temperament</h3>
+        <table class="mini">
+          <tr><td>Deva</td><td>Aśvinī, Mṛgaśīrṣa, Punarvasu, Puṣya, Hasta, Svātī, Anurādhā, Śravaṇa, Revatī</td></tr>
+          <tr><td>Manuṣya</td><td>Bharaṇī, Rohiṇī, Ārdrā, both Phalgunīs, both Āṣāḍhās, both Bhādrapadās</td></tr>
+          <tr><td>Rākṣasa</td><td>Kṛttikā, Āśleṣā, Maghā, Citrā, Viśākhā, Jyeṣṭhā, Mūla, Dhaniṣṭhā, Śatabhiṣā</td></tr>
+        </table>
+        <p style="margin-top:10px; font-size:.9em; color:var(--mute)">Nine of each. Used in gaṇa-kūṭa (gaṇa porutham) for matching.</p></div>
+      <div class="card"><h3>Nature — the seven kinds</h3>
+        <table class="mini">
+          <tr><td>Dhruva · fixed</td><td>Rohiṇī, U.Phalgunī, U.Āṣāḍhā, U.Bhādrapadā — foundations, lasting works</td></tr>
+          <tr><td>Chara · movable</td><td>Punarvasu, Svātī, Śravaṇa, Dhaniṣṭhā, Śatabhiṣā — travel, vehicles</td></tr>
+          <tr><td>Ugra · fierce</td><td>Bharaṇī, Maghā, P.Phalgunī, P.Āṣāḍhā, P.Bhādrapadā</td></tr>
+          <tr><td>Miśra · mixed</td><td>Kṛttikā, Viśākhā</td></tr>
+          <tr><td>Kṣipra · swift</td><td>Aśvinī, Puṣya, Hasta — trade, medicine, quick tasks</td></tr>
+          <tr><td>Mṛdu · soft</td><td>Mṛgaśīrṣa, Citrā, Anurādhā, Revatī — arts, friendship</td></tr>
+          <tr><td>Tīkṣṇa · sharp</td><td>Ārdrā, Āśleṣā, Jyeṣṭhā, Mūla</td></tr>
+        </table></div>
+      <div class="card"><h3>Yoni — the animal</h3><p>Each nakṣatra has an animal nature, paired male and female: horse (Aśvinī, Śatabhiṣā), elephant (Bharaṇī, Revatī), sheep (Kṛttikā, Puṣya), serpent (Rohiṇī, Mṛgaśīrṣa), dog (Ārdrā, Mūla), cat (Punarvasu, Āśleṣā), rat (Maghā, P.Phalgunī), cow (U.Phalgunī, U.Bhādrapadā), buffalo (Hasta, Svātī), tiger (Citrā, Viśākhā), deer (Anurādhā, Jyeṣṭhā), monkey (P.Āṣāḍhā, Śravaṇa), lion (Dhaniṣṭhā, P.Bhādrapadā) and mongoose (U.Āṣāḍhā alone).</p>
+        <p style="margin-top:10px; font-size:.9em; color:var(--mute)">Used in yoni-kūṭa (yoni porutham).</p></div>
+    </div>
+    <div class="keynote">BPHS supplies the lords and the pada–navāṁśa link; the deities come from the Vedic Saṁhitās; gaṇa, yoni and the seven natures come from the muhūrta texts (Bṛhat Saṁhitā, Muhūrta Cintāmaṇi).</div>
+  </div>
+</section>
+
+<!-- c1, c2, c3 and the table are rendered below from the same data as the grid -->
+
+</main>
+<script>
+/* ---------------- data ---------------- */
+const LORDS = {
+  ke:{n:"Ketu", g:"☋", yrs:7,  dark:false},
+  ve:{n:"Venus", g:"♀", yrs:20, dark:false},
+  su:{n:"Sun", g:"☉", yrs:6,  dark:false},
+  mo:{n:"Moon", g:"☽", yrs:10, dark:false},
+  ma:{n:"Mars", g:"♂", yrs:7,  dark:true},
+  ra:{n:"Rāhu", g:"☊", yrs:18, dark:true},
+  ju:{n:"Jupiter", g:"♃", yrs:16, dark:false},
+  sa:{n:"Saturn", g:"♄", yrs:19, dark:true},
+  me:{n:"Mercury", g:"☿", yrs:17, dark:false},
+};
+const ORDER = ["ke","ve","su","mo","ma","ra","ju","sa","me"];
+const SIGNS = [
+  ["Aries","♈","மேஷம்"],["Taurus","♉","ரிஷபம்"],["Gemini","♊","மிதுனம்"],["Cancer","♋","கடகம்"],
+  ["Leo","♌","சிம்மம்"],["Virgo","♍","கன்னி"],["Libra","♎","துலாம்"],["Scorpio","♏","விருச்சிகம்"],
+  ["Sagittarius","♐","தனுசு"],["Capricorn","♑","மகரம்"],["Aquarius","♒","கும்பம்"],["Pisces","♓","மீனம்"]];
+// name, abbr, Tamil script, Tamil (as used in the worksheet), deity, symbol, gaṇa, nature, yoni, principal star, essence
+const NK = [
+ ["Aśvinī","Asv","அசுவினி","Ashwini","the Aśvins, divine physicians","a horse's head","Deva","Kṣipra (swift)","Horse","β Arietis","Swiftness, healing and new beginnings."],
+ ["Bharaṇī","Bha","பரணி","Bharani","Yama","the yoni (womb)","Manuṣya","Ugra (fierce)","Elephant","41 Arietis","Bearing and restraint — the cycle of birth and death."],
+ ["Kṛttikā","Krt","கார்த்திகை","Karthikai","Agni","a razor / flame","Rākṣasa","Miśra (mixed)","Sheep","the Pleiades (η Tauri)","The cutting, purifying flame; first in the Vedic list."],
+ ["Rohiṇī","Roh","ரோகிணி","Rohini","Prajāpati (Brahmā)","an ox-cart / chariot","Manuṣya","Dhruva (fixed)","Serpent","Aldebaran","Growth, fertility and beauty — the Moon's favourite."],
+ ["Mṛgaśīrṣa","Mrg","மிருகசீரிடம்","MrigSeersham","Soma","a deer's head","Deva","Mṛdu (soft)","Serpent","λ Orionis","The seeking deer — gentleness and curiosity."],
+ ["Ārdrā","Ard","திருவாதிரை","Thiruvathirai","Rudra","a teardrop / jewel","Manuṣya","Tīkṣṇa (sharp)","Dog","Betelgeuse","The storm and its tears — upheaval that clears."],
+ ["Punarvasu","Pun","புனர்பூசம்","Punar poosam","Aditi","a bow and quiver","Deva","Chara (movable)","Cat","Pollux","“Return of the good” — renewal and shelter."],
+ ["Puṣya","Pus","பூசம்","Poosam","Bṛhaspati","a cow's udder / flower","Deva","Kṣipra (swift)","Sheep","δ Cancri","Nourishment; held most auspicious for beginnings."],
+ ["Āśleṣā","Asl","ஆயில்யம்","Aayilyum","the Nāgas (serpents)","a coiled serpent","Rākṣasa","Tīkṣṇa (sharp)","Cat","ε Hydrae","The coil — penetrating, binding power."],
+ ["Maghā","Mag","மகம்","Makam","the Pitṛs (ancestors)","a throne / palanquin","Rākṣasa","Ugra (fierce)","Rat","Regulus","Ancestry, lineage and the throne."],
+ ["Pūrva Phalgunī","PPh","பூரம்","Pooram","Bhaga","front legs of a bed","Manuṣya","Ugra (fierce)","Rat","δ Leonis","Enjoyment, union and fortune shared."],
+ ["Uttara Phalgunī","UPh","உத்திரம்","Uttiram","Aryaman","back legs of a bed","Manuṣya","Dhruva (fixed)","Cow","Denebola","Patronage, agreements and the bond of marriage."],
+ ["Hasta","Has","அஸ்தம்","Hastam","Savitṛ","an open hand","Deva","Kṣipra (swift)","Buffalo","δ Corvi","The skilful hand — craft and dexterity."],
+ ["Citrā","Cit","சித்திரை","Chittirai","Tvaṣṭṛ (Viśvakarmā)","a bright jewel","Rākṣasa","Mṛdu (soft)","Tiger","Spica","The divine architect — brilliance and design."],
+ ["Svātī","Sva","சுவாதி","Swathi","Vāyu","a young shoot in the wind","Deva","Chara (movable)","Buffalo","Arcturus","The wind — independence, movement and trade."],
+ ["Viśākhā","Vis","விசாகம்","Visakam","Indra and Agni","a triumphal arch","Rākṣasa","Miśra (mixed)","Tiger","α Librae","The forked branch — purposeful ambition."],
+ ["Anurādhā","Anu","அனுஷம்","Anusham","Mitra","a lotus","Deva","Mṛdu (soft)","Deer","δ Scorpii","Friendship, devotion and alliance."],
+ ["Jyeṣṭhā","Jye","கேட்டை","Kettai","Indra","an earring / umbrella","Rākṣasa","Tīkṣṇa (sharp)","Deer","Antares","The eldest — seniority, protection and power."],
+ ["Mūla","Mul","மூலம்","Moolam","Nirṛti","a bunch of roots","Rākṣasa","Tīkṣṇa (sharp)","Dog","λ Scorpii (Shaula)","The root — getting to the bottom of things."],
+ ["Pūrvāṣāḍhā","PAs","பூராடம்","Pooradam","Āpas (the Waters)","a winnowing fan","Manuṣya","Ugra (fierce)","Monkey","δ Sagittarii","The early victory — invigoration."],
+ ["Uttarāṣāḍhā","UAs","உத்திராடம்","Uttiradam","the Viśvedevas","an elephant's tusk","Manuṣya","Dhruva (fixed)","Mongoose","σ Sagittarii","The final, universal victory."],
+ ["Śravaṇa","Sra","திருவோணம்","Thiruvonam","Viṣṇu","an ear / three footprints","Deva","Chara (movable)","Monkey","Altair","The ear — listening, learning, the three strides."],
+ ["Dhaniṣṭhā","Dha","அவிட்டம்","Avittam","the eight Vasus","a drum (mṛdaṅga)","Rākṣasa","Chara (movable)","Lion","β Delphini","Wealth and rhythm — the drum."],
+ ["Śatabhiṣā","Sat","சதயம்","Sathayam","Varuṇa","an empty circle","Rākṣasa","Chara (movable)","Horse","λ Aquarii","“A hundred physicians” — healing, the veiled."],
+ ["Pūrva Bhādrapadā","PBh","பூரட்டாதி","Pooraddaathi","Aja Ekapāda","front of a funeral cot","Manuṣya","Ugra (fierce)","Lion","Markab (α Pegasi)","The one-footed goat — the fire of austerity."],
+ ["Uttara Bhādrapadā","UBh","உத்திரட்டாதி","Uthtaradaadhi","Ahir Budhnya","back of a funeral cot","Manuṣya","Dhruva (fixed)","Cow","Algenib (γ Pegasi)","The serpent of the deep — depth and stillness."],
+ ["Revatī","Rev","ரேவதி","Revathi","Pūṣan","a fish / drum","Deva","Mṛdu (soft)","Elephant","ζ Piscium","The nourisher and guide of journeys — completion."],
+];
+
+/* ---------------- helpers ---------------- */
+const VS = "︎";
+const lordOf = i => ORDER[i % 9];
+function dms(arcmin){ const d=Math.floor(arcmin/60), m=Math.round(arcmin%60); return d+"°"+String(m).padStart(2,"0")+"′"; }
+function pos(arcmin){ // absolute arcminutes -> "d°mm′ Sign"
+  const s=Math.floor(arcmin/1800) % 12, w=arcmin%1800;
+  return dms(w)+" "+SIGNS[s][0];
+}
+function spanText(i){
+  const a=i*800, b=a+800;
+  const end = b % 1800 === 0 ? "30°00′ "+SIGNS[Math.floor((b-1)/1800)][0] : pos(b);
+  return pos(a)+" – "+end;
+}
+function absText(i){ return dms(i*800)+" – "+dms(i*800+800); }
+const GANDANTA_END = new Set([8,17,26]), GANDANTA_START = new Set([0,9,18]);
+
+/* ---------------- lord table & legend ---------------- */
+document.querySelector("#lordtable tbody").innerHTML = ORDER.map((k,j)=>{
+  const L=LORDS[k];
+  const cells=[0,1,2].map(r=>`<td>${NK[j+9*r][0]} <span style="color:var(--mute)">· ${NK[j+9*r][3]}</span></td>`).join("");
+  return `<tr><td class="lc"><span class="sw" style="background:var(--${k})"></span><span class="glyph">${L.g}</span> ${L.n}</td>${cells}<td>${L.yrs} yrs</td></tr>`;
+}).join("") + `<tr><td colspan="4" style="color:var(--soft)">Total</td><td style="color:var(--gold)">120 yrs</td></tr>`;
+document.getElementById("legend").innerHTML = ORDER.map(k=>`<span><span class="sw" style="background:var(--${k})"></span><span class="glyph">${LORDS[k].g}</span> ${LORDS[k].n}</span>`).join("");
+
+/* ---------------- the grid ---------------- */
+// South-Indian fixed layout: Pisces top-left, clockwise
+const CELL = {11:[1,1],0:[1,2],1:[1,3],2:[1,4],3:[2,4],4:[3,4],5:[4,4],6:[4,3],7:[4,2],8:[4,1],9:[3,1],10:[2,1]};
+const grid = document.getElementById("nkgrid");
+let html = "";
+for (let s=0; s<12; s++){
+  const [r,c] = CELL[s];
+  // the nine padas of this sign: global pada indices 9s .. 9s+8
+  const segs=[];
+  for (let p=9*s; p<9*s+9; p++){
+    const n=Math.floor(p/4);
+    if(!segs.length || segs[segs.length-1].n!==n) segs.push({n, padas:[]});
+    segs[segs.length-1].padas.push(p);
+  }
+  const rows = segs.map(sg=>{
+    const L=lordOf(sg.n), split = sg.padas.length<4;
+    const btns = sg.padas.map(p=>{
+      const k=p%4+1;
+      return `<button class="pada${LORDS[L].dark?" dark":""}" data-p="${p}" data-l="${L}" style="--c:var(--${L}); grid-column:${k}" aria-label="${NK[sg.n][0]} pada ${k}">${k}</button>`;
+    }).join("");
+    return `<div class="seg${split?" split":""}"><span class="nm"><span class="full">${NK[sg.n][0]}</span><span class="ab">${NK[sg.n][1]}</span> <small class="glyph">${LORDS[L].g}</small></span><span class="padas">${btns}</span></div>`;
+  }).join("");
+  html += `<div class="rc" style="grid-row:${r}; grid-column:${c}"><div class="rc-h"><span class="g">${SIGNS[s][1]}${VS}</span><span class="en">${SIGNS[s][0]}</span><span class="ta">${SIGNS[s][2]}</span></div>${rows}</div>`;
+}
+html += `<div class="centre"><div class="ct">Rāśi · Nakṣatra<br><span class="tamil">ராசி · நட்சத்திரம்</span></div>
+  <p>Twelve signs × nine padas. Whole nakṣatras sit inside one sign; the Sun's, Mars's and Jupiter's straddle two.</p>
+  <div class="readout" id="readout" aria-live="polite">Tap a pada to read its degrees here.</div></div>`;
+grid.innerHTML = html;
+
+function padaInfo(p){
+  const n=Math.floor(p/4), k=p%4+1, L=lordOf(n), a=p*200, b=a+200;
+  const sign=Math.floor(a/1800), nav=SIGNS[p%12][0];
+  const end = b%1800===0 ? "30°00′" : dms(b%1800);
+  let g="";
+  if (GANDANTA_END.has(n) && k===4) g=`<br><span class="warn">Gaṇḍānta — last pada before the water→fire junction</span>`;
+  if (GANDANTA_START.has(n) && k===1) g=`<br><span class="warn">Gaṇḍānta — first pada after the water→fire junction</span>`;
+  const whole = `${NK[n][0]} spans ${spanText(n)}`;
+  return {
+    html:`<span class="t">${NK[n][0]} · pada ${k}</span><b>${dms(a%1800)} – ${end} ${SIGNS[sign][0]}</b> <span style="color:var(--mute)">(${dms(a)}–${dms(b)} absolute)</span><br>Lord <span class="glyph">${LORDS[L].g}</span> ${LORDS[L].n} · Navāṁśa ${nav}<br><span style="color:var(--soft)">${whole}</span>${g}`,
+    text:`${NK[n][0]} pada ${k}: ${dms(a%1800)}–${end} ${SIGNS[sign][0]}; lord ${LORDS[L].n}; navāṁśa ${nav}.`
+  };
+}
+const tip=document.getElementById("tip"), readout=document.getElementById("readout");
+let pinned=null;
+function show(btn){
+  const info=padaInfo(+btn.dataset.p);
+  tip.innerHTML=info.html; readout.innerHTML=info.html;
+  btn.setAttribute("aria-description", info.text);
+  const r=btn.getBoundingClientRect(), tw=300;
+  let x=Math.min(window.innerWidth-tw-10, Math.max(10, r.left+r.width/2-tw/2));
+  let y=r.bottom+10;
+  tip.style.left=x+"px"; tip.style.top=y+"px"; tip.classList.add("show");
+  const th=tip.offsetHeight; if (y+th>window.innerHeight-10) tip.style.top=(r.top-th-10)+"px";
+}
+function hide(){ if(!pinned) tip.classList.remove("show"); }
+grid.addEventListener("pointerover", e=>{ const b=e.target.closest("button.pada"); if(b && e.pointerType==="mouse") show(b); });
+grid.addEventListener("pointerout", e=>{ if(e.target.closest("button.pada") && e.pointerType==="mouse") hide(); });
+grid.addEventListener("focusin", e=>{ const b=e.target.closest("button.pada"); if(b) show(b); });
+grid.addEventListener("focusout", ()=>{ pinned=null; tip.classList.remove("show"); });
+grid.addEventListener("click", e=>{
+  const b=e.target.closest("button.pada"); if(!b) return;
+  grid.querySelectorAll("button.pada.on").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); pinned=b; show(b);
+});
+window.addEventListener("scroll", ()=>{ pinned=null; tip.classList.remove("show"); }, {passive:true});
+
+/* ---------------- split table ---------------- */
+const splitRows=[];
+for (let n=0;n<27;n++){
+  const a=n*800, b=a+800, s1=Math.floor(a/1800), s2=Math.floor((b-1)/1800);
+  if (s1!==s2){
+    const first=(s2*1800-a)/200, L=lordOf(n);
+    splitRows.push(`<tr><td>${NK[n][0]} <span style="color:var(--mute)">· ${NK[n][3]}</span></td><td class="lc"><span class="sw" style="background:var(--${L})"></span>${LORDS[L].n}</td><td>${first} in ${SIGNS[s1][0]}</td><td>${4-first} in ${SIGNS[s2%12][0]}</td></tr>`);
+  }
+}
+document.querySelector("#splittable tbody").innerHTML=splitRows.join("");
+
+/* ---------------- the 27 cards, in three rounds ---------------- */
+const main=document.getElementById("main");
+const ROUNDS=[["c1","Round I · Aśvinī → Āśleṣā","Aries to Cancer"],["c2","Round II · Maghā → Jyeṣṭhā","Leo to Scorpio"],["c3","Round III · Mūla → Revatī","Sagittarius to Pisces"]];
+ROUNDS.forEach(([id,title,signs],r)=>{
+  const cards=[];
+  for(let n=9*r;n<9*r+9;n++){
+    const d=NK[n], L=lordOf(n);
+    cards.push(`<article class="nk" data-l="${L}" style="--c:var(--${L})">
+      <div class="nk-top"><span class="nk-num">${n+1}</span><div><h3 class="nk-name">${d[0]}</h3><div class="nk-ta">${d[2]} · ${d[3]}</div></div></div>
+      <div class="nk-span">${spanText(n)}</div>
+      <p class="nk-ess">${d[10]}</p>
+      <dl><dt>Lord</dt><dd><span class="glyph">${LORDS[L].g}</span> ${LORDS[L].n} · ${LORDS[L].yrs}-yr daśā</dd>
+      <dt>Deity</dt><dd>${d[4]}</dd><dt>Symbol</dt><dd>${d[5]}</dd>
+      <dt>Gaṇa</dt><dd>${d[6]}</dd><dt>Nature</dt><dd>${d[7]}</dd><dt>Yoni</dt><dd>${d[8]}</dd>
+      <dt>Star</dt><dd>${d[9]}</dd></dl></article>`);
+  }
+  const sec=document.createElement("section"); sec.id=id;
+  sec.innerHTML=`<div class="wrap"><div class="eyebrow">The twenty-seven · ${signs}</div><h2 class="secttl">${title}</h2><div class="nkcards">${cards.join("")}</div></div>`;
+  main.appendChild(sec);
+});
+
+/* ---------------- all 27 table ---------------- */
+const trows=NK.map((d,n)=>{const L=lordOf(n); return `<tr><td>${n+1}</td><td>${d[0]}</td><td class="tamil">${d[2]}</td><td>${spanText(n)}</td><td class="lc"><span class="sw" style="background:var(--${L})"></span>${LORDS[L].n}</td><td>${d[4]}</td><td>${d[6]}</td><td>${d[7].split(" ")[0]}</td><td>${d[8]}</td></tr>`}).join("");
+const tsec=document.createElement("section"); tsec.id="table";
+tsec.innerHTML=`<div class="wrap"><div class="eyebrow">Reference</div><h2 class="secttl">All twenty-seven at a glance</h2>
+<div class="tablewrap"><table class="cmp" style="min-width:900px"><thead><tr><th>#</th><th>Nakṣatra</th><th>Tamil</th><th>Span (sidereal)</th><th>Lord</th><th>Deity</th><th>Gaṇa</th><th>Nature</th><th>Yoni</th></tr></thead><tbody>${trows}</tbody></table></div>
+<p style="color:var(--mute); font-size:15px">Abhijit, the 28th of the Vedic lists, is not counted in the 27-fold zodiac. In muhūrta it is reckoned from the last pada of Uttarāṣāḍhā to the first fifteenth of Śravaṇa — 6°40′ to 10°53′20″ Capricorn.</p></div>`;
+main.appendChild(tsec);
+
+/* ---------------- closing ---------------- */
+const end=document.createElement("section"); end.id="end"; end.className="closing";
+end.innerHTML=`<div class="wrap">
+  <div class="om" style="font-size:clamp(30px,4vw,48px)">☋ ♀ ☉ ☽ ♂ ☊ ♃ ♄ ☿</div>
+  <h2 class="div-title" style="font-size:clamp(38px,5.5vw,72px)">The Moon's twenty-seven houses</h2>
+  <p class="hero-sub">Know the nakṣatra and you know the Moon's mind, the daśā that opens a life, and the navāṁśa hidden in every degree.</p>
+  <nav class="pager"><a href="sky-behind-the-symbols.html">← The Sky Behind the Symbols</a><a href="index.html">All lessons</a><a href="navagraha-primer.html">Navagraha Primer</a></nav>
+  <p class="hero-src">Sidereal zodiac, Lahiri / Chitrapakṣa. Nakṣatra lords and the Vimśottarī order per Bṛhat Parāśara Horā Śāstra; deities per the Taittirīya Saṁhitā (4.4.10) and Brāhmaṇa; Abhijit per Atharvaveda 19.7; gaṇa, yoni and the seven natures per Bṛhat Saṁhitā and Muhūrta Cintāmaṇi. Symbols, yogatārā identifications and Tamil names follow common South-Indian usage and vary slightly by lineage.</p>
+</div>`;
+main.appendChild(end);
+</script>
+<script src="lesson.js"></script>
+</body>
+</html>
