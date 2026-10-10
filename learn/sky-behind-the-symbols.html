@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Ayanāṁśa, astaṅga, grahaṇa, Rāhu & Ketu and grahaṇa-doṣa — how the classical concepts map onto the real motions of the sky.">
+<title>The Sky Behind the Symbols</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Mukta:wght@300;400;600;700&family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Serif+Tamil:wght@400;600&family=Noto+Sans+Symbols:wght@400;700&family=Noto+Sans+Symbols+2&display=swap">
+<link rel="stylesheet" href="lesson.css">
+<style>
+/* Page-specific: figures and the few slide layouts unique to this deck. Eyebrows teal, highlights gold, as in the original deck. */
+:root{--accent:#5cc8bc; --rahu:#b79be8; --ketu:#86c7bd; --hot:#e8743c; --warm:#f0c862}
+section.hero .watermark,section.divider .watermark{color:var(--gold)}
+.fig{display:block; width:100%; height:auto; max-width:480px; margin:0 auto}
+.fig text{font-family:var(--sans); fill:var(--soft); font-size:13px}
+.fig .lbl-gold{fill:var(--gold)} .fig .lbl-teal{fill:var(--teal)} .fig .lbl-rahu{fill:var(--rahu)} .fig .lbl-ketu{fill:var(--ketu)}
+.fig .glyphtxt{font-family:var(--glyphf)}
+figure{margin:0}
+figcaption{font-family:var(--sans); font-size:13px; color:var(--mute); text-align:center; margin-top:10px; letter-spacing:.04em}
+.formula{font-family:var(--display); font-size:clamp(24px,2.4vw,36px); color:var(--gold); background:var(--panel); border:1px solid rgba(231,195,106,.35);
+  border-radius:14px; padding:16px 22px; margin:18px 0; line-height:1.3}
+.worked{font-family:var(--display); font-size:clamp(22px,2vw,30px); line-height:1.5; color:var(--ink)}
+.worked .big{color:var(--gold); font-size:1.15em}
+.bigstat{font-family:var(--display); font-weight:600; font-size:clamp(40px,4.4vw,64px); color:var(--gold); line-height:1}
+/* gradient bars */
+.gbar{position:relative; height:46px; border-radius:100px; border:1px solid var(--stroke); margin:44px 0 14px}
+.gbar.burn{background:linear-gradient(90deg,#e8743c 0%,#e8a13c 22%,rgba(240,200,98,.45) 50%,rgba(183,188,221,.08) 100%)}
+.gbar .tick{position:absolute; top:-30px; font-family:var(--sans); font-size:13px; color:var(--soft); transform:translateX(-50%); white-space:nowrap}
+.gbar .zone{position:absolute; top:54px; font-family:var(--sans); font-size:14px; color:var(--ink); transform:translateX(-50%); white-space:nowrap}
+.band{display:grid; grid-template-columns:1.2fr 1fr 1.1fr 1fr 1.2fr; border-radius:12px; overflow:hidden; border:1px solid var(--stroke); margin:46px 0 10px; position:relative}
+.band div{padding:14px 8px; text-align:center; font-family:var(--sans); font-size:clamp(12px,1vw,15px)}
+.band .no{background:rgba(183,188,221,.08); color:var(--mute)}
+.band .pa{background:rgba(240,200,98,.22); color:var(--ink)}
+.band .to{background:rgba(92,200,188,.35); color:var(--ink); font-weight:600}
+.band::before{content:"☊ node"; position:absolute; top:-30px; left:50%; transform:translateX(-50%); font-family:var(--glyphf),var(--sans); font-size:14px; color:var(--rahu)}
+.bandnote{display:flex; justify-content:space-between; font-family:var(--sans); font-size:13px; color:var(--mute); margin-bottom:22px}
+/* level table */
+table.cmp td.lv{font-family:var(--sans); font-weight:600; color:#1a1430}
+td.lv.high{background:linear-gradient(90deg,#d8461f,#f07b2c)} td.lv.mod{background:linear-gradient(90deg,#e7b04a,#f3d270)}
+td.lv.low{background:linear-gradient(90deg,#3fa391,#6cc5b5)} td.lv.neg{background:rgba(183,188,221,.35); color:var(--ink)}
+.dot{display:inline-block; width:12px; height:12px; border-radius:50%; vertical-align:-1px; margin:0 2px}
+/* quick reference */
+.qref{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; border:1px solid rgba(92,200,188,.45); border-radius:16px; overflow:hidden}
+.qref > div{padding:20px 20px 22px; border-right:1px solid var(--stroke)}
+.qref > div:last-child{border-right:none}
+.qref h3{font-family:var(--sans); font-size:15px; font-weight:700; color:var(--teal); margin:0 0 14px; padding-bottom:10px; border-bottom:1px solid var(--stroke); letter-spacing:.02em}
+.qref dl{margin:0} .qref dt{font-family:var(--sans); font-size:14px; color:var(--soft); margin-top:12px}
+.qref dd{margin:2px 0 0; font-family:var(--sans); font-weight:700; color:var(--gold); font-size:clamp(15px,1.15vw,19px)}
+.qref dd small{display:block; font-weight:400; color:var(--mute); font-size:12px}
+.rowlist{display:grid; gap:10px}
+.rowlist .r{display:grid; grid-template-columns:150px 1fr; gap:18px; align-items:start; background:var(--panel); border:1px solid var(--stroke); border-radius:14px; padding:16px 20px}
+.rowlist .r b{font-family:var(--sans); color:var(--teal); font-size:15px; letter-spacing:.06em; text-transform:uppercase}
+.rowlist .r span{color:var(--soft)}
+.chain{counter-reset:c; list-style:none; padding:0; margin:0 0 18px}
+.chain li{counter-increment:c; position:relative; padding:12px 0 12px 54px; border-bottom:1px solid var(--stroke); color:var(--ink); font-size:clamp(17px,1.3vw,22px)}
+.chain li::before{content:counter(c); position:absolute; left:6px; top:6px; font-family:var(--display); font-weight:600; font-size:32px; color:var(--teal)}
+@media (max-width:860px){
+  .qref{grid-template-columns:1fr} .qref > div{border-right:none; border-bottom:1px solid var(--stroke)}
+  .rowlist .r{grid-template-columns:1fr; gap:6px}
+  .band{grid-template-columns:1fr 1fr 1fr 1fr 1fr} .band div{padding:12px 3px; font-size:11px}
+}
+</style>
+</head>
+<body>
+<a class="backhub" href="index.html">← Lessons</a>
+<nav class="rail" aria-label="Jump to section">
+  <a href="#title"><span class="glyph">✧</span><span class="tip">Title</span></a>
+  <a href="#orient"><span class="glyph">◇</span><span class="tip">Orientation</span></a>
+  <a href="#p0"><span class="rnum">0</span><span class="tip">Part 0 · Two zodiacs</span></a>
+  <a href="#p1"><span class="rnum">1</span><span class="tip">Part 1 · Ayanāṁśa</span></a>
+  <a href="#p2"><span class="rnum">2</span><span class="tip">Part 2 · Astaṅga</span></a>
+  <a href="#p3"><span class="rnum">3</span><span class="tip">Part 3 · Grahaṇa</span></a>
+  <a href="#p4"><span class="rnum">4</span><span class="tip">Part 4 · Rāhu &amp; Ketu</span></a>
+  <a href="#p5"><span class="rnum">5</span><span class="tip">Part 5 · Grahaṇa-doṣa</span></a>
+  <a href="#synth"><span class="glyph">✦</span><span class="tip">Synthesis</span></a>
+  <a href="#qref"><span class="glyph">▦</span><span class="tip">Quick reference</span></a>
+  <a href="#end"><span class="glyph">∎</span><span class="tip">End</span></a>
+</nav>
+<div class="counter" aria-hidden="true">1 / 31</div>
+<main>
+
+<!-- 1 -->
+<section id="title" class="hero">
+  <div class="watermark glyph" aria-hidden="true">☊</div>
+  <div class="wrap">
+    <div class="eyebrow">A teaching series · The astronomy inside Jyotiṣa</div>
+    <h1 class="hero-title">The Sky Behind<br>the Symbols</h1>
+    <p class="hero-sub">Ayanāṁśa · Astaṅga · Grahaṇa · Rāhu &amp; Ketu — how the classical concepts map, degree for degree, onto the real motions of the sky.</p>
+    <p class="hero-src">Lahiri / Chitrapakṣa framework · classical orbs (BPHS · Sārāvalī) with modern positional astronomy</p>
+    <div class="scrollcue">scroll or press → to begin</div>
+    <details class="notes"><summary>Teaching note</summary><p>Welcome slide. The promise of the deck: every Jyotiṣa concept here is a faithful description of a real motion in the sky. We move from the zodiac's zero-point, through combustion, to eclipses and the nodes, and end with grahaṇa-doṣa — the node covering a planet.</p></details>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="orient">
+  <div class="wrap">
+    <div class="eyebrow">Orientation</div>
+    <h2 class="secttl">Not four facts — one chain of cause</h2>
+    <p class="lead">Everything in this deck flows from a single family of ideas: <b>tilted circles and slow wobbles.</b> Hold this chain in mind and each concept explains the next.</p>
+    <div class="grid" style="--cols:3">
+      <div class="card"><h3>01 · Ayanāṁśa</h3><p>The axis wobbles → the equinox slides → the two zodiacs diverge → the offset that makes a chart Vedic.</p></div>
+      <div class="card"><h3>02 · Astaṅga</h3><p>A planet nears the Sun in the sky → it is lost in glare → combustion, graded by orb.</p></div>
+      <div class="card"><h3>03 · Grahaṇa</h3><p>The Moon's orbit is tilted → it crosses the ecliptic at two points → a Moon there → an eclipse.</p></div>
+      <div class="card"><h3>04 · Rāhu &amp; Ketu</h3><p>Those two crossing points, seen as seizing shadows, are the nodes — the chāyā grahas.</p></div>
+      <div class="card"><h3>05 · Grahaṇa-doṣa</h3><p>Extend the seizing to a birth chart: a node sitting with any planet covers it — an eclipse of that planet's light.</p></div>
+      <blockquote class="quote" style="margin:0">“The śāstra names, in the language of deities, the same geometry an orrery would show.”</blockquote>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>Give students the map before the territory. Read the five links aloud in order. Each becomes a section of the deck. The last cell is the thesis of the whole series.</p></details>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="p0">
+  <div class="wrap">
+    <div class="eyebrow">Part 0 · The one idea everything rests on</div>
+    <h2 class="secttl">There are two zodiacs — Jyotiṣa uses the second</h2>
+    <div class="columns" style="--tmpl:1fr 1fr">
+      <div class="col">
+        <div class="card"><h3 style="color:var(--teal)">Tropical (sāyana)</h3><p>0° Aries is pinned to the <b>spring equinox</b> — where the Sun crosses the celestial equator going north (~21 March). Tied to the seasons. Western astrology uses this.</p></div>
+        <div class="card"><h3 style="color:var(--gold)">Sidereal (nirayana)</h3><p>0° Aries is pinned to an <b>actual point among the stars</b> (near Revatī / ζ Piscium). Tied to the fixed stars. Jyotiṣa uses this.</p></div>
+        <div class="keynote" style="color:var(--ink); border-color:var(--gold)">The two once coincided (~3rd–5th c. CE) and have drifted apart ever since at ~50″ a year. That gap — today <b style="color:var(--gold)">≈24°</b> — is the <b style="color:var(--gold)">Ayanāṁśa.</b></div>
+      </div>
+      <div class="col">
+        <figure>
+          <svg class="fig" viewBox="0 0 450 330" role="img" aria-label="Two concentric rings: the outer sidereal ring has 0° Aries locked to a star; the inner tropical ring has 0° Aries locked to the equinox, about 24 degrees away. The wedge between them is the ayanāṁśa.">
+            <path d="M165,165 L305,165 A140,140 0 0,0 292.9,108.1 Z" fill="#e7c36a" fill-opacity=".3"/>
+            <circle cx="165" cy="165" r="140" fill="none" stroke="#e7c36a" stroke-width="2.5"/>
+            <circle cx="165" cy="165" r="95" fill="none" stroke="#5cc8bc" stroke-width="2.5"/>
+            <line x1="165" y1="165" x2="305" y2="165" stroke="#e7c36a" stroke-width="2.5"/>
+            <line x1="165" y1="165" x2="292.9" y2="108.1" stroke="#5cc8bc" stroke-width="2.5"/>
+            <circle cx="305" cy="165" r="8" fill="#e7c36a"/>
+            <circle cx="251.8" cy="126.4" r="8" fill="#5cc8bc"/>
+            <circle cx="165" cy="165" r="5" fill="#f2ecd8"/>
+            <text x="238" y="156" class="lbl-gold" font-weight="600">≈24°</text>
+            <text x="318" y="170" class="lbl-gold" font-weight="600">Sidereal 0° Aries</text>
+            <text x="318" y="188">locked to a star</text>
+            <text x="300" y="92" class="lbl-teal" font-weight="600">Tropical 0° Aries</text>
+            <text x="300" y="110">locked to the equinox</text>
+            <text x="165" y="22" text-anchor="middle" class="lbl-gold">sidereal ring</text>
+            <text x="165" y="96" text-anchor="middle" class="lbl-teal">tropical ring</text>
+          </svg>
+          <figcaption>Figure 0 · The shaded wedge between the two 0° Aries points is the ayanāṁśa</figcaption>
+        </figure>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The single distinction the whole deck rests on. Outer gold ring = sidereal, locked to a star. Inner teal ring = tropical, locked to the equinox Sun. The shaded wedge between their 0° Aries marks is the ayanāṁśa, ~24 degrees today.</p></details>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="p1" class="divider">
+  <div class="watermark glyph" aria-hidden="true">♈︎</div>
+  <div class="wrap">
+    <div class="eyebrow">Part 1</div>
+    <h2 class="div-title">Ayanāṁśa</h2>
+    <p class="hero-sub" style="margin:0">The precession offset — the slow wobble of the Earth's axis, and the number that turns a chart Vedic.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <div class="wrap">
+    <div class="eyebrow">Part 1 · 1.1 — The astronomy</div>
+    <h2 class="secttl">The Earth spins like a top — and wobbles like one</h2>
+    <div class="columns" style="--tmpl:1.15fr 1fr">
+      <div class="col">
+        <p class="lead" style="margin:0">The Earth's axis is tilted <b>23.4°</b>, and like a slowing top that tilted axis wobbles in a slow circle — the <b>precession of the equinoxes.</b></p>
+        <div class="card"><h3>One turn ≈ 25,772 years</h3><p>The axis traces a full cone once in a “Great Year.”</p></div>
+        <div class="card"><h3>≈ 50.29″ per year → 1° / 71.6 yrs</h3><p>The equinox point slides backward through the stars — one whole sign every ~2,150 yrs.</p></div>
+        <p style="color:var(--soft); margin:0">The cause is gravity: the Sun and Moon tug on the Earth's equatorial bulge — the same physics as a gyroscope leaning against gravity. It is why the March-equinox Sun, in Aries to the Greeks, now rises in Pisces.</p>
+      </div>
+      <div class="col">
+        <figure>
+          <svg class="fig" viewBox="0 0 320 340" role="img" aria-label="The Earth with its axis tilted 23.4 degrees; the axis sweeps a cone once every 25,772 years.">
+            <line x1="160" y1="230" x2="85" y2="62" stroke="#b7bcdd" stroke-opacity=".35"/>
+            <line x1="160" y1="230" x2="235" y2="62" stroke="#b7bcdd" stroke-opacity=".35"/>
+            <ellipse cx="160" cy="62" rx="75" ry="17" fill="none" stroke="#e7c36a" stroke-width="2" stroke-dasharray="4 5"/>
+            <path d="M206,47 q14,4 20,12" fill="none" stroke="#e7c36a" stroke-width="2"/>
+            <path d="M226,59 l-1,-9 m1,9 l-8,-3" stroke="#e7c36a" stroke-width="2" fill="none"/>
+            <circle cx="160" cy="230" r="60" fill="#13204f" stroke="#5cc8bc" stroke-width="2"/>
+            <ellipse cx="160" cy="230" rx="60" ry="15" fill="none" stroke="#5cc8bc" stroke-opacity=".5"/>
+            <line x1="127" y1="76" x2="185" y2="300" stroke="#f2ecd8" stroke-width="2.5" stroke-dasharray="0" />
+            <circle cx="127" cy="72" r="6" fill="#e7c36a"/>
+            <line x1="160" y1="230" x2="160" y2="150" stroke="#b7bcdd" stroke-opacity=".5" stroke-dasharray="2 4"/>
+            <text x="160" y="24" text-anchor="middle" class="lbl-gold">one full cone ≈ 25,772 yrs</text>
+            <text x="226" y="186" class="lbl-teal">axis tilt</text><text x="226" y="203" class="lbl-teal">23.4°</text>
+          </svg>
+          <figcaption>Figure 1.1 · The axis sweeps a cone; the equinox slides ~50″ a year</figcaption>
+        </figure>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The spinning-top Earth: tilt 23.4 degrees, the axis sweeping a dashed cone once every ~25,772 years, the equinox point sliding backward at ~50 arcsec/year. This backward slide is the entire origin of the ayanāṁśa.</p></details>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <div class="wrap">
+    <div class="eyebrow">Part 1 · 1.2 — The definition</div>
+    <h2 class="secttl">What the Ayanāṁśa is</h2>
+    <div class="columns" style="--tmpl:1.1fr 1fr">
+      <div class="col">
+        <p class="lead" style="margin:0"><b>ayana</b> (movement) + <b>aṁśa</b> (part). The Ayanāṁśa is simply the angular gap, right now, between tropical 0° Aries and sidereal 0° Aries.</p>
+        <div class="formula">Sidereal longitude<br>= Tropical longitude − Ayanāṁśa</div>
+        <p style="color:var(--soft); margin:0">This is exactly why one person is “Aries” in a Western app and “Pisces” in a Vedic one — same sky, different reference point.</p>
+      </div>
+      <div class="col">
+        <div class="card">
+          <h3>Worked example</h3>
+          <div class="worked">A planet at <b>10° tropical Aries</b><br>Ayanāṁśa = <b>24°</b></div>
+          <hr style="border:none; border-top:1px solid var(--stroke); margin:14px 0">
+          <div class="worked">10° − 24° = −14°<br><span class="big">→ 16° sidereal Pisces</span></div>
+          <p style="margin-top:12px">Same body, same sky — a different sign, because the zero-point differs.</p>
+        </div>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The single most useful formula in the deck. Sidereal = tropical minus ayanāṁśa. Walk the worked example slowly; the sign change from Aries to Pisces is the aha moment for anyone coming from Western astrology.</p></details>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <div class="wrap">
+    <div class="eyebrow">Part 1 · 1.3 — The calibration problem</div>
+    <h2 class="secttl">Which Ayanāṁśa? They cluster within a degree or two</h2>
+    <div class="columns" style="--tmpl:1.5fr 1fr">
+      <div class="col">
+        <div class="tablewrap" style="margin:0"><table class="cmp">
+          <thead><tr><th>Ayanāṁśa</th><th>≈ 2025</th><th>Basis / notes</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td><b style="color:var(--gold)">Lahiri (Chitrapakṣa)</b></td><td>≈ 24°11′</td><td>India's official standard; Chitrā / Spica fixed at 180°</td></tr>
+            <tr><td>Krishnamurti (KP)</td><td>≈ 24°05′</td><td>Used in KP; a few minutes less than Lahiri</td></tr>
+            <tr><td>Raman</td><td>≈ 22°45′</td><td>B. V. Raman's value, ~1½° less than Lahiri</td></tr>
+            <tr><td>Fagan–Bradley</td><td>≈ 25°05′</td><td>Western sidereal standard</td></tr>
+            <tr><td>True Chitrā / Puṣya</td><td>≈ 24–25°</td><td>“True-star” refinements</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <figure>
+          <svg class="fig" viewBox="0 0 360 200" role="img" aria-label="Fan of lines from 0° Aries showing the different ayanāṁśas a degree or two apart.">
+            <path d="M40,150 A90,90 0 0,1 82,72" fill="none" stroke="#7e85ad" stroke-opacity=".6"/>
+            <line x1="40" y1="150" x2="250" y2="40" stroke="#b7bcdd" stroke-opacity=".7"/>
+            <line x1="40" y1="150" x2="250" y2="60" stroke="#8fa6d8" stroke-opacity=".7" stroke-dasharray="5 4"/>
+            <line x1="40" y1="150" x2="250" y2="80" stroke="#e7c36a" stroke-width="2.5"/>
+            <line x1="40" y1="150" x2="250" y2="100" stroke="#b7bcdd" stroke-opacity=".7"/>
+            <line x1="40" y1="150" x2="250" y2="124" stroke="#b7bcdd" stroke-opacity=".6" stroke-dasharray="5 4"/>
+            <circle cx="40" cy="150" r="5" fill="#f2ecd8"/>
+            <text x="18" y="174">0° Aries</text>
+            <text x="258" y="44">Fagan–Bradley</text>
+            <text x="258" y="64">True Chitrā</text>
+            <text x="258" y="84" class="lbl-gold" font-weight="600">Lahiri</text>
+            <text x="258" y="104">KP</text>
+            <text x="258" y="128">Raman</text>
+          </svg>
+          <figcaption>Precession is exact; the <em>zero year</em> is a choice — so several ayanāṁśas exist</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="keynote" style="color:var(--ink)"><b style="color:var(--gold)">Teaching point:</b> near a sign boundary the choice flips the sign, house or nakṣatra — so <b>naming the ayanāṁśa is part of naming a chart.</b> Indian Jyotiṣa (and the Madheswaran tradition) uses Lahiri.</div>
+    <details class="notes"><summary>Teaching note</summary><p>Values are approximate for 2025 and rounded to the minute. Lahiri (Chitrapakṣa) is the Government of India standard, defined by keeping Chitrā (Spica) at 180°; the others are a few minutes to about 1½° away from it.</p></details>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <div class="wrap">
+    <div class="eyebrow">Part 1 · 1.4 — Impact</div>
+    <h2 class="secttl">Where the choice matters: low vs high sensitivity</h2>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>Low sensitivity</h3><p><b>Planets sitting comfortably in the middle of a sign.</b></p><p>No reasonable ayanāṁśa choice ever moves them out of it — the reading is stable.</p></div>
+      <div class="card" style="border-color:rgba(232,116,60,.5)"><h3 style="color:var(--hot)">High sensitivity</h3><p><b>Anything within ~1–2° of a sign boundary.</b></p><p>A planet, the Lagna, or a nakṣatra edge — a different ayanāṁśa flips the sign, the house, the nakṣatra, and so the whole reading.</p></div>
+    </div>
+    <div class="keynote">This is why birth-time accuracy and ayanāṁśa choice matter most for the Lagna and the Moon — the two fastest-moving reference points in the chart.</div>
+    <details class="notes"><summary>Teaching note</summary><p>The practical takeaway of Part 1: the ayanāṁśa only bites near boundaries. That is exactly where the Lagna and Moon live and move fastest, so that is where birth-time precision earns its keep.</p></details>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="p2" class="divider">
+  <div class="watermark glyph" aria-hidden="true">☉</div>
+  <div class="wrap">
+    <div class="eyebrow">Part 2</div>
+    <h2 class="div-title">Astaṅga</h2>
+    <p class="hero-sub" style="margin:0">Combustion — “the burning.” When a planet nears the Sun in the sky, its own light is drowned in glare.</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <div class="wrap">
+    <div class="eyebrow">Part 2 · 2.1 — The astronomy</div>
+    <h2 class="secttl">Astaṅga: a planet lost in the Sun's glare</h2>
+    <div class="columns" style="--tmpl:1.1fr 1fr">
+      <div class="col">
+        <p class="lead" style="margin:0"><b>astam</b> = setting. When a planet's longitude comes very close to the Sun's, it rises and sets almost with the Sun and is drowned in its glare — invisible, though physically still there.</p>
+        <div class="card"><h3>Apparent, not physical</h3><p>It is nearness to the Sun in the sky, not in space.</p></div>
+        <div class="card"><h3>Cazimi — the heart of the Sun</h3><p>Within ~16′ of the Sun's centre — effectively on its disk.</p></div>
+        <div class="keynote">A planet you cannot see is a planet whose significations are “burnt” — like a candle beside a floodlight.</div>
+      </div>
+      <div class="col">
+        <figure>
+          <svg class="fig" viewBox="0 0 340 260" role="img" aria-label="The Sun with a wide glare halo. A faded planet inside the halo is combust; a bright planet outside it is free.">
+            <defs><radialGradient id="halo"><stop offset="0" stop-color="#f0c862" stop-opacity=".55"/><stop offset=".55" stop-color="#e7c36a" stop-opacity=".18"/><stop offset="1" stop-color="#e7c36a" stop-opacity="0"/></radialGradient></defs>
+            <circle cx="120" cy="115" r="110" fill="url(#halo)"/>
+            <circle cx="120" cy="115" r="38" fill="#e8b84f"/>
+            <circle cx="182" cy="115" r="11" fill="#9aa0bd" fill-opacity=".45"/>
+            <circle cx="282" cy="115" r="12" fill="#5cc8bc"/>
+            <line x1="184" y1="170" x2="280" y2="170" stroke="#b7bcdd"/>
+            <path d="M184,170 l8,-4 v8z M280,170 l-8,-4 v8z" fill="#b7bcdd"/>
+            <text x="120" y="119" text-anchor="middle" fill="#3a2a0a" font-weight="700">Sun</text>
+            <text x="182" y="96" text-anchor="middle">combust</text>
+            <text x="282" y="96" text-anchor="middle" class="lbl-teal">free</text>
+            <text x="232" y="194" text-anchor="middle">angular separation</text>
+          </svg>
+          <figcaption>Figure 2.1 · Drowned in glare: combust inside the halo, free outside it</figcaption>
+        </figure>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The faded planet inside the Sun's halo is combust; the bright one outside is free. Stress that this is apparent proximity in the sky — the exact same optical idea we will reuse for a node covering a planet in Part 5.</p></details>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <div class="wrap">
+    <div class="eyebrow">Part 2 · 2.2 — The degrees</div>
+    <h2 class="secttl">Combustion orbs — each planet its own</h2>
+    <div class="columns" style="--tmpl:1.1fr 1fr">
+      <div class="col">
+        <div class="tablewrap" style="margin:0"><table class="cmp">
+          <thead><tr><th>Planet</th><th>Orb (direct)</th><th>Retrograde</th></tr></thead>
+          <tbody>
+            <tr><td>Moon (Candra)</td><td><b style="color:var(--gold)">12°</b></td><td>—</td></tr>
+            <tr><td>Mars (Kuja)</td><td><b style="color:var(--gold)">17°</b></td><td>—</td></tr>
+            <tr><td>Mercury (Budha)</td><td><b style="color:var(--gold)">14°</b></td><td>12°</td></tr>
+            <tr><td>Jupiter (Guru)</td><td><b style="color:var(--gold)">11°</b></td><td>—</td></tr>
+            <tr><td>Venus (Śukra)</td><td><b style="color:var(--gold)">10°</b></td><td>8°</td></tr>
+            <tr><td>Saturn (Śani)</td><td><b style="color:var(--gold)">15°</b></td><td>—</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="col">
+        <p style="margin:0"><b>Why the differences?</b> <span style="color:var(--soft)">The orbs track how <b>brightly each planet shines.</b> Brilliant Venus escapes the glare at just 10°; faint, slow Mars needs 17°.</span></p>
+        <p style="margin:0"><b>Retrograde</b> <span style="color:var(--soft)">Mercury and Venus clear the glare sooner, so their orbs shrink.</span></p>
+        <p style="margin:0; color:var(--mute); font-size:.85em">Classical values per Bṛhat Parāśara Horā Śāstra / Sārāvalī.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section id="s12">
+  <div class="wrap">
+    <div class="eyebrow">Part 2 · 2.3 — Impact</div>
+    <h2 class="secttl">Not a switch but a gradient — the closer, the deeper the burn</h2>
+    <div class="gbar burn" role="img" aria-label="Combustion gradient from the Sun at 0 degrees to the orb edge: deep burn 0 to 3 degrees, moderate to about half the orb, nearly free near the orb edge.">
+      <span class="tick" style="left:2%">Sun 0°</span>
+      <span class="tick" style="left:96%">orb edge</span>
+      <span class="zone" style="left:10%">Deep burn 0–3°</span>
+      <span class="zone" style="left:44%">Moderate — to about half the orb</span>
+      <span class="zone" style="left:82%">Nearly free (e.g. 17° for Mars)</span>
+    </div>
+    <div class="grid" style="--cols:2; margin-top:64px">
+      <div class="card"><h3>The Sun's agenda is served</h3><p>A combust planet still delivers results tied to the Sun's houses — authority, father, government, soul — even as its own themes dim.</p></div>
+      <div class="card"><h3>The Moon is a special case</h3><p>Weighted mainly by <b>pakṣa-bala</b> (brightness): a full Moon far from the Sun is strong, a new Moon near it weak. Combustion and phase are one fact — distance from the Sun.</p></div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The combustion gradient for one planet. Two nuances the classics add: the Sun's significations still come through a burnt planet, and the Moon is judged by phase (pakṣa-bala), which is the same underlying fact — distance from the Sun.</p></details>
+  </div>
+</section>
+
+<!-- 13 -->
+<section id="p3" class="divider">
+  <div class="watermark glyph" aria-hidden="true">◐</div>
+  <div class="wrap">
+    <div class="eyebrow">Part 3</div>
+    <h2 class="div-title">Grahaṇa</h2>
+    <p class="hero-sub" style="margin:0">Eclipses — why they are rare, and why they happen only at the two crossing points we call the nodes.</p>
+  </div>
+</section>
+
+<!-- 14 -->
+<section id="s14">
+  <div class="wrap">
+    <div class="eyebrow">Part 3 · 3.1 — The astronomy</div>
+    <h2 class="secttl">Why eclipses are rare — one small tilt</h2>
+    <div class="columns" style="--tmpl:1fr 1.1fr">
+      <div class="col">
+        <p class="lead" style="margin:0">An eclipse needs Sun–Earth–Moon in a line. So why not one every new &amp; full Moon? Because the Moon's orbit is <b>tilted ~5.14°</b> to the ecliptic.</p>
+        <p style="color:var(--soft); margin:0">At most new/full Moons the Moon passes above or below the line — no shadow lands. An eclipse can only happen when it lands near a crossing point of the two orbits.</p>
+        <div class="keynote">Those two crossing points are exactly Rāhu and Ketu — so an eclipse is literally “a node swallowing the luminary.”</div>
+      </div>
+      <div class="col">
+        <figure>
+          <svg class="fig" viewBox="-235 -100 470 200" role="img" aria-label="The ecliptic plane and the Moon's tilted orbit cross at two points: Rāhu and Ketu. Away from the nodes the Moon passes above the line.">
+            <ellipse rx="150" ry="36.3" fill="#141c4a" stroke="#e7c36a" stroke-opacity=".7"/>
+            <ellipse rx="150" ry="69.7" transform="rotate(-3.25)" fill="none" stroke="#dfe3f5" stroke-width="1.8"/>
+            <circle r="12" fill="#5cc8bc"/>
+            <line x1="30.3" y1="-69.7" x2="30.3" y2="-34" stroke="#b7bcdd" stroke-dasharray="2 3"/>
+            <circle cx="30.3" cy="-69.7" r="8" fill="#cdd4ee"/>
+            <circle cx="-146.7" cy="-7.5" r="7" fill="#b79be8"/>
+            <circle cx="146.7" cy="7.5" r="7" fill="#86c7bd"/>
+            <text x="-160" y="-3" text-anchor="end" class="lbl-rahu glyphtxt">☊ Rāhu</text>
+            <text x="160" y="12" class="lbl-ketu glyphtxt">☋ Ketu</text>
+            <text x="46" y="-80">Moon off-node →</text><text x="46" y="-63">misses the line</text>
+            <text x="0" y="60" text-anchor="middle" class="lbl-gold" font-size="12">ecliptic plane</text>
+            <text x="0" y="22" text-anchor="middle" font-size="11">Earth</text>
+          </svg>
+          <figcaption>Figure 3.1 · The Moon's path (silver) tilted to the ecliptic (gold); tilt exaggerated</figcaption>
+        </figure>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The tilted orbit. The silver ring (Moon's path) is tilted ~5 degrees to the gold ecliptic, crossing it at two points — the nodes, Rāhu and Ketu. Off-node, the Moon misses the Sun–Earth line and no eclipse occurs. This slide is the hinge of the whole deck.</p></details>
+  </div>
+</section>
+
+<!-- 15 -->
+<section id="s15">
+  <div class="wrap">
+    <div class="eyebrow">Part 3 · 3.2 — The geometry</div>
+    <h2 class="secttl">Solar vs lunar — who stands in the middle</h2>
+    <div class="tablewrap"><table class="cmp">
+      <thead><tr><th></th><th style="color:var(--gold)">Solar (Sūrya-grahaṇa)</th><th style="color:var(--teal)">Lunar (Candra-grahaṇa)</th></tr></thead>
+      <tbody>
+        <tr><td>Phase</td><td>New Moon (<em>amāvāsyā</em>)</td><td>Full Moon (<em>pūrṇimā</em>)</td></tr>
+        <tr><td>Alignment</td><td><span class="dot" style="background:#e8b84f"></span>–<span class="dot" style="background:#cdd4ee"></span>–<span class="dot" style="background:#5cc8bc"></span>&nbsp; Sun – Moon – Earth</td><td><span class="dot" style="background:#e8b84f"></span>–<span class="dot" style="background:#5cc8bc"></span>–<span class="dot" style="background:#cdd4ee"></span>&nbsp; Sun – Earth – Moon</td></tr>
+        <tr><td>What is hidden</td><td>The Sun, blocked by the Moon</td><td>The Moon, in Earth's shadow</td></tr>
+        <tr><td>Node must be within</td><td>solar limit ≈ 15–18°</td><td>lunar limit ≈ 10–12°</td></tr>
+        <tr><td>Visible from</td><td>A narrow track on Earth</td><td>Half the Earth at once</td></tr>
+      </tbody>
+    </table></div>
+    <div class="keynote">The solar limit is wider — so solar eclipses are more frequent overall, but any one place sees a lunar eclipse far more often.</div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section id="s16">
+  <div class="wrap">
+    <div class="eyebrow">Part 3 · 3.3 — The rhythm</div>
+    <h2 class="secttl">Nodes, seasons and the Saros</h2>
+    <div class="grid" style="--cols:3">
+      <div class="card"><div class="bigstat">173.3 days</div><h3 style="margin-top:14px">Eclipse seasons</h3><p>≈ twice a year, when the Sun passes near a node.</p></div>
+      <div class="card"><div class="bigstat">4–7</div><h3 style="margin-top:14px">Eclipses per year</h3><p>occur within those seasons.</p></div>
+      <div class="card"><div class="bigstat">18 yr 11 d</div><h3 style="margin-top:14px">The Saros cycle</h3><p>Sun, Moon &amp; node return to nearly the same geometry — a similar eclipse repeats (~120° west).</p></div>
+    </div>
+    <div class="keynote">Because the nodes themselves drift (Part 4), eclipse timing has its own beat — a rhythm the ancients tracked precisely enough to predict eclipses.</div>
+    <details class="notes"><summary>Teaching note</summary><p>Three numbers for the rhythm of eclipses. The Saros in particular — 18 years and 11 days — is how ancient astronomers predicted eclipses without knowing the physics, purely from the repeating geometry.</p></details>
+  </div>
+</section>
+
+<!-- 17 -->
+<section id="s17">
+  <div class="wrap">
+    <div class="eyebrow">Part 3 · 3.4 — Impact: the degrees that matter</div>
+    <h2 class="secttl">The closer to the exact node, the more total</h2>
+    <div class="band" role="img" aria-label="A band centred on the node: total eclipse within about 5 degrees, partial further out, no eclipse beyond the solar limit of about 15 to 18 degrees.">
+      <div class="no">no eclipse</div><div class="pa">partial</div><div class="to">total (±~5°)</div><div class="pa">partial</div><div class="no">no eclipse</div>
+    </div>
+    <div class="bandnote"><span>← solar limit ≈ 15–18°</span><span>from the node →</span></div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><h3 style="color:var(--teal)">High</h3><p>Within a few degrees → central, total eclipse; the most charged node–luminary contact a chart can hold.</p></div>
+      <div class="card"><h3 style="color:var(--warm)">Moderate</h3><p>Near the limit's edge → a partial eclipse; weaker but real.</p></div>
+      <div class="card"><h3 style="color:var(--mute)">Low</h3><p>Beyond the limit → no eclipse, though a wide conjunction still carries chart significance.</p></div>
+    </div>
+    <div class="keynote"><b>Vedic significance:</b> an eclipse is a grahaṇa-doṣa period — for japa, mantra and charity, not new ventures — because the kāraka of the soul (Sun) or mind (Moon) is momentarily “seized.” A natal Sun/Moon tight on a node carries this as a life-theme.</div>
+    <details class="notes"><summary>Teaching note</summary><p>Eclipse limits as a band around the node: total core, partial, no-eclipse. The degree gradient here is the same shape we will reuse for grahaṇa-doṣa in Part 5.</p></details>
+  </div>
+</section>
+
+<!-- 18 -->
+<section id="p4" class="divider">
+  <div class="watermark glyph" aria-hidden="true">☊</div>
+  <div class="wrap">
+    <div class="eyebrow">Part 4</div>
+    <h2 class="div-title">Rāhu &amp; Ketu</h2>
+    <p class="hero-sub" style="margin:0">The shadow planets — chāyā grahas. Not objects at all, but the two points where the Moon's orbit crosses the ecliptic.</p>
+  </div>
+</section>
+
+<!-- 19 -->
+<section id="s19">
+  <div class="wrap">
+    <div class="eyebrow">Part 4 · 4.1 — The concept students miss</div>
+    <h2 class="secttl">The nodes are not objects — they are intersections</h2>
+    <div class="columns" style="--tmpl:1fr 1.1fr">
+      <div class="col">
+        <p class="lead" style="margin:0">There is nothing there to see. Rāhu and Ketu are the two points where the Moon's tilted orbit crosses the ecliptic.</p>
+        <div class="card" style="border-color:rgba(183,155,232,.45)"><h3 style="color:var(--rahu)">Rāhu ☊ — the ascending node</h3><p>where the Moon crosses going north (up).</p></div>
+        <div class="card" style="border-color:rgba(134,199,189,.45)"><h3 style="color:var(--ketu)">Ketu ☋ — the descending node</h3><p>where it crosses going south (down).</p></div>
+        <p style="color:var(--soft); margin:0"><b>Chāyā grahas</b> — “shadow planets.” No disk, no light, no mass: places, not things. Which is exactly why their influence feels unseen, karmic and hard to grasp.</p>
+      </div>
+      <div class="col">
+        <figure>
+          <svg class="fig" viewBox="-235 -100 470 200" role="img" aria-label="Zoom on the two crossings: Rāhu where the Moon crosses going north, Ketu where it crosses going south, always 180 degrees apart.">
+            <ellipse rx="150" ry="36.3" fill="#141c4a" stroke="#e7c36a" stroke-opacity=".7"/>
+            <ellipse rx="150" ry="69.7" transform="rotate(-3.25)" fill="none" stroke="#dfe3f5" stroke-width="1.8"/>
+            <line x1="-146.7" y1="-7.5" x2="146.7" y2="7.5" stroke="#b7bcdd" stroke-dasharray="4 4"/>
+            <circle r="10" fill="#5cc8bc"/>
+            <circle cx="-146.7" cy="-7.5" r="7" fill="#b79be8"/>
+            <circle cx="146.7" cy="7.5" r="7" fill="#86c7bd"/>
+            <path d="M-128,6 v-32 m0,0 l-5,9 m5,-9 l5,9" stroke="#b79be8" stroke-width="2" fill="none"/>
+            <path d="M128,-22 v32 m0,0 l-5,-9 m5,9 l5,-9" stroke="#86c7bd" stroke-width="2" fill="none"/>
+            <text x="-160" y="-10" text-anchor="end" class="lbl-rahu glyphtxt">☊ Rāhu</text>
+            <text x="-160" y="8" text-anchor="end" class="lbl-rahu" font-size="11">crosses north ↑</text>
+            <text x="160" y="4" class="lbl-ketu glyphtxt">Ketu ☋</text>
+            <text x="160" y="22" class="lbl-ketu" font-size="11">crosses south ↓</text>
+            <text x="0" y="62" text-anchor="middle" font-size="12">always exactly 180° apart</text>
+          </svg>
+          <figcaption>Figure 4.1 · Two crossings of one tilted orbit</figcaption>
+        </figure>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>Zoom on the two crossings. Rāhu = ascending node (Moon going north, up-arrow); Ketu = descending (south, down-arrow). The dashed line shows they are always exactly 180 degrees apart. They are mathematical points, not bodies — the key insight of Part 4.</p></details>
+  </div>
+</section>
+
+<!-- 20 -->
+<section id="s20">
+  <div class="wrap">
+    <div class="eyebrow">Part 4 · 4.2 — How they “form”</div>
+    <h2 class="secttl">The myth is a mnemonic for the geometry</h2>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>The classical image</h3><p>At the churning of the ocean of milk, the demon <b>Svarbhānu</b> stole a sip of the nectar of immortality. The Sun and Moon exposed him; Viṣṇu severed him with the Sudarśana — but, now immortal, he lived on as two halves: the head <b>Rāhu</b> and the body <b>Ketu</b>. Ever after he chases and swallows the luminaries — an eclipse.</p></div>
+      <div class="card"><h3>Read astronomically</h3><p>The “immortal head and tailless body, forever 180° apart, that seize the luminaries” is exactly the pair of lunar nodes that cause eclipses.</p><p>The story is a precise memory-aid for the geometry of Part 3.</p></div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The samudra-manthana myth encodes real astronomy: two halves, 180 degrees apart, immortal, seizing the Sun and Moon — a perfect description of the two lunar nodes. Myth as mnemonic, not as competitor to science.</p></details>
+  </div>
+</section>
+
+<!-- 21 -->
+<section id="s21">
+  <div class="wrap">
+    <div class="eyebrow">Part 4 · 4.3 — Their motion</div>
+    <h2 class="secttl">Always backward — the 18.6-year drum-beat</h2>
+    <div class="columns" style="--tmpl:1.1fr 1fr">
+      <div class="col">
+        <p class="lead" style="margin:0">The Moon's whole tilted orbit slowly rotates backward (nodal regression, from the Sun's pull):</p>
+        <div class="card"><h3>Retrograde ≈ 19.35° / year</h3><p>The nodes move backward through the zodiac.</p></div>
+        <div class="card"><h3>One full circuit ≈ 18.6 years</h3><p>The “nodal period” — Rāhu returns to its birth sign every ~18–19 yrs.</p></div>
+        <p style="color:var(--soft); margin:0">This is why nodes show as retrograde in a chart, and why their daśās (Rāhu 18 yrs, Ketu 7) and transits track this beat.</p>
+        <div class="keynote" style="font-size:clamp(16px,1.3vw,20px)"><b>Mean vs true node:</b> mean = smooth average (classical software, Madheswaran); true = slight wobble around it. Usually within ~1.5° — matters only near a boundary. Same “name your setting” caution as the ayanāṁśa.</div>
+      </div>
+      <div class="col">
+        <figure>
+          <svg class="fig" viewBox="-160 -150 320 300" role="img" aria-label="The Rāhu–Ketu axis is a diameter of the zodiac that turns backward about 19 degrees a year, a full circle in 18.6 years.">
+            <circle r="125" fill="none" stroke="#3d4790" stroke-width="1.5"/>
+            <line x1="-112" y1="-56" x2="112" y2="56" stroke="#b79be8" stroke-width="2.5"/>
+            <circle cx="-112" cy="-56" r="9" fill="#b79be8"/>
+            <circle cx="112" cy="56" r="9" fill="#86c7bd"/>
+            <path d="M0,-125 A125,125 0 0,0 -100,-75" fill="none" stroke="#e7c36a" stroke-width="2.5"/>
+            <path d="M-100,-75 l2,-11 m-2,11 l11,-1" stroke="#e7c36a" stroke-width="2.5" fill="none"/>
+            <text x="-150" y="-72" class="lbl-rahu glyphtxt">☊ Rāhu</text>
+            <text x="98" y="84" class="lbl-ketu glyphtxt">Ketu ☋</text>
+            <text x="10" y="-108" class="lbl-gold">≈ 19.35° / year, backward</text>
+            <text x="0" y="-8" text-anchor="middle">full circle</text>
+            <text x="0" y="10" text-anchor="middle" class="lbl-gold">≈ 18.6 yrs</text>
+          </svg>
+          <figcaption>Figure 4.2 · The node axis regresses through the zodiac</figcaption>
+        </figure>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>Backward drift. The Rāhu–Ketu axis is a diameter of the zodiac that regresses ~19.35 deg/year, one full circle in 18.6 years. This drum-beat sets the nodal daśās and the eclipse-repeat rhythm.</p></details>
+  </div>
+</section>
+
+<!-- 22 -->
+<section id="s22">
+  <div class="wrap">
+    <div class="eyebrow">Part 4 · 4.4 — The degrees that matter</div>
+    <h2 class="secttl">Because they are points, power is all about closeness</h2>
+    <div class="columns" style="--tmpl:1.2fr 1fr">
+      <div class="col">
+        <div class="card" style="border-color:rgba(232,116,60,.5)"><h3 style="color:var(--hot)">Highest — eclipse degrees</h3><p>A luminary within a few degrees, or a planet within ≤3–5°, takes on the node's intensity strongly.</p></div>
+        <div class="card"><h3 style="color:var(--warm)">Moderate</h3><p>A wider conjunction (~5–12°) or the node's dṛṣṭi (5th/7th/9th-type) — real but softer.</p></div>
+        <div class="card"><h3 style="color:var(--mute)">Low</h3><p>A node alone in a sign colours its affairs by house &amp; dispositor, without the sharp “seizing.”</p></div>
+        <div class="keynote">Rāhu amplifies, obsesses, foreignises · Ketu subtracts, spiritualises, detaches. Head that hungers, body that renounces.</div>
+      </div>
+      <div class="col">
+        <figure>
+          <svg class="fig" viewBox="-160 -160 320 320" role="img" aria-label="Orb rings around a node: a red core within 3 to 5 degrees, an amber ring to 12 degrees, a faint outer ring beyond.">
+            <circle r="150" fill="#b7bcdd" fill-opacity=".08" stroke="#b7bcdd" stroke-opacity=".5"/>
+            <circle r="102" fill="#e7c36a" fill-opacity=".14" stroke="#e7c36a" stroke-opacity=".8"/>
+            <circle r="54" fill="#e8743c" fill-opacity=".3" stroke="#e8743c" stroke-opacity=".9"/>
+            <circle r="10" fill="#b79be8"/>
+            <circle cx="30" cy="-24" r="8" fill="#f2ecd8"/>
+            <circle cx="72" cy="-46" r="8" fill="#b7bcdd"/>
+            <circle cx="118" cy="-60" r="8" fill="#8fa6d8"/>
+            <text x="0" y="28" text-anchor="middle" class="lbl-rahu">Rāhu</text>
+            <text x="-26" y="-64" text-anchor="middle" font-size="12">≤3–5° high</text>
+            <text x="-40" y="-112" text-anchor="middle" font-size="12">5–12° mod.</text>
+            <text x="-70" y="-138" text-anchor="middle" font-size="12">low</text>
+          </svg>
+          <figcaption>Figure 4.3 · Orb rings around a node</figcaption>
+        </figure>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>Orb rings around a node: red core (high, ≤3–5°), amber (moderate, 5–12°), faint outer (low). The nodes have no fixed dignity — their tone is read from the dispositor and the planets they touch. Rāhu amplifies, Ketu detaches.</p></details>
+  </div>
+</section>
+
+<!-- 23 -->
+<section id="p5" class="divider">
+  <div class="watermark glyph" aria-hidden="true">☋</div>
+  <div class="wrap">
+    <div class="eyebrow">Part 5</div>
+    <h2 class="div-title">Grahaṇa-doṣa</h2>
+    <p class="hero-sub" style="margin:0">When a node “covers” a planet — an eclipse of that planet's own light, and how it enters a prediction.</p>
+  </div>
+</section>
+
+<!-- 24 -->
+<section id="s24">
+  <div class="wrap">
+    <div class="eyebrow">Part 5 · 5.1 — The idea</div>
+    <h2 class="secttl">An eclipse is not only for the Sun and Moon</h2>
+    <p class="lead">In a birth chart, a node sitting with any planet is said to <b>cover</b> (grahaṇa) it — the planet is <em>grasta</em> (“seized”), its significations eclipsed. Two kinds, and the honest distinction matters:</p>
+    <div class="grid" style="--cols:2">
+      <div class="card">
+        <h3>Sun/Moon + node = literal eclipse</h3><p>Within the ecliptic limits, that person was born at or near an eclipse — grahaṇa-doṣa at its most real.</p>
+        <svg class="fig" viewBox="0 0 300 150" style="max-width:300px; margin-top:14px" role="img" aria-label="Astaṅga: the Sun's glare drowns a planet.">
+          <defs><radialGradient id="h2"><stop offset="0" stop-color="#f0c862" stop-opacity=".6"/><stop offset="1" stop-color="#e7c36a" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="120" cy="70" r="70" fill="url(#h2)"/><circle cx="120" cy="70" r="30" fill="#e8b84f"/><circle cx="170" cy="70" r="10" fill="#9aa0bd" fill-opacity=".5"/>
+          <text x="150" y="140" text-anchor="middle" class="lbl-gold">Astaṅga — burnt by light</text>
+        </svg>
+      </div>
+      <div class="card">
+        <h3>Any other planet = figurative eclipse</h3><p>A node has no disk to hide a body — it overshadows the planet's kāraka-light, exactly as the Sun does in Astaṅga.</p>
+        <svg class="fig" viewBox="0 0 300 150" style="max-width:300px; margin-top:14px" role="img" aria-label="Grahaṇa-doṣa: a node's shadow drowns a planet.">
+          <defs><radialGradient id="h3"><stop offset="0" stop-color="#b79be8" stop-opacity=".6"/><stop offset="1" stop-color="#b79be8" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="120" cy="70" r="70" fill="url(#h3)"/><circle cx="120" cy="70" r="12" fill="#b79be8"/><circle cx="170" cy="70" r="10" fill="#9aa0bd" fill-opacity=".5"/>
+          <text x="150" y="140" text-anchor="middle" class="lbl-rahu">Grahaṇa-doṣa — eclipsed by shadow</text>
+        </svg>
+      </div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The two burnings, side by side. Astaṅga: the Sun burns a planet with light. Grahaṇa-doṣa: a node eclipses it with shadow. Be scientifically honest — only Sun/Moon + node is a literal eclipse; for other planets it is a metaphor extended from the same optical logic.</p></details>
+  </div>
+</section>
+
+<!-- 25 -->
+<section id="s25">
+  <div class="wrap">
+    <div class="eyebrow">Part 5 · 5.2 — The degrees</div>
+    <h2 class="secttl">The same gradient as an eclipse</h2>
+    <div class="tablewrap"><table class="cmp">
+      <thead><tr><th>Separation from node</th><th>Level</th><th>Effect on the planet</th></tr></thead>
+      <tbody>
+        <tr><td>0°–3° (very tight)</td><td class="lv high">High — deep grahaṇa</td><td>significations strongly seized; the node's nature dominates</td></tr>
+        <tr><td>3°–8°</td><td class="lv mod">Moderate</td><td>clear node-colouring; the planet “works through” the node</td></tr>
+        <tr><td>8°–12/15°</td><td class="lv low">Low–mild</td><td>a wide conjunction; some flavour, planet mostly itself</td></tr>
+        <tr><td>beyond the orb</td><td class="lv neg">negligible</td><td>node still aspects (dṛṣṭi) but does not “cover”</td></tr>
+      </tbody>
+    </table></div>
+    <div class="keynote" style="color:var(--ink); font-size:clamp(16px,1.3vw,21px)"><b style="color:var(--teal)">Same-sign vs same-degree:</b> being in the same house as a node already counts; within a few degrees is where “seizing” becomes decisive. And note <b>which side</b> — a planet the (retrograde) node is moving <em>toward</em> vs <em>away from</em> is weighted differently, the parallel to applying vs separating combustion.</div>
+  </div>
+</section>
+
+<!-- 26 -->
+<section id="s26">
+  <div class="wrap">
+    <div class="eyebrow">Part 5 · 5.3 — Two different eclipses</div>
+    <h2 class="secttl">Rāhu-cover vs Ketu-cover</h2>
+    <div class="grid" style="--cols:2">
+      <div class="card" style="border-color:rgba(183,155,232,.45)"><h3 style="color:var(--rahu)">Rāhu covering ↑ · the hungry head that swallows</h3><p>Amplifies, distorts, obsesses, foreignises: excess, ambition, worldliness, illusion (māyā), sudden rises and scandals, a craving never satisfied. The planet's affairs grow large, restless and smoke-clouded — <b>magnified but unclear.</b></p></div>
+      <div class="card" style="border-color:rgba(134,199,189,.45)"><h3 style="color:var(--ketu)">Ketu covering ↓ · the headless body that lets go</h3><p>Subtracts, spiritualises, detaches, makes intermittent: absence, dissatisfaction, self-doubt, sudden losses, then a turn inward. The planet's affairs flicker — <b>now present, now gone</b> — often “already done that in a past life.”</p></div>
+    </div>
+    <div class="keynote">Head that hungers, body that renounces — hold that contrast and most node-conjunctions read themselves.</div>
+    <details class="notes"><summary>Teaching note</summary><p>The single most useful predictive contrast for the nodes. Rāhu covering = amplify and cloud. Ketu covering = subtract and detach. Everything else about node conjunctions flows from this polarity.</p></details>
+  </div>
+</section>
+
+<!-- 27 -->
+<section id="s27">
+  <div class="wrap">
+    <div class="eyebrow">Part 5 · 5.4 — The named doṣas &amp; yogas</div>
+    <h2 class="secttl">When a node covers a specific graha</h2>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>☉ Node + Sun — Grahaṇa / Pitṛ-doṣa</h3><p>soul, ego, authority, father, eyesight; status that rises then clouds</p></div>
+      <div class="card"><h3>☽ Node + Moon — Chandra-grahaṇa ★</h3><p>the mind — anxiety, mood-swings, illusion, sleep, the mother</p></div>
+      <div class="card"><h3>♂ Node + Mars — Aṅgāraka (with Rāhu)</h3><p>drive, courage, temper — accidents, litigation, surgery</p></div>
+      <div class="card"><h3>☿ Node + Mercury</h3><p>speech, logic, commerce — brilliant-but-erratic thinking</p></div>
+      <div class="card"><h3>♃ Node + Jupiter — Guru-Chāṇḍāla yoga</h3><p>wisdom, ethics, the guru — corrupted guidance, or unorthodox genius</p></div>
+      <div class="card"><h3>♀ Node + Venus</h3><p>love, art, pleasure — unconventional/foreign ties, excess, secrecy</p></div>
+      <div class="card"><h3>♄ Node + Saturn</h3><p>duty, career, masses — chronic delays, karmic burdens, fated shifts</p></div>
+      <div class="card" style="border-color:rgba(92,200,188,.5)"><h3>Not purely negative</h3><p>A tight node also concentrates worldly power and originality. Judge by the planet's strength, dispositor, aspects and daśā — the whole-chart synthesis rule.</p></div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The named node-conjunctions. Guru-Chāṇḍāla (node + Jupiter) and Aṅgāraka (Rāhu + Mars) are the most cited. Chandra-grahaṇa (node + Moon) is the most emphasised for the mind. Always end on the caution: a strong covered planet becomes intensity and reach, not just affliction.</p></details>
+  </div>
+</section>
+
+<!-- 28 -->
+<section id="s28">
+  <div class="wrap">
+    <div class="eyebrow">Part 5 · 5.5 — In practice</div>
+    <h2 class="secttl">How grahaṇa-doṣa enters a prediction</h2>
+    <div class="rowlist">
+      <div class="r"><b>Natal</b><span>The covered planet delivers results in a node-flavoured, unstable form for life — and the houses it owns and sits in carry the eclipse-tone (Sun+Rāhu in the 10th → a dazzling but turbulent career).</span></div>
+      <div class="r"><b>Timing (daśā)</b><span>The signature switches on during the daśā/bhukti of the covered planet, the node, or the node's dispositor — a quiet planet can turn decisive the moment its node-period runs.</span></div>
+      <div class="r"><b>Transit</b><span>A transiting node crossing the natal planet — or an actual eclipse on that degree — re-triggers the theme: the living echo of the birth eclipse.</span></div>
+      <div class="r"><b>Remedy</b><span>Strengthen the covered planet (mantra, dāna, gemstone where advised) and propitiate the node — the same family as classical eclipse observances.</span></div>
+    </div>
+    <details class="notes"><summary>Teaching note</summary><p>The four doors grahaṇa-doṣa comes through: natal (permanent flavour), daśā (when it fires), transit (re-triggers, especially a real eclipse on the degree), remedy (strengthen the planet, propitiate the node).</p></details>
+  </div>
+</section>
+
+<!-- 29 -->
+<section id="synth">
+  <div class="wrap">
+    <div class="eyebrow">Synthesis</div>
+    <h2 class="secttl">One chain of cause — all from tilted circles</h2>
+    <ol class="chain">
+      <li>The axis wobbles → the equinox slides → the two zodiacs diverge → the <b>Ayanāṁśa.</b></li>
+      <li>A planet's apparent nearness to the Sun → lost in glare → <b>Astaṅga.</b></li>
+      <li>The Moon's orbit is tilted 5° → it crosses the ecliptic at two points → <b>the nodes.</b></li>
+      <li>A new/full Moon near a node → <b>Grahaṇa</b> → and the nodes, as seizing shadows, are <b>Rāhu &amp; Ketu.</b></li>
+      <li>Extend the seizing to a chart: a node with any planet covers it → <b>grahaṇa-doṣa.</b></li>
+    </ol>
+    <div class="keynote">The two eclipses of a planet's light — the Sun's glare (Astaṅga) and the node's shadow (grahaṇa-doṣa) — are one insight applied twice.</div>
+    <details class="notes"><summary>Teaching note</summary><p>The closing synthesis. Read the five steps as one sentence. The final line is the deck's thesis: Jyotiṣa's shadow planets, its burning, its seizing and its zero-point are all faithful descriptions of real sky-motions.</p></details>
+  </div>
+</section>
+
+<!-- 30 -->
+<section id="qref">
+  <div class="wrap">
+    <div class="eyebrow">Reference</div>
+    <h2 class="secttl">Quick-reference numbers</h2>
+    <div class="qref">
+      <div><h3>Ayanāṁśa &amp; Precession</h3><dl>
+        <dt>Precession cycle</dt><dd>≈ 25,772 yrs<small>one full axial wobble</small></dd>
+        <dt>Precession rate</dt><dd>≈ 50.29″/yr<small>1° / 71.6 yrs</small></dd>
+        <dt>Ayanāṁśa (Lahiri, 2025)</dt><dd>≈ 24°11′<small>tropical → sidereal gap</small></dd>
+        <dt>Axial tilt</dt><dd>23.4°<small>seasons &amp; precession</small></dd></dl></div>
+      <div><h3>Combustion Orbs</h3><dl>
+        <dt>Combustion orbs</dt><dd>Mo 12 · Ma 17 · Me 14/12 · Ju 11 · Ve 10/8 · Sa 15<small>degrees from the Sun (direct/retro)</small></dd>
+        <dt>Cazimi</dt><dd>≤ ~0°17′<small>heart of the Sun</small></dd></dl></div>
+      <div><h3>Eclipse Geometry</h3><dl>
+        <dt>Moon's orbital tilt</dt><dd>5.14°<small>why eclipses are rare</small></dd>
+        <dt>Solar eclipse limit</dt><dd>≈ 15–18°<small>Sun near a node</small></dd>
+        <dt>Lunar eclipse limit</dt><dd>≈ 10–12°<small>Moon near a node</small></dd>
+        <dt>Eclipse season</dt><dd>≈ 173.3 days<small>~twice a year</small></dd>
+        <dt>Saros cycle</dt><dd>18 yr 11 d<small>a similar eclipse repeats</small></dd></dl></div>
+      <div><h3>Nodes &amp; Grahaṇa</h3><dl>
+        <dt>Nodal regression</dt><dd>≈ 19.35°/yr<small>nodes drift backward</small></dd>
+        <dt>Nodal period</dt><dd>≈ 18.6 yrs<small>one full node circuit</small></dd>
+        <dt>Node separation</dt><dd>exactly 180°<small>Rāhu opposite Ketu</small></dd>
+        <dt>Grahaṇa-doṣa orb</dt><dd>deep ≤3° · mod 3–8° · mild 8–15°<small>how tightly a node covers</small></dd></dl></div>
+    </div>
+  </div>
+</section>
+
+<!-- 31 -->
+<section id="end" class="closing">
+  <div class="wrap">
+    <h2 class="div-title">The śāstra was<br>watching the sky</h2>
+    <p class="hero-sub">Its shadow planets, its burning, its seizing and its very zero-point of the zodiac are all faithful descriptions of real motions — named, in the language of deities and demons, exactly as an orrery would show them.</p>
+    <nav class="pager"><a href="lagna/index.html">← The Twelve Lagnas</a><a href="index.html">All lessons</a><a href="navagraha-primer.html">Revisit the Navagraha Primer</a></nav>
+    <p class="hero-src">Lahiri / Chitrapakṣa framework · classical orbs per BPHS and Sārāvalī · astronomical values rounded.</p>
+  </div>
+</section>
+
+</main>
+<script src="lesson.js"></script>
+</body>
+</html>

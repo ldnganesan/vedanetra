@@ -1,0 +1,242 @@
+/* Shared styles for the Learn presentations (Twelve Lagnas, Sky Behind the Symbols).
+   Same deliberately-dark cosmic theme as navagraha-primer.html: full-viewport
+   scroll-snap sections, a fixed nav rail, and a back link to the lesson hub. */
+:root{
+  --bg:#0a0e24; --bg2:#0d1230;
+  --ink:#f2ecd8;
+  --soft:#b7bcdd;
+  --mute:#7e85ad;
+  --gold:#e7c36a;
+  --teal:#5cc8bc;
+  --panel:rgba(255,255,255,0.045);
+  --panel2:rgba(255,255,255,0.07);
+  --stroke:rgba(255,255,255,0.12);
+  --stroke2:rgba(183,188,221,0.35);
+  --accent:#e7c36a;
+  color-scheme:dark;
+  --serif:'EB Garamond','Noto Serif Tamil','Noto Serif Devanagari',Georgia,serif;
+  --display:'Cormorant Garamond','EB Garamond','Noto Serif Tamil','Noto Serif Devanagari',Georgia,serif;
+  --sans:'Mukta','Noto Serif Tamil',system-ui,-apple-system,sans-serif;
+  --glyphf:'Noto Sans Symbols','Noto Sans Symbols 2','EB Garamond',serif;
+}
+*{box-sizing:border-box}
+html{scroll-snap-type:y proximity; scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--serif); font-size:clamp(17px,1.15vw,21px); line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.tamil{font-family:'Noto Serif Tamil','EB Garamond',serif}
+.deva{font-family:'Noto Serif Devanagari','EB Garamond',serif}
+.glyph{font-family:var(--glyphf); line-height:1}
+em{color:var(--soft); font-style:italic}
+b,strong{color:var(--ink); font-weight:600}
+
+/* ---- section shell ---- */
+section{
+  position:relative; min-height:100svh; width:100%;
+  scroll-snap-align:start;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(56px,7vh,90px) clamp(16px,6vw,120px);
+  overflow:hidden;
+}
+@supports not (min-height:100svh){ section{min-height:100vh} }
+section:nth-of-type(even){background:var(--bg2)}
+.wrap{width:100%; max-width:1180px; margin:0 auto; position:relative; z-index:2}
+.watermark{
+  position:absolute; right:clamp(-30px,-1vw,0px); top:50%; transform:translateY(-50%);
+  font-family:var(--glyphf); font-size:min(70vh,700px); line-height:1;
+  color:var(--accent); opacity:0.06; z-index:1; pointer-events:none; user-select:none;
+}
+.eyebrow{
+  font-family:var(--sans); font-weight:600; font-size:clamp(12px,0.95vw,15px);
+  letter-spacing:0.26em; text-transform:uppercase; color:var(--accent);
+}
+h2.secttl{font-family:var(--display); font-weight:600; font-size:clamp(32px,4.4vw,58px); line-height:1.08;
+  margin:0.25em 0 0.6em; text-wrap:balance; color:var(--ink)}
+.lead{font-size:clamp(19px,1.6vw,25px); line-height:1.55; color:var(--ink); max-width:62ch; margin:0 0 22px}
+
+/* ---- hero / divider / closing ---- */
+section.hero{background:radial-gradient(ellipse at 50% 32%, #182250 0%, #0b1030 52%, #070a1e 100%); text-align:center}
+section.hero .wrap{max-width:1000px; display:flex; flex-direction:column; align-items:center; gap:clamp(16px,2.6vh,30px)}
+section.hero .watermark{right:50%; transform:translate(50%,-50%); opacity:0.07}
+.hero-title{font-family:var(--display); font-weight:600; font-size:clamp(44px,8vw,100px); line-height:1.05; color:var(--ink); margin:0;
+  display:flex; flex-direction:column; align-items:center; gap:.12em; text-wrap:balance}
+.tamil-big{font-family:'Noto Serif Tamil',serif; font-weight:600; color:var(--accent); font-size:.82em}
+.hero-en{font-size:.62em}
+.hero-sub{font-family:var(--serif); font-size:clamp(17px,1.6vw,23px); color:var(--soft); max-width:60ch; margin:0 auto}
+.hero-src{font-size:clamp(13px,1vw,16px); color:var(--mute); max-width:70ch; margin:0 auto}
+.scrollcue{font-family:var(--sans); font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--mute)}
+section.divider{background:radial-gradient(ellipse at 20% 50%, #182250 0%, #0b1030 60%, #070a1e 100%)}
+.div-title{font-family:var(--display); font-weight:600; font-size:clamp(44px,7vw,92px); line-height:1.02; margin:.2em 0 .35em; color:var(--ink)}
+.div-line{font-family:var(--sans); color:var(--accent); letter-spacing:.06em; font-size:clamp(14px,1.1vw,18px); margin-top:24px}
+section.closing{background:radial-gradient(ellipse at 50% 60%, #15204c 0%, #0a0e26 60%, #070a1e 100%); text-align:center}
+section.closing .hero-sub{margin-bottom:18px}
+
+/* ---- cards & grids ---- */
+.grid{display:grid; grid-template-columns:repeat(var(--cols,2),minmax(0,1fr)); gap:clamp(14px,1.5vw,24px); margin:6px 0 20px}
+.columns{display:grid; grid-template-columns:var(--tmpl); gap:clamp(14px,1.8vw,30px); align-items:start; margin:6px 0 20px}
+.columns .col{display:flex; flex-direction:column; gap:clamp(14px,1.5vw,22px); min-width:0}
+.card{background:var(--panel); border:1px solid var(--stroke); border-radius:16px; padding:clamp(18px,1.7vw,28px); min-width:0}
+.card h3{font-family:var(--sans); font-weight:700; font-size:clamp(14px,1.05vw,17px); letter-spacing:0.1em; text-transform:uppercase; margin:0 0 10px; color:var(--accent); line-height:1.35}
+.card p,.card li{color:var(--soft); font-size:clamp(16px,1.12vw,20px); line-height:1.5; margin:0}
+.card p + p{margin-top:8px}
+.card ul{margin:0; padding-left:1.1em}
+.card li{margin:4px 0}
+.card.numbered{display:flex; gap:16px; align-items:flex-start}
+.card.numbered .num{font-family:var(--display); font-weight:600; font-size:clamp(30px,2.6vw,42px); color:var(--accent); line-height:1; min-width:1.2em}
+.card.numbered p{color:var(--ink)}
+.grid.stats{grid-template-columns:repeat(var(--cols),minmax(0,160px))}
+.card.stat{text-align:center; padding:14px}
+.statn{font-family:var(--display); font-weight:600; font-size:clamp(38px,4vw,60px); color:var(--accent); line-height:1}
+.card.stat p{font-family:var(--sans); font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
+
+.keynote{font-family:var(--display); font-style:italic; font-size:clamp(19px,1.8vw,28px); line-height:1.4;
+  color:var(--accent); margin:18px 0 8px; padding-left:20px; border-left:3px solid var(--accent); max-width:70ch}
+.keynote b{color:inherit}
+blockquote.quote{font-family:var(--display); font-style:italic; font-size:clamp(21px,2.1vw,32px); line-height:1.4; color:var(--ink);
+  margin:6px 0 26px; padding:clamp(18px,2vw,28px) clamp(20px,2.4vw,34px); background:var(--panel); border:1px solid var(--stroke);
+  border-left:3px solid var(--accent); border-radius:14px; max-width:none}
+blockquote.quote cite{display:block; margin-top:10px; font-family:var(--sans); font-style:normal; font-size:14px; letter-spacing:.08em; color:var(--mute)}
+
+/* ---- tables ---- */
+.tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--stroke); border-radius:14px; margin:4px 0 18px}
+table.cmp{border-collapse:collapse; width:100%; font-size:clamp(14px,1.05vw,18px)}
+table.cmp th,table.cmp td{padding:10px 14px; text-align:left; border-bottom:1px solid var(--stroke); vertical-align:top}
+table.cmp thead th{background:#141a3e; color:var(--accent); font-family:var(--sans); font-weight:600; font-size:clamp(12px,0.9vw,15px); letter-spacing:0.04em}
+table.cmp td{color:var(--soft)}
+table.cmp td:first-child{color:var(--ink)}
+table.cmp tr:last-child td{border-bottom:none}
+table.cmp tr.hl td{background:rgba(231,195,106,0.10); color:var(--ink)}
+
+/* ---- planet slides ---- */
+.graha-head{display:flex; align-items:center; gap:clamp(14px,2vw,26px); flex-wrap:wrap; margin-top:10px}
+.g-glyph{font-family:var(--glyphf); font-size:clamp(60px,7vw,100px); color:var(--g,var(--accent)); line-height:0.9}
+.g-name{font-family:var(--display); font-weight:600; font-size:clamp(40px,6vw,80px); line-height:1; color:var(--ink); margin:0}
+.g-tamil{font-family:'Noto Serif Tamil',serif; font-size:clamp(18px,1.6vw,26px); color:var(--g,var(--accent)); margin-top:6px}
+.chips{display:flex; flex-wrap:wrap; gap:9px; margin:20px 0 10px}
+.chips.center{justify-content:center; margin:0}
+.chip{font-family:var(--sans); font-size:clamp(13px,0.95vw,16px); color:var(--ink);
+  background:var(--panel2); border:1px solid var(--stroke); border-radius:100px; padding:6px 15px}
+.chip b{color:var(--accent); font-weight:600}
+.keyline{font-family:var(--display); font-style:italic; font-size:clamp(22px,2.2vw,34px); color:var(--g,var(--accent)); margin:6px 0 16px}
+ul.pbul{margin:0; padding:0; list-style:none; max-width:78ch}
+ul.pbul li{position:relative; padding:10px 0 10px 26px; border-bottom:1px solid var(--stroke); color:var(--soft); font-size:clamp(16px,1.2vw,21px)}
+ul.pbul li::before{content:"✦"; position:absolute; left:0; top:12px; font-size:.7em; color:var(--g,var(--accent))}
+section.planet[data-planet="sun"]{--g:#f0b43c}
+section.planet[data-planet="moon"]{--g:#cdd4ee}
+section.planet[data-planet="mars"]{--g:#e0705f}
+section.planet[data-planet="mercury"]{--g:#74c98a}
+section.planet[data-planet="jupiter"]{--g:#f0cf6a}
+section.planet[data-planet="venus"]{--g:#e6a0cf}
+section.planet[data-planet="saturn"]{--g:#8fa6d8}
+section.planet[data-planet="rahu"]{--g:#b79be8}
+section.planet[data-planet="ketu"]{--g:#86c7bd}
+section.planet .watermark{color:var(--g,var(--accent))}
+
+/* ---- teaching notes ---- */
+details.notes{margin-top:22px; max-width:80ch; font-size:clamp(14px,1vw,17px); color:var(--mute)}
+details.notes summary{cursor:pointer; font-family:var(--sans); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--mute); width:max-content}
+details.notes summary:hover{color:var(--soft)}
+details.notes summary:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+details.notes p{margin:10px 0 0; padding:12px 16px; border:1px dashed var(--stroke); border-radius:10px; color:var(--soft)}
+section.hero details.notes,section.closing details.notes{margin-left:auto; margin-right:auto; text-align:left}
+
+/* ---- chapter pager ---- */
+nav.pager{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:28px 0 6px}
+nav.pager a{font-family:var(--sans); font-size:15px; color:var(--ink); text-decoration:none; padding:9px 18px;
+  border:1px solid var(--stroke); border-radius:100px; background:var(--panel)}
+nav.pager a:hover{border-color:var(--accent); background:var(--panel2)}
+nav.pager a:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+
+/* ---- South-Indian chart ---- */
+.schart{display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(4,1fr); aspect-ratio:1; max-width:460px; width:100%;
+  border:1px solid var(--stroke2); border-radius:6px; overflow:hidden}
+.schart .sc{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; color:var(--ink);
+  border:1px solid var(--stroke); padding:4px; text-align:center; min-width:0}
+.schart .sc:hover{background:var(--panel2)}
+.schart .sc:focus-visible{outline:2px solid var(--gold); outline-offset:-2px}
+.schart .sg{font-size:clamp(16px,1.6vw,22px); color:var(--gold)}
+.schart .sn{font-family:var(--sans); font-size:clamp(11px,.85vw,14px)}
+.schart .st{font-family:'Noto Serif Tamil',serif; font-size:clamp(9px,.7vw,12px); color:var(--soft)}
+.schart .sl{font-family:var(--sans); font-size:clamp(9px,.7vw,12px); color:var(--mute)}
+.scmid{grid-row:2/4; grid-column:2/4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  color:var(--gold); font-family:var(--display); font-size:clamp(18px,1.7vw,26px)}
+.scmid span:last-child{font-size:.75em; color:var(--soft)}
+
+/* ---- series grid (the twelve chapters) ---- */
+.series{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 16px; margin:6px 0 18px}
+.ser{display:flex; align-items:center; gap:14px; padding:10px 16px; border:1px solid var(--stroke); border-radius:14px;
+  background:var(--panel); text-decoration:none; color:var(--ink); min-width:0}
+.ser:hover{border-color:var(--a); background:var(--panel2)}
+.ser:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+.sernum{font-family:var(--sans); font-size:13px; color:var(--mute); width:1.6em}
+.serg{font-size:26px; color:var(--a); width:1.2em; text-align:center}
+.sert{display:flex; flex-direction:column; font-size:clamp(16px,1.15vw,19px); min-width:0}
+.sert small{font-family:var(--sans); font-size:13px; color:var(--mute)}
+
+/* ---- zodiac wheel ---- */
+svg.wheel{width:100%; max-width:380px; display:block; margin:0 auto}
+svg.wheel .wg{font-family:var(--glyphf); font-size:22px; text-anchor:middle; dominant-baseline:central}
+svg.wheel .wc{fill:var(--gold); font-family:var(--display); font-size:44px; font-weight:600; text-anchor:middle}
+svg.wheel .wc2{fill:var(--soft); font-family:var(--sans); font-size:17px; text-anchor:middle}
+
+/* ---- fixed nav rail ---- */
+nav.rail{
+  position:fixed; right:14px; top:50%; transform:translateY(-50%); z-index:50;
+  display:flex; flex-direction:column; gap:3px; padding:8px 7px; max-height:92vh; overflow-y:auto;
+  background:rgba(10,14,36,0.6); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--stroke); border-radius:100px; scrollbar-width:none;
+}
+nav.rail::-webkit-scrollbar{display:none}
+nav.rail a{
+  width:34px; height:34px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+  font-family:var(--glyphf); font-size:17px; color:var(--mute); text-decoration:none;
+  border-radius:50%; transition:color .2s, background .2s; position:relative;
+}
+nav.rail a:hover{color:var(--ink); background:var(--panel2)}
+nav.rail a[aria-current="true"]{color:var(--accent); background:var(--panel2)}
+nav.rail a:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+nav.rail a .tip{
+  position:fixed; right:62px; transform:translateY(-50%);
+  font-family:var(--sans); font-size:13px; white-space:nowrap; color:var(--ink);
+  background:rgba(10,14,36,0.94); border:1px solid var(--stroke); border-radius:8px;
+  padding:4px 10px; opacity:0; pointer-events:none; transition:opacity .15s;
+}
+nav.rail a:hover .tip,nav.rail a:focus-visible .tip{opacity:1}
+
+a.backhub{
+  position:fixed; left:14px; top:calc(14px + env(safe-area-inset-top,0px)); z-index:50;
+  font-family:var(--sans); font-size:13px; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--soft); text-decoration:none; padding:7px 14px;
+  background:rgba(10,14,36,0.6); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--stroke); border-radius:100px;
+}
+a.backhub:hover{color:var(--ink)}
+a.backhub:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+
+/* ---- slide counter (presentation pages) ---- */
+.counter{position:fixed; left:14px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:50; font-family:var(--sans); font-size:12px;
+  letter-spacing:.16em; color:var(--mute); padding:5px 12px; border:1px solid var(--stroke); border-radius:100px; background:rgba(10,14,36,0.6)}
+
+@media (max-width:860px){
+  nav.rail{ right:0; left:0; top:auto; bottom:0; transform:none; flex-direction:row; max-height:none;
+    justify-content:flex-start; border-radius:0; gap:2px; overflow-x:auto; overflow-y:hidden; padding:6px 10px;
+    padding-bottom:calc(6px + env(safe-area-inset-bottom,0px));
+    border-left:none; border-right:none; border-bottom:none; }
+  nav.rail a .tip{display:none}
+  section{padding-bottom:84px; padding-top:64px}
+  .grid,.columns,.series{grid-template-columns:1fr !important}
+  .grid.stats{grid-template-columns:repeat(var(--cols),minmax(0,1fr)) !important}
+  .counter{display:none}
+  .watermark{font-size:80vw}
+}
+@media print{
+  html{scroll-snap-type:none}
+  section{min-height:auto; break-inside:avoid; page-break-inside:avoid}
+  nav.rail,a.backhub,.counter,.scrollcue{display:none}
+  details.notes{display:block}
+}
+.sublabel{font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--mute); margin:18px 0 10px}
+nav.rail .rnum{font-family:var(--sans); font-size:13px; font-weight:600}
