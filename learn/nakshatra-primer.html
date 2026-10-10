@@ -40,6 +40,19 @@
 .seg .nm{font-family:var(--sans); font-size:13px; color:var(--ink); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .seg .nm small{color:var(--mute); font-size:11px}
 .seg .nm .ab{display:none}
+.seg .nm .tn{display:none; font-family:'Noto Serif Tamil',serif; font-size:12.5px}
+.nkgrid.lang-ta .seg .nm .sa{display:none}
+.nkgrid.lang-ta .seg .nm .tn{display:inline}
+.nkgrid.lang-ta .rc-h .en{display:none}
+.nkgrid.lang-ta .rc-h .ta{margin-left:0; font-size:14px; color:var(--ink); font-weight:600}
+.nkgrid.lang-ta .rc-h .en2{display:inline}
+.rc-h .en2{display:none; margin-left:auto; font-size:12px; color:var(--mute)}
+.langtog{display:flex; justify-content:center; align-items:center; gap:10px; margin:0 0 16px; font-family:var(--sans); font-size:13px; color:var(--mute); letter-spacing:.08em; text-transform:uppercase}
+.seg-ctl{display:inline-flex; border:1px solid var(--stroke2); border-radius:100px; padding:3px; background:var(--panel)}
+.seg-ctl button{font-family:var(--sans); font-size:14px; letter-spacing:0; text-transform:none; color:var(--soft); background:none; border:0; border-radius:100px; padding:6px 16px; cursor:pointer}
+.seg-ctl button[aria-pressed="true"]{background:var(--gold); color:#1a1430; font-weight:600}
+.seg-ctl button:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+.seg-ctl .tamil{font-size:13px}
 .padas{display:grid; grid-template-columns:repeat(4,26px); gap:3px; flex-shrink:0}
 button.pada{width:26px; height:26px; border-radius:5px; border:1px solid rgba(255,255,255,.28); font-family:var(--sans); font-size:12px; font-weight:700;
   padding:0; cursor:pointer; color:#151515; background:var(--c); transition:transform .12s, box-shadow .12s}
@@ -57,7 +70,7 @@ button.pada:hover,button.pada:focus-visible,button.pada.on{transform:translateY(
   font-family:var(--sans); font-size:13.5px; line-height:1.45; color:var(--ink); box-shadow:0 8px 30px rgba(0,0,0,.5); opacity:0; transition:opacity .12s}
 #tip.show{opacity:1}
 #tip b{color:var(--gold)}
-#tip .t{font-family:var(--display); font-size:19px; font-weight:600; color:var(--ink); display:block; margin-bottom:2px}
+#tip .t,.readout .t{font-family:var(--display); font-size:19px; font-weight:600; color:var(--ink); display:block; margin-bottom:2px}
 #tip .warn{color:#f08a6a}
 
 /* ---- nakṣatra cards ---- */
@@ -83,6 +96,8 @@ table.cmp td.lc{white-space:nowrap}
 @media (max-width:760px){
   .rc{padding:6px 4px 8px; gap:5px}
   .rc-h .ta{display:none}
+  .nkgrid.lang-ta .rc-h .ta{display:inline; font-size:11px} .nkgrid.lang-ta .rc-h .en2{display:none}
+  .seg .nm .tn{font-size:10px}
   .rc-h{font-size:11px; gap:4px} .rc-h .g{font-size:14px}
   .seg{flex-direction:column; align-items:flex-start; gap:2px}
   .seg .nm{font-size:11px} .seg .nm .full{display:none} .seg .nm .ab{display:inline} .seg .nm small{display:none}
@@ -172,6 +187,11 @@ table.cmp td.lc{white-space:nowrap}
   <div class="wrap" style="max-width:1180px">
     <div class="eyebrow">The rāśi grid · South-Indian chart</div>
     <h2 class="secttl">Which nakṣatras live in each sign</h2>
+    <div class="langtog"><span id="langlbl">Names</span>
+      <div class="seg-ctl" role="group" aria-labelledby="langlbl">
+        <button type="button" data-lang="sa" aria-pressed="true">Sanskrit</button>
+        <button type="button" data-lang="ta" aria-pressed="false"><span class="tamil">தமிழ்</span> · Tamil</button>
+      </div></div>
     <div class="nkgrid" id="nkgrid" aria-label="South-Indian rāśi chart with the nakṣatra padas in each sign"></div>
     <p style="color:var(--mute); font-size:15px; text-align:center; margin-top:14px">Each square is one pada, coloured by its nakṣatra lord. Hover, focus or tap a pada for its degree range. <span style="color:var(--gold)">⇆</span> marks a nakṣatra split across two signs.</p>
   </div>
@@ -318,14 +338,28 @@ for (let s=0; s<12; s++){
       const k=p%4+1;
       return `<button class="pada${LORDS[L].dark?" dark":""}" data-p="${p}" data-l="${L}" style="--c:var(--${L}); grid-column:${k}" aria-label="${NK[sg.n][0]} pada ${k}">${k}</button>`;
     }).join("");
-    return `<div class="seg${split?" split":""}"><span class="nm"><span class="full">${NK[sg.n][0]}</span><span class="ab">${NK[sg.n][1]}</span> <small class="glyph">${LORDS[L].g}</small></span><span class="padas">${btns}</span></div>`;
+    return `<div class="seg${split?" split":""}"><span class="nm"><span class="sa"><span class="full">${NK[sg.n][0]}</span><span class="ab">${NK[sg.n][1]}</span></span><span class="tn">${NK[sg.n][2]}</span> <small class="glyph">${LORDS[L].g}</small></span><span class="padas">${btns}</span></div>`;
   }).join("");
-  html += `<div class="rc" style="grid-row:${r}; grid-column:${c}"><div class="rc-h"><span class="g">${SIGNS[s][1]}${VS}</span><span class="en">${SIGNS[s][0]}</span><span class="ta">${SIGNS[s][2]}</span></div>${rows}</div>`;
+  html += `<div class="rc" style="grid-row:${r}; grid-column:${c}"><div class="rc-h"><span class="g">${SIGNS[s][1]}${VS}</span><span class="en">${SIGNS[s][0]}</span><span class="ta">${SIGNS[s][2]}</span><span class="en2">${SIGNS[s][0]}</span></div>${rows}</div>`;
 }
 html += `<div class="centre"><div class="ct">Rāśi · Nakṣatra<br><span class="tamil">ராசி · நட்சத்திரம்</span></div>
   <p>Twelve signs × nine padas. Whole nakṣatras sit inside one sign; the Sun's, Mars's and Jupiter's straddle two.</p>
   <div class="readout" id="readout" aria-live="polite">Tap a pada to read its degrees here.</div></div>`;
 grid.innerHTML = html;
+
+/* Sanskrit / Tamil name toggle (remembered per browser) */
+let lang = "sa";
+try { if (localStorage.getItem("nk-lang") === "ta") lang = "ta"; } catch(e) {}
+const togBtns = document.querySelectorAll(".seg-ctl button");
+function setLang(l){
+  lang = l;
+  grid.classList.toggle("lang-ta", l === "ta");
+  togBtns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+  try { localStorage.setItem("nk-lang", l); } catch(e) {}
+  const on = grid.querySelector("button.pada.on");
+  if (on) { const info = padaInfo(+on.dataset.p); readout.innerHTML = info.html; }
+}
+togBtns.forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
 function padaInfo(p){
   const n=Math.floor(p/4), k=p%4+1, L=lordOf(n), a=p*200, b=a+200;
@@ -336,12 +370,13 @@ function padaInfo(p){
   if (GANDANTA_START.has(n) && k===1) g=`<br><span class="warn">Gaṇḍānta — first pada after the water→fire junction</span>`;
   const whole = `${NK[n][0]} spans ${spanText(n)}`;
   return {
-    html:`<span class="t">${NK[n][0]} · pada ${k}</span><b>${dms(a%1800)} – ${end} ${SIGNS[sign][0]}</b> <span style="color:var(--mute)">(${dms(a)}–${dms(b)} absolute)</span><br>Lord <span class="glyph">${LORDS[L].g}</span> ${LORDS[L].n} · Navāṁśa ${nav}<br><span style="color:var(--soft)">${whole}</span>${g}`,
+    html:`<span class="t">${lang==="ta" ? `<span class="tamil">${NK[n][2]}</span> <span style="font-size:.75em;color:var(--soft)">${NK[n][0]}</span>` : `${NK[n][0]} <span class="tamil" style="font-size:.7em;color:var(--soft)">${NK[n][2]}</span>`} · pada ${k}</span><b>${dms(a%1800)} – ${end} ${SIGNS[sign][0]}</b> <span style="color:var(--mute)">(${dms(a)}–${dms(b)} absolute)</span><br>Lord <span class="glyph">${LORDS[L].g}</span> ${LORDS[L].n} · Navāṁśa ${nav}<br><span style="color:var(--soft)">${whole}</span>${g}`,
     text:`${NK[n][0]} pada ${k}: ${dms(a%1800)}–${end} ${SIGNS[sign][0]}; lord ${LORDS[L].n}; navāṁśa ${nav}.`
   };
 }
 const tip=document.getElementById("tip"), readout=document.getElementById("readout");
 let pinned=null;
+setLang(lang);
 function show(btn){
   const info=padaInfo(+btn.dataset.p);
   tip.innerHTML=info.html; readout.innerHTML=info.html;
