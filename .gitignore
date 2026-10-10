@@ -1,0 +1,5 @@
+# Local-only reference material (PDFs, notes) for building learn/ pages
+reference/
+
+# macOS
+.DS_Store
