@@ -40,19 +40,28 @@
 .seg .nm{font-family:var(--sans); font-size:13px; color:var(--ink); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .seg .nm small{color:var(--mute); font-size:11px}
 .seg .nm .ab{display:none}
-.seg .nm .tn{display:none; font-family:'Noto Serif Tamil',serif; font-size:12.5px}
-.nkgrid.lang-ta .seg .nm .sa{display:none}
+/* name modes: English (romanized nakṣatras, English signs) · Sanskrit (Devanagari + IAST) · Tamil */
+.seg .nm .tn,.seg .nm .sv{display:none}
+.seg .nm .tn{font-family:'Noto Serif Tamil',serif; font-size:12.5px}
+.seg .nm .sv .dv{font-family:'Noto Serif Devanagari',serif; font-size:14px}
+.seg .nm .sv .ia{font-size:11px; color:var(--mute); margin-left:5px}
+.nkgrid.lang-sa .seg .nm .en,.nkgrid.lang-ta .seg .nm .en{display:none}
+.nkgrid.lang-sa .seg .nm .sv{display:inline}
 .nkgrid.lang-ta .seg .nm .tn{display:inline}
-.nkgrid.lang-ta .rc-h .en{display:none}
+.rc-h .sh,.rc-h .en2{display:none}
+.rc-h .sh .dv{font-family:'Noto Serif Devanagari',serif; font-size:15px; font-weight:600; color:var(--ink)}
+.rc-h .sh .ia{color:var(--soft); margin-left:5px}
+.rc-h .en2{margin-left:auto; font-size:12px; color:var(--mute)}
+.nkgrid.lang-sa .rc-h .en,.nkgrid.lang-ta .rc-h .en,.nkgrid.lang-sa .rc-h .ta{display:none}
+.nkgrid.lang-sa .rc-h .sh{display:inline}
+.nkgrid.lang-sa .rc-h .en2,.nkgrid.lang-ta .rc-h .en2{display:inline}
 .nkgrid.lang-ta .rc-h .ta{margin-left:0; font-size:14px; color:var(--ink); font-weight:600}
-.nkgrid.lang-ta .rc-h .en2{display:inline}
-.rc-h .en2{display:none; margin-left:auto; font-size:12px; color:var(--mute)}
 .langtog{display:flex; justify-content:center; align-items:center; gap:10px; margin:0 0 16px; font-family:var(--sans); font-size:13px; color:var(--mute); letter-spacing:.08em; text-transform:uppercase}
 .seg-ctl{display:inline-flex; border:1px solid var(--stroke2); border-radius:100px; padding:3px; background:var(--panel)}
-.seg-ctl button{font-family:var(--sans); font-size:14px; letter-spacing:0; text-transform:none; color:var(--soft); background:none; border:0; border-radius:100px; padding:6px 16px; cursor:pointer}
+.seg-ctl button{white-space:nowrap; font-family:var(--sans); font-size:14px; letter-spacing:0; text-transform:none; color:var(--soft); background:none; border:0; border-radius:100px; padding:6px 16px; cursor:pointer}
 .seg-ctl button[aria-pressed="true"]{background:var(--gold); color:#1a1430; font-weight:600}
 .seg-ctl button:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
-.seg-ctl .tamil{font-size:13px}
+.seg-ctl .tamil,.seg-ctl .deva{font-size:13px}
 .padas{display:grid; grid-template-columns:repeat(4,26px); gap:3px; flex-shrink:0}
 button.pada{width:26px; height:26px; border-radius:5px; border:1px solid rgba(255,255,255,.28); font-family:var(--sans); font-size:12px; font-weight:700;
   padding:0; cursor:pointer; color:#151515; background:var(--c); transition:transform .12s, box-shadow .12s}
@@ -95,9 +104,11 @@ table.cmp td.lc{white-space:nowrap}
 @media (max-width:980px){ .nkcards{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:760px){
   .rc{padding:6px 4px 8px; gap:5px}
+  .seg-ctl .nat,#langlbl{display:none}
   .rc-h .ta{display:none}
-  .nkgrid.lang-ta .rc-h .ta{display:inline; font-size:11px} .nkgrid.lang-ta .rc-h .en2{display:none}
-  .seg .nm .tn{font-size:10px}
+  .nkgrid.lang-ta .rc-h .ta{display:inline; font-size:11px}
+  .nkgrid.lang-sa .rc-h .en2,.nkgrid.lang-ta .rc-h .en2,.rc-h .sh .ia,.seg .nm .sv .ia{display:none !important}
+  .seg .nm .tn{font-size:10px} .seg .nm .sv .dv{font-size:11px} .rc-h .sh .dv{font-size:12px}
   .rc-h{font-size:11px; gap:4px} .rc-h .g{font-size:14px}
   .seg{flex-direction:column; align-items:flex-start; gap:2px}
   .seg .nm{font-size:11px} .seg .nm .full{display:none} .seg .nm .ab{display:inline} .seg .nm small{display:none}
@@ -189,8 +200,9 @@ table.cmp td.lc{white-space:nowrap}
     <h2 class="secttl">Which nakṣatras live in each sign</h2>
     <div class="langtog"><span id="langlbl">Names</span>
       <div class="seg-ctl" role="group" aria-labelledby="langlbl">
-        <button type="button" data-lang="sa" aria-pressed="true">Sanskrit</button>
-        <button type="button" data-lang="ta" aria-pressed="false"><span class="tamil">தமிழ்</span> · Tamil</button>
+        <button type="button" data-lang="en" aria-pressed="true">English</button>
+        <button type="button" data-lang="sa" aria-pressed="false"><span class="nat"><span class="deva">संस्कृत</span> · </span>Sanskrit</button>
+        <button type="button" data-lang="ta" aria-pressed="false"><span class="nat"><span class="tamil">தமிழ்</span> · </span>Tamil</button>
       </div></div>
     <div class="nkgrid" id="nkgrid" aria-label="South-Indian rāśi chart with the nakṣatra padas in each sign"></div>
     <p style="color:var(--mute); font-size:15px; text-align:center; margin-top:14px">Each square is one pada, coloured by its nakṣatra lord. Hover, focus or tap a pada for its degree range. <span style="color:var(--gold)">⇆</span> marks a nakṣatra split across two signs.</p>
@@ -294,6 +306,12 @@ const NK = [
  ["Revatī","Rev","ரேவதி","Revathi","Pūṣan","a fish / drum","Deva","Mṛdu (soft)","Elephant","ζ Piscium","The nourisher and guide of journeys — completion."],
 ];
 
+// Sanskrit (Devanagari, IAST) for the signs and the nakṣatras
+const SIGN_SA = [["मेष","Meṣa"],["वृषभ","Vṛṣabha"],["मिथुन","Mithuna"],["कर्क","Karka"],["सिंह","Siṃha"],["कन्या","Kanyā"],
+  ["तुला","Tulā"],["वृश्चिक","Vṛścika"],["धनु","Dhanu"],["मकर","Makara"],["कुम्भ","Kumbha"],["मीन","Mīna"]];
+const NK_DV = ["अश्विनी","भरणी","कृत्तिका","रोहिणी","मृगशीर्ष","आर्द्रा","पुनर्वसु","पुष्य","आश्लेषा","मघा","पूर्वफल्गुनी","उत्तरफल्गुनी","हस्त","चित्रा",
+  "स्वाती","विशाखा","अनुराधा","ज्येष्ठा","मूल","पूर्वाषाढा","उत्तराषाढा","श्रवण","धनिष्ठा","शतभिषा","पूर्वभाद्रपदा","उत्तरभाद्रपदा","रेवती"];
+
 /* ---------------- helpers ---------------- */
 const VS = "︎";
 const lordOf = i => ORDER[i % 9];
@@ -338,21 +356,22 @@ for (let s=0; s<12; s++){
       const k=p%4+1;
       return `<button class="pada${LORDS[L].dark?" dark":""}" data-p="${p}" data-l="${L}" style="--c:var(--${L}); grid-column:${k}" aria-label="${NK[sg.n][0]} pada ${k}">${k}</button>`;
     }).join("");
-    return `<div class="seg${split?" split":""}"><span class="nm"><span class="sa"><span class="full">${NK[sg.n][0]}</span><span class="ab">${NK[sg.n][1]}</span></span><span class="tn">${NK[sg.n][2]}</span> <small class="glyph">${LORDS[L].g}</small></span><span class="padas">${btns}</span></div>`;
+    return `<div class="seg${split?" split":""}"><span class="nm"><span class="en"><span class="full">${NK[sg.n][0]}</span><span class="ab">${NK[sg.n][1]}</span></span><span class="sv"><span class="dv">${NK_DV[sg.n]}</span><span class="ia">${NK[sg.n][0]}</span></span><span class="tn">${NK[sg.n][2]}</span> <small class="glyph">${LORDS[L].g}</small></span><span class="padas">${btns}</span></div>`;
   }).join("");
-  html += `<div class="rc" style="grid-row:${r}; grid-column:${c}"><div class="rc-h"><span class="g">${SIGNS[s][1]}${VS}</span><span class="en">${SIGNS[s][0]}</span><span class="ta">${SIGNS[s][2]}</span><span class="en2">${SIGNS[s][0]}</span></div>${rows}</div>`;
+  html += `<div class="rc" style="grid-row:${r}; grid-column:${c}"><div class="rc-h"><span class="g">${SIGNS[s][1]}${VS}</span><span class="en">${SIGNS[s][0]}</span><span class="ta">${SIGNS[s][2]}</span><span class="sh"><span class="dv">${SIGN_SA[s][0]}</span><span class="ia">${SIGN_SA[s][1]}</span></span><span class="en2">${SIGNS[s][0]}</span></div>${rows}</div>`;
 }
 html += `<div class="centre"><div class="ct">Rāśi · Nakṣatra<br><span class="tamil">ராசி · நட்சத்திரம்</span></div>
   <p>Twelve signs × nine padas. Whole nakṣatras sit inside one sign; the Sun's, Mars's and Jupiter's straddle two.</p>
   <div class="readout" id="readout" aria-live="polite">Tap a pada to read its degrees here.</div></div>`;
 grid.innerHTML = html;
 
-/* Sanskrit / Tamil name toggle (remembered per browser) */
-let lang = "sa";
-try { if (localStorage.getItem("nk-lang") === "ta") lang = "ta"; } catch(e) {}
+/* English / Sanskrit / Tamil name toggle (remembered per browser) */
+let lang = "en";
+try { const v = localStorage.getItem("nk-lang"); if (v === "sa" || v === "ta") lang = v; } catch(e) {}
 const togBtns = document.querySelectorAll(".seg-ctl button");
 function setLang(l){
   lang = l;
+  grid.classList.toggle("lang-sa", l === "sa");
   grid.classList.toggle("lang-ta", l === "ta");
   togBtns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
   try { localStorage.setItem("nk-lang", l); } catch(e) {}
@@ -361,6 +380,17 @@ function setLang(l){
 }
 togBtns.forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
+const sub = t => `<span style="font-size:.72em;color:var(--soft)">${t}</span>`;
+function nameFor(n){
+  if (lang === "ta") return `<span class="tamil">${NK[n][2]}</span> ${sub(NK[n][0])}`;
+  if (lang === "sa") return `<span class="deva">${NK_DV[n]}</span> ${sub(NK[n][0])}`;
+  return `${NK[n][0]} ${sub(`<span class="tamil">${NK[n][2]}</span>`)}`;
+}
+function signFor(s){
+  if (lang === "ta") return `<span class="tamil">${SIGNS[s][2]}</span> (${SIGNS[s][0]})`;
+  if (lang === "sa") return `<span class="deva">${SIGN_SA[s][0]}</span> ${SIGN_SA[s][1]} (${SIGNS[s][0]})`;
+  return SIGNS[s][0];
+}
 function padaInfo(p){
   const n=Math.floor(p/4), k=p%4+1, L=lordOf(n), a=p*200, b=a+200;
   const sign=Math.floor(a/1800), nav=SIGNS[p%12][0];
@@ -370,7 +400,7 @@ function padaInfo(p){
   if (GANDANTA_START.has(n) && k===1) g=`<br><span class="warn">Gaṇḍānta — first pada after the water→fire junction</span>`;
   const whole = `${NK[n][0]} spans ${spanText(n)}`;
   return {
-    html:`<span class="t">${lang==="ta" ? `<span class="tamil">${NK[n][2]}</span> <span style="font-size:.75em;color:var(--soft)">${NK[n][0]}</span>` : `${NK[n][0]} <span class="tamil" style="font-size:.7em;color:var(--soft)">${NK[n][2]}</span>`} · pada ${k}</span><b>${dms(a%1800)} – ${end} ${SIGNS[sign][0]}</b> <span style="color:var(--mute)">(${dms(a)}–${dms(b)} absolute)</span><br>Lord <span class="glyph">${LORDS[L].g}</span> ${LORDS[L].n} · Navāṁśa ${nav}<br><span style="color:var(--soft)">${whole}</span>${g}`,
+    html:`<span class="t">${nameFor(n)} · pada ${k}</span><b>${dms(a%1800)} – ${end} ${signFor(sign)}</b> <span style="color:var(--mute)">(${dms(a)}–${dms(b)} absolute)</span><br>Lord <span class="glyph">${LORDS[L].g}</span> ${LORDS[L].n} · Navāṁśa ${nav}<br><span style="color:var(--soft)">${whole}</span>${g}`,
     text:`${NK[n][0]} pada ${k}: ${dms(a%1800)}–${end} ${SIGNS[sign][0]}; lord ${LORDS[L].n}; navāṁśa ${nav}.`
   };
 }
