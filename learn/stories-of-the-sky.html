@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="The Vedic and Purāṇic stories of the nine grahas and the nakṣatras — Svarbhānu and the eclipse, Soma and his twenty-seven wives, the Kṛttikās, Abhijit — with sources and their echoes in Jyotiṣa.">
+<title>Stories of the Sky</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Mukta:wght@300;400;600;700&family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Serif+Tamil:wght@400;600&family=Noto+Sans+Symbols:wght@400;700&family=Noto+Sans+Symbols+2&display=swap">
+<link rel="stylesheet" href="lesson.css">
+<style>
+:root{--accent:#e7c36a}
+.om{font-family:'Noto Serif Devanagari',serif; font-size:clamp(46px,7vw,86px); color:var(--gold)}
+.sloka{font-family:'Noto Serif Devanagari',serif; font-size:clamp(22px,2.7vw,36px); line-height:1.7; color:var(--ink)}
+.sloka-tr{font-family:var(--display); font-style:italic; font-size:clamp(17px,1.6vw,23px); color:var(--soft); line-height:1.6}
+.sloka-en{font-size:clamp(15px,1.3vw,19px); color:var(--mute); max-width:62ch}
+
+/* story sections */
+section.story{--g:var(--accent)}
+section.story .eyebrow{color:var(--g)}
+.story-head{display:flex; align-items:center; gap:clamp(14px,2vw,24px); margin:8px 0 18px}
+.story-head .g-glyph{font-family:var(--glyphf); font-size:clamp(54px,6vw,88px); color:var(--g); line-height:.9}
+.story-head h2{font-family:var(--display); font-weight:600; font-size:clamp(32px,4.4vw,58px); line-height:1.05; margin:0; text-wrap:balance}
+.story-head .sub{font-family:var(--serif); font-style:italic; color:var(--g); font-size:clamp(17px,1.5vw,23px); margin-top:4px}
+.tale p{color:var(--soft); font-size:clamp(17px,1.2vw,21px); line-height:1.6; margin:0 0 14px; max-width:68ch}
+.tale p b{color:var(--ink)}
+.tale p:first-child::first-letter{font-family:var(--display); font-size:3.1em; float:left; line-height:.85; padding:4px 8px 0 0; color:var(--g)}
+.src{font-family:var(--sans); font-size:14px; color:var(--mute); line-height:1.55}
+.src b{color:var(--soft); font-weight:600}
+.tag-v,.tag-p,.tag-f{display:inline-block; font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:2px 8px; border-radius:100px; margin-right:6px; vertical-align:1px}
+.tag-v{background:rgba(231,195,106,.18); color:var(--gold)}
+.tag-p{background:rgba(92,200,188,.16); color:var(--teal)}
+.tag-f{background:rgba(183,155,232,.18); color:#c9b3f0}
+.echo{border-left:3px solid var(--g)}
+.echo h3{color:var(--g)}
+section.story[data-planet="sun"]{--g:#f0b43c}
+section.story[data-planet="moon"]{--g:#cdd4ee}
+section.story[data-planet="mars"]{--g:#e0705f}
+section.story[data-planet="mercury"]{--g:#74c98a}
+section.story[data-planet="jupiter"]{--g:#f0cf6a}
+section.story[data-planet="venus"]{--g:#e6a0cf}
+section.story[data-planet="saturn"]{--g:#8fa6d8}
+section.story[data-planet="rahu"]{--g:#b79be8}
+section.story[data-planet="ketu"]{--g:#86c7bd}
+section.story[data-planet="nak"]{--g:#5cc8bc}
+section.story .watermark{color:var(--g)}
+
+/* family trees */
+.trees{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(14px,1.5vw,22px)}
+.tree{background:var(--panel); border:1px solid var(--stroke); border-radius:16px; padding:18px 18px 14px}
+.tree h3{font-family:var(--sans); font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin:0 0 12px}
+.tree ul{list-style:none; margin:0; padding-left:18px; position:relative}
+.tree > ul{padding-left:0}
+.tree li{position:relative; padding:4px 0 4px 16px; color:var(--soft); font-size:clamp(15px,1.05vw,18px)}
+.tree ul ul li::before{content:""; position:absolute; left:0; top:0; bottom:0; border-left:1px solid var(--stroke2)}
+.tree ul ul li:last-child::before{bottom:calc(100% - 17px)}
+.tree ul ul li::after{content:""; position:absolute; left:0; top:17px; width:11px; border-top:1px solid var(--stroke2)}
+.tree > ul > li{padding-left:0}
+.tree .gr{color:var(--ink); font-weight:600}
+.tree .gr .glyph{margin-right:4px}
+.tree small{color:var(--mute); font-family:var(--sans); font-size:12px}
+
+table.cmp td .glyph{margin-right:6px}
+@media (max-width:980px){ .trees{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<a class="backhub" href="index.html">← Lessons</a>
+<nav class="rail" aria-label="Jump to section">
+  <a href="#title"><span class="glyph">✧</span><span class="tip">Title</span></a>
+  <a href="#layers"><span class="glyph">◈</span><span class="tip">Veda and Purāṇa</span></a>
+  <a href="#family"><span class="glyph">⚭</span><span class="tip">The family of the grahas</span></a>
+  <a href="#surya"><span class="glyph">☉</span><span class="tip">Sūrya</span></a>
+  <a href="#chandra"><span class="glyph">☽</span><span class="tip">Chandra</span></a>
+  <a href="#mangala"><span class="glyph">♂</span><span class="tip">Maṅgala</span></a>
+  <a href="#budha"><span class="glyph">☿</span><span class="tip">Budha</span></a>
+  <a href="#guru"><span class="glyph">♃</span><span class="tip">Bṛhaspati</span></a>
+  <a href="#shukra"><span class="glyph">♀</span><span class="tip">Śukra</span></a>
+  <a href="#shani"><span class="glyph">♄</span><span class="tip">Śani</span></a>
+  <a href="#rahuketu"><span class="glyph">☊</span><span class="tip">Rāhu &amp; Ketu</span></a>
+  <a href="#part2"><span class="glyph">✶</span><span class="tip">The nakṣatras</span></a>
+  <a href="#births"><span class="glyph">☸</span><span class="tip">Birth stars</span></a>
+  <a href="#festivals"><span class="glyph">✺</span><span class="tip">Festivals</span></a>
+  <a href="#worship"><span class="glyph">ॐ</span><span class="tip">Mantras &amp; temples</span></a>
+  <a href="#end"><span class="glyph">∎</span><span class="tip">Close</span></a>
+</nav>
+<main>
+
+<!-- ============ TITLE ============ -->
+<section id="title" class="hero">
+  <div class="wrap">
+    <div class="om">ॐ</div>
+    <div class="eyebrow">Navagraha Stotra · attributed to Vyāsa</div>
+    <div class="sloka">जपाकुसुमसङ्काशं काश्यपेयं महाद्युतिम् ।<br>तमोऽरिं सर्वपापघ्नं प्रणतोऽस्मि दिवाकरम् ॥</div>
+    <div class="sloka-tr">japākusuma-saṅkāśaṁ kāśyapeyaṁ mahādyutim |<br>tamo'riṁ sarva-pāpa-ghnaṁ praṇato'smi divākaram ‖</div>
+    <div class="sloka-en">“Red as the hibiscus, son of Kaśyapa, of great splendour; foe of darkness, destroyer of all sin — to the maker of the day I bow.”</div>
+    <h1 class="hero-title">Stories of the Sky</h1>
+    <p class="hero-sub">Kathā · <span class="tamil">கதை</span> · <span class="deva">कथा</span> — the Vedic and Purāṇic tales behind the nine grahas and the nakṣatras, and what each one remembers about the real sky.</p>
+    <div class="scrollcue">scroll or press → to begin</div>
+  </div>
+</section>
+
+<!-- ============ LAYERS ============ -->
+<section id="layers">
+  <div class="wrap">
+    <div class="eyebrow">Before the stories</div>
+    <h2 class="secttl">Three layers of telling</h2>
+    <div class="grid" style="--cols:3">
+      <div class="card"><h3><span class="tag-v">Vedic</span></h3><p>In the <b>Ṛgveda, Saṁhitās and Brāhmaṇas</b>, Sūrya, Soma and Bṛhaspati are gods of the hymns; Svarbhānu is the darkness that seizes the Sun; the nakṣatras are listed with their deities. There is no “nine planets” yet — these are powers of the sacrifice and the sky.</p></div>
+      <div class="card"><h3><span class="tag-p">Purāṇic &amp; epic</span></h3><p>The <b>Purāṇas, Mahābhārata and Rāmāyaṇa</b> give the grahas families, marriages, quarrels and curses — Sūrya's wives, Soma's twenty-seven brides, the churning of the ocean. Versions differ between texts, and the page says which one it follows.</p></div>
+      <div class="card"><h3><span class="tag-f">Living tradition</span></h3><p>Temple legends, festivals and family practice — especially in Tamil Nadu — carry the stories on: Navagraha shrines around Kumbakonam, Thiruvathirai for Naṭarāja, Thai Pūsam for Murugan. Where a tale is a popular retelling rather than a text, it is marked so.</p></div>
+    </div>
+    <div class="keynote">Read each story twice — once as a story, and once as a memory of the sky. Many of them are astronomy told in the language of gods.</div>
+  </div>
+</section>
+
+<!-- ============ FAMILY ============ -->
+<section id="family">
+  <div class="wrap">
+    <div class="eyebrow">Purāṇic genealogy</div>
+    <h2 class="secttl">The family of the grahas</h2>
+    <div class="trees">
+      <div class="tree"><h3>The solar house</h3>
+        <ul><li>Kaśyapa ⚭ Aditi
+          <ul><li><span class="gr"><span class="glyph" style="color:#f0b43c">☉</span>Sūrya</span> <small>the Āditya</small>
+            <ul>
+              <li>⚭ Saṁjñā <small>daughter of Viśvakarmā</small>
+                <ul><li>Vaivasvata Manu</li><li>Yama &amp; Yamunā</li><li>the Aśvins <small>born when both took horse-form</small></li></ul></li>
+              <li>⚭ Chāyā <small>Saṁjñā's shadow</small>
+                <ul><li><span class="gr"><span class="glyph" style="color:#8fa6d8">♄</span>Śani</span></li><li>Sāvarṇi Manu · Tapatī</li></ul></li>
+            </ul></li></ul></li></ul>
+      </div>
+      <div class="tree"><h3>The lunar house</h3>
+        <ul>
+          <li>Atri ⚭ Anasūyā
+            <ul><li><span class="gr"><span class="glyph" style="color:#cdd4ee">☽</span>Soma</span> <small>⚭ 27 daughters of Dakṣa</small></li></ul></li>
+          <li>Aṅgiras
+            <ul><li><span class="gr"><span class="glyph" style="color:#f0cf6a">♃</span>Bṛhaspati</span> <small>⚭ Tārā</small></li></ul></li>
+          <li>Soma + Tārā
+            <ul><li><span class="gr"><span class="glyph" style="color:#74c98a">☿</span>Budha</span> <small>⚭ Ilā</small>
+              <ul><li>Purūravas <small>— the lunar dynasty begins</small></li></ul></li></ul></li>
+        </ul>
+      </div>
+      <div class="tree"><h3>Sage, earth and asura</h3>
+        <ul>
+          <li>Bhṛgu
+            <ul><li><span class="gr"><span class="glyph" style="color:#e6a0cf">♀</span>Śukra</span> <small>Uśanas Kāvya · guru of the asuras</small></li></ul></li>
+          <li>Bhūmi, the Earth
+            <ul><li><span class="gr"><span class="glyph" style="color:#e0705f">♂</span>Maṅgala</span> <small>Bhauma · Kuja, “earth-born”</small></li></ul></li>
+          <li>Vipracitti ⚭ Siṁhikā
+            <ul><li>Svarbhānu <small>Saiṁhikeya</small>
+              <ul><li><span class="gr"><span class="glyph" style="color:#b79be8">☊</span>Rāhu</span> <small>the head</small></li><li><span class="gr"><span class="glyph" style="color:#86c7bd">☋</span>Ketu</span> <small>the body</small></li></ul></li></ul></li>
+        </ul>
+      </div>
+    </div>
+    <p class="src" style="margin-top:6px">After the Viṣṇu Purāṇa, Bhāgavata, Mārkaṇḍeya and Brahmavaivarta Purāṇas. Maṅgala's parentage varies by text (see his story).</p>
+  </div>
+</section>
+
+<!-- ============ SURYA ============ -->
+<section id="surya" class="story" data-planet="sun">
+  <div class="watermark glyph" aria-hidden="true">☉</div>
+  <div class="wrap">
+    <div class="eyebrow">Graha one · Sūrya</div>
+    <div class="story-head"><span class="g-glyph glyph">☉</span><div><h2>The wife who could not bear his light</h2><div class="sub">Sūrya, Saṁjñā and Chāyā</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>Sūrya, son of Kaśyapa and Aditi, married <b>Saṁjñā</b>, daughter of the divine craftsman Viśvakarmā. She bore him <b>Manu, Yama and Yamunā</b> — but she could not endure his blazing heat. Leaving her own <b>shadow, Chāyā</b>, in her place, she slipped away to the forest in the form of a mare.</p>
+        <p>Chāyā bore Sūrya three more children, among them <b>Śani</b>. When she favoured her own sons over Saṁjñā's, Yama protested — and the deception came to light. Sūrya went in search of his wife, found her as a mare and became a horse himself; from that union the twin physicians, the <b>Aśvins</b>, were born.</p>
+        <p>To bring her home, Viśvakarmā set Sūrya on his lathe and <b>trimmed away part of his brilliance</b>. From the shavings he forged the weapons of the gods — among them Viṣṇu's discus, the Sudarśana.</p>
+        <p class="src"><span class="tag-p">Purāṇic</span><b>Mārkaṇḍeya Purāṇa</b> (the Saṁjñā episode); <b>Viṣṇu Purāṇa</b> 3.2. <span class="tag-v">Vedic</span> Sūrya's chariot of seven bay mares, <b>Ṛgveda</b> 1.50.8; the Gāyatrī to Savitṛ, Ṛgveda 3.62.10.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Jyotiṣa echo</h3><p>The Sun is <b>father</b> and <b>ātman</b> — and his household is crowded with the Jyotiṣa cast: Śani is his son, which is why the classical friendship tables make <b>Sun and Saturn enemies</b>; Yama, his other son, is lord of the Bharaṇī nakṣatra; the Aśvins preside over <b>Aśvinī</b>.</p></div>
+        <div class="card"><h3>Read astronomically</h3><p>A light too strong to look at, which must be “trimmed” before it can be lived with — the same idea as <b>astaṅga</b>, where a planet beside the Sun is lost in his glare.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHANDRA ============ -->
+<section id="chandra" class="story" data-planet="moon">
+  <div class="watermark glyph" aria-hidden="true">☽</div>
+  <div class="wrap">
+    <div class="eyebrow">Graha two · Chandra</div>
+    <div class="story-head"><span class="g-glyph glyph">☽</span><div><h2>Soma and his twenty-seven brides</h2><div class="sub">the curse that made the Moon wax and wane</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>Dakṣa Prajāpati gave his daughters — the <b>nakṣatras</b> — in marriage to Soma, the Moon. But Soma loved only one: <b>Rohiṇī</b>, and he lingered in her house while the others waited. The sisters complained to their father; twice Soma promised to treat them equally, and twice he returned to Rohiṇī.</p>
+        <p>Dakṣa cursed him with a <b>wasting sickness (rāja-yakṣmā)</b>, and the Moon began to fade. As he dwindled, the plants and creatures that drew life from him faded too. At the shore of <b>Prabhāsa</b> he bathed and worshipped, and the curse was softened rather than lifted: he would <b>waste for half the month and grow again for the other half</b>. Śiva set the slender crescent in his hair — <b>Chandraśekhara</b> — and the shrine at Prabhāsa is remembered as Somnāth.</p>
+        <p class="src"><span class="tag-v">Vedic</span> The oldest form is in the <b>Taittirīya Saṁhitā</b> 2.3.5: Prajāpati gives Soma <b>thirty-three</b> daughters; Soma dwells only with Rohiṇī, and is seized by yakṣma. <span class="tag-p">Epic</span> <b>Mahābhārata</b>, Śalya Parva (the Prabhāsa tīrtha). Later Purāṇas fix the number at twenty-seven.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Read astronomically</h3><p>The Moon visits <b>one wife a night</b> — roughly one nakṣatra a day around a 27⅓-day circuit. He “wastes” and “recovers” every month: the <b>phases</b>. And Rohiṇī is truly his favourite — the Moon is <b>exalted in Taurus</b>, the sign that holds Rohiṇī.</p></div>
+        <div class="card"><h3>Also told of Soma</h3><p>Soma was born from the eye of the sage <b>Atri</b> — or, in another telling, rose from the churned Ocean of Milk. Ṛgveda book 9 is entirely to Soma, the sacred plant-drink the Moon later came to embody.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANGALA ============ -->
+<section id="mangala" class="story" data-planet="mars">
+  <div class="watermark glyph" aria-hidden="true">♂</div>
+  <div class="wrap">
+    <div class="eyebrow">Graha three · Maṅgala</div>
+    <div class="story-head"><span class="g-glyph glyph">♂</span><div><h2>The son of the Earth</h2><div class="sub">Bhauma, Kuja, Aṅgāraka</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>Every name of Mars says where he came from: <b>Bhauma</b>, “of Bhūmi”; <b>Kuja</b>, “born of <em>ku</em>, the earth”; <b>Bhūmi-putra</b>, the Earth's son. The texts agree on the mother and differ on the father.</p>
+        <p>In one telling, when Viṣṇu as the boar <b>Varāha</b> lifted the drowned Earth from the cosmic waters, Bhūdevī bore him a son — red, fiery, and armed. In another, a drop of <b>Śiva's sweat</b>, fallen to the ground during his austerities, was received by the Earth and became a blazing child, whom Śiva raised to the sky as a graha. His name <b>Aṅgāraka</b>, “the glowing coal”, keeps that fire.</p>
+        <p>In Tamil devotion Maṅgala is closely linked with <b>Murugan</b>, the warrior-son of Śiva, and his shrine among the Navagraha temples is <b>Vaitheeswaran Koil</b>, where Śiva is worshipped as the healer.</p>
+        <p class="src"><span class="tag-p">Purāṇic</span> Varāha–Bhūdevī: <b>Brahmavaivarta Purāṇa</b>. Śiva's sweat: <b>Skanda Purāṇa</b> and later tellings. <span class="tag-f">Tradition</span> the Murugan link and the Vaitheeswaran Koil shrine.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Jyotiṣa echo</h3><p>Born of the Earth, Mars is the kāraka of <b>land and property</b> (bhūmi); born of fire and armed, of <b>courage, siblings, blood and surgery</b>. The story is the kārakatva.</p></div>
+        <div class="card"><h3>Read astronomically</h3><p>The red planet that glows like an ember — no other graha has so plain a colour, and every one of his names points to it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUDHA ============ -->
+<section id="budha" class="story" data-planet="mercury">
+  <div class="watermark glyph" aria-hidden="true">☿</div>
+  <div class="wrap">
+    <div class="eyebrow">Graha four · Budha</div>
+    <div class="story-head"><span class="g-glyph glyph">☿</span><div><h2>The child whose father was a question</h2><div class="sub">Soma, Tārā and the birth of Budha</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>Soma, proud after his great rājasūya sacrifice, carried off <b>Tārā</b>, wife of his own teacher <b>Bṛhaspati</b>. The devas took Bṛhaspati's side, the asuras — led by Śukra — took Soma's, and the war that followed, the <b>Tārakāmaya</b>, shook the worlds until Brahmā made Soma give her back.</p>
+        <p>Tārā returned with child. When the boy was born he was so radiant that both Soma and Bṛhaspati claimed him. Tārā, ashamed, would not say; the child himself demanded to know his father. Pressed by Brahmā, she named <b>Soma</b>. The child was called <b>Budha</b>, “the wise one”, and his son by Ilā, <b>Purūravas</b>, began the lunar dynasty (Chandra-vaṁśa) of the Mahābhārata kings.</p>
+        <p class="src"><span class="tag-p">Purāṇic</span> <b>Viṣṇu Purāṇa</b> 4.6; <b>Bhāgavata Purāṇa</b> 9.14.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Jyotiṣa echo</h3><p>This is the lore behind a puzzle in the friendship tables: <b>Jupiter treats Mercury as an enemy, but Mercury does not return it</b>, and Mercury is hostile to the Moon. The Dhaṉusu chapter of the Twelve Lagnas uses exactly this story to explain the 7th lord's awkwardness for a Sagittarius lagna.</p></div>
+        <div class="card"><h3>Read astronomically</h3><p>Mercury never strays far from the Sun and changes its nature with whatever it joins — a planet of <b>mixed parentage</b>, as its story says.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GURU ============ -->
+<section id="guru" class="story" data-planet="jupiter">
+  <div class="watermark glyph" aria-hidden="true">♃</div>
+  <div class="wrap">
+    <div class="eyebrow">Graha five · Bṛhaspati</div>
+    <div class="story-head"><span class="g-glyph glyph">♃</span><div><h2>The priest who sang the cows free</h2><div class="sub">Bṛhaspati, guru of the devas</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>Bṛhaspati — also <b>Brahmaṇaspati</b>, “lord of the sacred word” — is a son of the sage <b>Aṅgiras</b> and the priest and teacher of the gods. In the Ṛgveda he is the power of prayer itself.</p>
+        <p>The demon <b>Vala</b> had shut the cows of light inside a mountain. Bṛhaspati did not break the rock by force: with his band of singers he <b>split it with a roar of sacred chant</b>, and the cows — the dawns, the light — came pouring out. The hymn compares him to thunder bursting a cloud.</p>
+        <p>As guru of the devas he is the rival of <b>Śukra</b>, guru of the asuras; and as husband of Tārā he stands at the centre of Budha's story.</p>
+        <p class="src"><span class="tag-v">Vedic</span> <b>Ṛgveda</b> 10.68 (Bṛhaspati and Vala); hymns to Bṛhaspati in books 2 and 4. <span class="tag-p">Purāṇic</span> parentage and the rivalry with Śukra, <b>Mahābhārata</b> and Purāṇas.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Jyotiṣa echo</h3><p><b>Guru</b> is the kāraka of wisdom, dharma, mantra and the teacher; he rules Puṣya as its deity — the nakṣatra held most auspicious for beginnings — and his aspect “releases” whatever it touches, as his chant released the light.</p></div>
+        <div class="card"><h3>Two gurus, two camps</h3><p>Bṛhaspati's friends (Sun, Moon, Mars) and Śukra's (Mercury, Saturn) form the two graha camps of the friendship tables — the deva party and the asura party.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHUKRA ============ -->
+<section id="shukra" class="story" data-planet="venus">
+  <div class="watermark glyph" aria-hidden="true">♀</div>
+  <div class="wrap">
+    <div class="eyebrow">Graha six · Śukra</div>
+    <div class="story-head"><span class="g-glyph glyph">♀</span><div><h2>The guru who could raise the dead</h2><div class="sub">Śukra, Kaca and Devayānī</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>Śukra — <b>Uśanas Kāvya</b>, son of Bhṛgu — was guru of the asuras and alone knew the <b>mṛta-sañjīvanī</b>, the lore that restores the slain to life. However many asuras fell in battle, he raised them again.</p>
+        <p>The devas sent <b>Kaca</b>, Bṛhaspati's son, to become Śukra's disciple. Śukra's daughter <b>Devayānī</b> loved him. The suspicious asuras killed Kaca again and again; each time Devayānī begged and Śukra revived him. At last they burned him, mixed his ashes in wine, and gave it to Śukra to drink. To save Kaca now, Śukra had to <b>teach him the sañjīvanī inside his own belly</b>, so that Kaca could burst out and revive his teacher in turn. Kaca left with the knowledge — refusing Devayānī's hand, since one born from the guru's body is the guru's child — and Śukra forbade wine to brahmins ever after.</p>
+        <p>In a popular retelling of the Vāmana story, Śukra warned King Bali not to grant the dwarf his three steps, then shrank into the spout of the water-vessel to stop the gift — and lost an eye to the blade of grass Vāmana used to clear it.</p>
+        <p class="src"><span class="tag-p">Epic</span> <b>Mahābhārata</b>, Ādi Parva (Kaca and Devayānī). <span class="tag-p">Purāṇic</span> Śukra's warning to Bali, <b>Bhāgavata Purāṇa</b> book 8. <span class="tag-f">Retelling</span> the lost eye. <span class="tag-v">Vedic</span> Uśanā Kāvya appears in the Ṛgveda as a seer-poet.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Jyotiṣa echo</h3><p>Śukra is <b>kalatra-kāraka</b> — love, desire and marriage — and here he is a story of love, wine and devotion. His power over life returning is why Venus is also tied to <b>vitality and the reproductive fluid (śukra)</b>.</p></div>
+        <div class="card"><h3>Read astronomically</h3><p>The brightest planet, the morning and evening star — the one light that “comes back” on the other side of the Sun every few months.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHANI ============ -->
+<section id="shani" class="story" data-planet="saturn">
+  <div class="watermark glyph" aria-hidden="true">♄</div>
+  <div class="wrap">
+    <div class="eyebrow">Graha seven · Śani</div>
+    <div class="story-head"><span class="g-glyph glyph">♄</span><div><h2>The gaze that must be lowered</h2><div class="sub">Śani, the slow one</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>Śani is the son of Sūrya and <b>Chāyā</b>, the shadow — dark where his father is bright. His name <b>Śanaiścara</b> means “the one who moves slowly” (<em>śanaiḥ carati</em>).</p>
+        <p>Lost in devotion, Śani once ignored his own wife when she came to him; stung, she cursed him that <b>whatever he looked upon would be ruined</b>. From then on he kept his eyes lowered. When Pārvatī's son was born, the gods came to see the child, and Śani — at Pārvatī's own insistence — raised his eyes for a moment. The infant's head was struck off; Viṣṇu brought back an elephant's head, and the child became <b>Gaṇeśa</b>.</p>
+        <p>In the South, Śani's great shrine is <b>Thirunallar</b>, where King Nala is said to have been freed of the affliction that had cost him his kingdom — the story of Śani's long, testing hold that every Śani-daśā and sāḍe-sāti recalls.</p>
+        <p class="src"><span class="tag-p">Purāṇic</span> <b>Brahmavaivarta Purāṇa</b>, Gaṇapati Khaṇḍa. <span class="tag-f">Tradition</span> Thirunallar and Nala.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Jyotiṣa echo</h3><p>Śani's <b>dṛṣṭi</b> is feared above all — his special 3rd and 10th aspects, his slow transits, the seven-and-a-half years of sāḍe-sāti. The story is a lesson in <b>where his gaze falls</b>.</p></div>
+        <div class="card"><h3>Read astronomically</h3><p>The slowest of the visible planets — about <b>29½ years</b> to circle the zodiac, some 2½ years in each sign. “The slow mover” is simply what Saturn is.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RAHU KETU ============ -->
+<section id="rahuketu" class="story" data-planet="rahu">
+  <div class="watermark glyph" aria-hidden="true">☊</div>
+  <div class="wrap">
+    <div class="eyebrow">Grahas eight &amp; nine · Rāhu and Ketu</div>
+    <div class="story-head"><span class="g-glyph glyph">☊</span><div><h2>The thief at the churning</h2><div class="sub">Svarbhānu, who became the eclipse</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>When the devas and asuras churned the <b>Ocean of Milk</b> with Mount Mandara and the serpent Vāsuki, the last treasure to rise was <b>amṛta</b>, the nectar of immortality. Viṣṇu, as the enchantress <b>Mohinī</b>, served it to the devas alone.</p>
+        <p>The asura <b>Svarbhānu</b>, son of Siṁhikā, slipped in disguise between the <b>Sun and the Moon</b> and drank. They cried out; Viṣṇu's discus took off his head before the nectar could pass his throat. But the head had tasted immortality and could not die. It lives on as <b>Rāhu</b>, the body as <b>Ketu</b> — and Rāhu still pursues the two lights that betrayed him, swallowing them at the eclipse, only for them to slip out through his severed throat.</p>
+        <p class="src"><span class="tag-v">Vedic</span> <b>Ṛgveda</b> 5.40.5–9: Svarbhānu pierces the Sun with darkness, and the sage <b>Atri</b> restores it. <span class="tag-p">Purāṇic &amp; epic</span> <b>Mahābhārata</b>, Ādi Parva (the churning); <b>Viṣṇu Purāṇa</b> 1.9; <b>Bhāgavata Purāṇa</b> 8.9.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Read astronomically</h3><p>Two halves, <b>always 180° apart</b>, immortal, that seize the Sun and Moon — the exact description of the <b>lunar nodes</b>, the two points where every eclipse happens. See <a href="sky-behind-the-symbols.html#p4" style="color:var(--ketu)">The Sky Behind the Symbols, Part 4</a>.</p></div>
+        <div class="card"><h3>The oldest eclipse record</h3><p>The Ṛgveda's Svarbhānu has <b>no Rāhu or Ketu yet</b> — just a darkness that seizes the Sun. The severed head and body are the Purāṇic layer, which splits the one shadow into the two nodes Jyotiṣa needs.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART II ============ -->
+<section id="part2" class="divider">
+  <div class="watermark glyph" aria-hidden="true">✶</div>
+  <div class="wrap">
+    <div class="eyebrow">Part II</div>
+    <h2 class="div-title">The nakṣatras<br>in story</h2>
+    <p class="hero-sub" style="margin:0">Soma's wives in the sky — a hunter and his arrow, six sisters who nursed a god, and a star that fell.</p>
+  </div>
+</section>
+
+<section id="hunter" class="story" data-planet="nak">
+  <div class="wrap">
+    <div class="eyebrow">Mṛgaśīrṣa · Ārdrā · Rohiṇī</div>
+    <div class="story-head"><span class="g-glyph glyph">➶</span><div><h2>The stag, the archer and the arrow</h2><div class="sub">a hunt written across Orion</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>The Aitareya Brāhmaṇa tells that <b>Prajāpati</b> took the form of a <b>stag (mṛga)</b> to pursue his daughter, who had become a hind — <b>Rohiṇī</b>. The gods, appalled, gathered their most terrible forms into one being, <b>Rudra</b>, and sent him to stop it. Rudra loosed an arrow and pierced the stag.</p>
+        <p>All three were set in the sky. The stag became <b>Mṛgaśīrṣa</b>, “the deer's head”; the three-jointed arrow still flies in a straight line beside it; the hunter is <b>Mṛgavyādha</b>; and Rohiṇī shines nearby in Taurus. The next mansion, <b>Ārdrā</b> — “the moist one”, the tear — belongs to Rudra himself.</p>
+        <p class="src"><span class="tag-v">Vedic</span> <b>Aitareya Brāhmaṇa</b> 3.33. Deities of Mṛgaśīrṣa (Soma) and Ārdrā (Rudra) per <b>Taittirīya Saṁhitā</b> 4.4.10.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Read astronomically</h3><p>Look at <b>Orion</b>: λ Orionis is Mṛgaśīrṣa's star, the belt is the <b>three-part arrow</b>, Sirius (Mṛgavyādha) is the hunter behind it, and Betelgeuse — Ārdrā — glows red on Orion's shoulder. Aldebaran, Rohiṇī, stands just west.</p></div>
+        <div class="card"><h3>Living tradition</h3><p>Ārdrā is Śiva's own star: <b>Ārudrā Darśanam</b> on Mārgaḻi Thiruvathirai celebrates Naṭarāja's cosmic dance at Chidambaram.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="krittika" class="story" data-planet="nak">
+  <div class="wrap">
+    <div class="eyebrow">Kṛttikā · the Pleiades</div>
+    <div class="story-head"><span class="g-glyph glyph">✲</span><div><h2>Six mothers for a son of fire</h2><div class="sub">the Kṛttikās and Kārttikeya</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>The Kṛttikās were the <b>wives of the Seven Sages</b> (the Saptarṣi of the Great Bear). Agni desired them; Svāhā, who loved Agni, took the forms of six of them — all but the faithful <b>Arundhatī</b> — and from her union with Agni the radiant child <b>Skanda</b> was born. The sages, believing their wives untrue, put six of them away; they rose to the sky as the Pleiades, while Arundhatī stayed at her husband's side.</p>
+        <p>The six Kṛttikās took the infant and <b>nursed him together</b>; he grew six faces to drink from all of them, and was named <b>Kārttikeya</b>, “son of the Kṛttikās” — Murugan, Ṣaṇmukha, the six-faced.</p>
+        <p class="src"><span class="tag-p">Epic</span> <b>Mahābhārata</b>, Vana Parva (the birth of Skanda). <span class="tag-v">Vedic</span> <b>Śatapatha Brāhmaṇa</b> 2.1.2: the Kṛttikās were once wives of the Bears (ṛkṣas) and were kept apart from them; they <b>“do not swerve from the east.”</b></p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Read astronomically</h3><p>Why does the Vedic list begin with <b>Kṛttikā</b>, not Aśvinī? When the Brāhmaṇa says they rise due east, the Pleiades sat near the <b>spring equinox</b> — the star-calendar's natural starting point thousands of years ago. Precession has since slid the start back to Aśvinī. See <a href="sky-behind-the-symbols.html#p1" style="color:var(--teal)">Ayanāṁśa</a>.</p></div>
+        <div class="card"><h3>Living tradition</h3><p><b>Kārttikai Dīpam</b> — the great flame on the hill at Tiruvannamalai — is lit when the full Moon meets Kṛttikā.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="abhijit" class="story" data-planet="nak">
+  <div class="wrap">
+    <div class="eyebrow">Abhijit · the twenty-eighth</div>
+    <div class="story-head"><span class="g-glyph glyph">✧</span><div><h2>The star that fell from the sky</h2><div class="sub">how twenty-eight became twenty-seven</div></div></div>
+    <div class="columns" style="--tmpl:1.6fr 1fr">
+      <div class="col tale">
+        <p>In the Mahābhārata, Indra comes troubled to young Skanda: <b>Abhijit</b>, the younger sister of Rohiṇī, jealous of her elder's place, has gone to the forest to perform austerities — and has <b>fallen from the sky</b>. A place in the heavens stands empty, and the reckoning of time is thrown out.</p>
+        <p>Skanda counsels that time be counted afresh; <b>Kṛttikā rises to the sky</b> to fill the gap, and the order of the stars is restored. The Vedic hymns had counted twenty-eight mansions with Abhijit; the zodiac of Jyotiṣa keeps twenty-seven.</p>
+        <p class="src"><span class="tag-p">Epic</span> <b>Mahābhārata</b>, Vana Parva (Mārkaṇḍeya's narration to the Pāṇḍavas). <span class="tag-v">Vedic</span> <b>Atharvaveda</b> 19.7 hymns twenty-eight nakṣatras, Abhijit among them.</p>
+      </div>
+      <div class="col">
+        <div class="card echo"><h3>Jyotiṣa echo</h3><p>Abhijit survives in <b>muhūrta</b>: 6°40′–10°53′20″ Capricorn, the last pada of Uttarāṣāḍhā and the first fifteenth of Śravaṇa — and the midday <b>Abhijit muhūrta</b>, held to conquer obstacles (<em>abhi-jit</em>, “victorious”).</p></div>
+        <div class="card"><h3>Read astronomically</h3><p>A story of a calendar being <b>re-anchored</b> — the memory of astronomers resetting where the count of mansions begins.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIRTH STARS ============ -->
+<section id="births">
+  <div class="wrap">
+    <div class="eyebrow">Janma-nakṣatra of the divine</div>
+    <h2 class="secttl">Birth stars in the epics and in tradition</h2>
+    <div class="tablewrap"><table class="cmp">
+      <thead><tr><th>Who</th><th>Birth star</th><th>Tamil</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Śrī Rāma</td><td>Punarvasu <span style="color:var(--mute)">· deity Aditi</span></td><td class="tamil">புனர்பூசம்</td><td><span class="tag-p">Epic</span>Vālmīki Rāmāyaṇa, Bāla Kāṇḍa 18</td></tr>
+        <tr><td>Bharata</td><td>Puṣya</td><td class="tamil">பூசம்</td><td><span class="tag-p">Epic</span>Vālmīki Rāmāyaṇa, Bāla Kāṇḍa 18</td></tr>
+        <tr><td>Lakṣmaṇa &amp; Śatrughna</td><td>Āśleṣā</td><td class="tamil">ஆயில்யம்</td><td><span class="tag-p">Epic</span>Vālmīki Rāmāyaṇa, Bāla Kāṇḍa 18</td></tr>
+        <tr><td>Śrī Kṛṣṇa</td><td>Rohiṇī</td><td class="tamil">ரோகிணி</td><td><span class="tag-p">Purāṇic</span>Bhāgavata Purāṇa 10.3</td></tr>
+        <tr><td>Murugan</td><td>Viśākhā</td><td class="tamil">விசாகம்</td><td><span class="tag-f">Tradition</span>Vaikāsi Visākam</td></tr>
+        <tr><td>Śiva as Naṭarāja</td><td>Ārdrā</td><td class="tamil">திருவாதிரை</td><td><span class="tag-f">Tradition</span>Ārudrā Darśanam</td></tr>
+        <tr><td>Hanumān</td><td>Mūla</td><td class="tamil">மூலம்</td><td><span class="tag-f">Tradition</span>Mārgaḻi Mūlam, Tamil Nadu</td></tr>
+        <tr><td>Āṇḍāl</td><td>Pūrva Phalgunī</td><td class="tamil">பூரம்</td><td><span class="tag-f">Tradition</span>Āḍi Pūram</td></tr>
+        <tr><td>Śrī Veṅkaṭeśvara · Vāmana</td><td>Śravaṇa</td><td class="tamil">திருவோணம்</td><td><span class="tag-f">Tradition</span>Tiruvōṇam, Tirumala</td></tr>
+      </tbody>
+    </table></div>
+    <div class="keynote">Rāma born under the star of Aditi, mother of the gods; Kṛṣṇa under Rohiṇī, the Moon's beloved — the epics chose their stars as carefully as their kings.</div>
+  </div>
+</section>
+
+<!-- ============ FESTIVALS ============ -->
+<section id="festivals">
+  <div class="wrap">
+    <div class="eyebrow">Living tradition · the Tamil year</div>
+    <h2 class="secttl">Festivals named for the Moon and a star</h2>
+    <p class="lead">Many Tamil festivals are simply a <b>month + a nakṣatra</b>: the day the Moon reaches that star in that solar month — usually close to the full Moon.</p>
+    <div class="grid" style="--cols:4">
+      <div class="card"><h3>Thai Pūsam</h3><p>Puṣya in Thai — Murugan receives the Vel; kāvaḍi at Palani.</p></div>
+      <div class="card"><h3>Māsi Magam</h3><p>Maghā in Māsi — sacred bathing; every twelve years, with Jupiter in Leo, the <b>Mahāmaham</b> at Kumbakonam.</p></div>
+      <div class="card"><h3>Panguni Uttiram</h3><p>Uttara Phalgunī in Panguni — the day of divine weddings: Śiva–Pārvatī, Murugan–Deivānai.</p></div>
+      <div class="card"><h3>Vaikāsi Visākam</h3><p>Viśākhā in Vaikāsi — Murugan's birth star.</p></div>
+      <div class="card"><h3>Āḍi Pūram</h3><p>Pūrva Phalgunī in Āḍi — Āṇḍāl's birth; the Goddess's festival.</p></div>
+      <div class="card"><h3>Āvaṇi Tiruvōṇam</h3><p>Śravaṇa — <b>Onam</b>, the return of King Mahābali, whom Vāmana humbled with three strides.</p></div>
+      <div class="card"><h3>Kārttikai Dīpam</h3><p>Kṛttikā in Kārttikai — the flame on Arunachala.</p></div>
+      <div class="card"><h3>Mārgaḻi Thiruvathirai</h3><p>Ārdrā in Mārgaḻi — Ārudrā Darśanam of Naṭarāja.</p></div>
+    </div>
+    <div class="keynote">Mahāmaham is a festival set by a <b>graha</b> as well as a star: it needs Jupiter, which takes about twelve years to come back to Leo.</div>
+  </div>
+</section>
+
+<!-- ============ WORSHIP ============ -->
+<section id="worship">
+  <div class="wrap">
+    <div class="eyebrow">Graha-śānti</div>
+    <h2 class="secttl">Vedic mantras and the nine shrines</h2>
+    <div class="columns" style="--tmpl:1.35fr 1fr">
+      <div class="col">
+        <div class="tablewrap" style="margin:0"><table class="cmp">
+          <thead><tr><th>Graha</th><th>Opening of the Vedic mantra</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td><span class="glyph" style="color:#f0b43c">☉</span>Sūrya</td><td><em>ā kṛṣṇena rajasā vartamānaḥ</em></td><td>Ṛgveda 1.35.2</td></tr>
+            <tr><td><span class="glyph" style="color:#cdd4ee">☽</span>Chandra</td><td><em>āpyāyasva sametu te</em></td><td>Ṛgveda 1.91.16</td></tr>
+            <tr><td><span class="glyph" style="color:#e0705f">♂</span>Maṅgala</td><td><em>agnir mūrdhā divaḥ kakut</em></td><td>Ṛgveda 8.44.16</td></tr>
+            <tr><td><span class="glyph" style="color:#74c98a">☿</span>Budha</td><td><em>udbudhyasvāgne prati jāgṛhi</em></td><td>Vājasaneyi Saṁhitā 15.54</td></tr>
+            <tr><td><span class="glyph" style="color:#f0cf6a">♃</span>Bṛhaspati</td><td><em>bṛhaspate ati yad aryo arhāt</em></td><td>Ṛgveda 2.23.15</td></tr>
+            <tr><td><span class="glyph" style="color:#e6a0cf">♀</span>Śukra</td><td><em>annāt parisruto rasam</em></td><td>Vājasaneyi Saṁhitā 19.75</td></tr>
+            <tr><td><span class="glyph" style="color:#8fa6d8">♄</span>Śani</td><td><em>śaṁ no devīr abhiṣṭaye</em></td><td>Ṛgveda 10.9.4</td></tr>
+            <tr><td><span class="glyph" style="color:#b79be8">☊</span>Rāhu</td><td><em>kayā naś citra ā bhuvat</em></td><td>Ṛgveda 4.31.1</td></tr>
+            <tr><td><span class="glyph" style="color:#86c7bd">☋</span>Ketu</td><td><em>ketuṁ kṛṇvann aketave</em></td><td>Ṛgveda 1.6.3</td></tr>
+          </tbody>
+        </table></div>
+        <p class="src" style="margin-top:10px">The verses traditionally recited for each graha in navagraha-homa and graha-śānti. Several were chosen for a word that echoes the graha — <em>ketu</em> (“banner”) for Ketu, <em>śam</em> for Śani, <em>budh</em> (“awake”) for Budha. The graha-yajña itself is set out in the <b>Yājñavalkya Smṛti</b> (Ācāra-adhyāya).</p>
+      </div>
+      <div class="col">
+        <div class="card"><h3>The Navagraha shrines around Kumbakonam</h3>
+          <table class="mini" style="width:100%; border-collapse:collapse">
+            <tr><td><span class="glyph" style="color:#f0b43c">☉</span> Sūrya</td><td>Suryanar Koil</td></tr>
+            <tr><td><span class="glyph" style="color:#cdd4ee">☽</span> Chandra</td><td>Thingalur</td></tr>
+            <tr><td><span class="glyph" style="color:#e0705f">♂</span> Maṅgala</td><td>Vaitheeswaran Koil</td></tr>
+            <tr><td><span class="glyph" style="color:#74c98a">☿</span> Budha</td><td>Thiruvenkadu</td></tr>
+            <tr><td><span class="glyph" style="color:#f0cf6a">♃</span> Guru</td><td>Alangudi</td></tr>
+            <tr><td><span class="glyph" style="color:#e6a0cf">♀</span> Śukra</td><td>Kanjanur</td></tr>
+            <tr><td><span class="glyph" style="color:#8fa6d8">♄</span> Śani</td><td>Thirunallar</td></tr>
+            <tr><td><span class="glyph" style="color:#b79be8">☊</span> Rāhu</td><td>Thirunageswaram</td></tr>
+            <tr><td><span class="glyph" style="color:#86c7bd">☋</span> Ketu</td><td>Keezhaperumpallam</td></tr>
+          </table>
+          <p style="margin-top:10px; font-size:.9em; color:var(--mute)">Most are Śiva temples where the graha is worshipped as having found grace there.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>.mini td{padding:7px 6px; border-bottom:1px solid var(--stroke); color:var(--soft)} .mini td:first-child{color:var(--ink); white-space:nowrap; padding-right:14px}</style>
+
+<!-- ============ CLOSE ============ -->
+<section id="end" class="closing">
+  <div class="wrap">
+    <div class="om" style="font-size:clamp(30px,4vw,48px)">☉ ☽ ♂ ☿ ♃ ♀ ♄ ☊ ☋</div>
+    <h2 class="div-title" style="font-size:clamp(38px,5.5vw,72px)">The sky remembers</h2>
+    <p class="hero-sub">A shadow that seizes the Sun, a Moon who visits one wife a night, six sisters who rose due east — the stories carried the astronomy across the centuries before the tables did.</p>
+    <nav class="pager"><a href="nakshatra-primer.html">← Nakshatra Primer</a><a href="index.html">All lessons</a><a href="navagraha-primer.html">Navagraha Primer</a></nav>
+    <p class="hero-src">Stories follow the texts named on each slide; Purāṇic versions differ, and the page gives one common telling with its source. Temple and festival associations follow Tamil tradition. Vedic references: Ṛgveda, Taittirīya Saṁhitā, Vājasaneyi Saṁhitā, Atharvaveda, Aitareya and Śatapatha Brāhmaṇas.</p>
+  </div>
+</section>
+
+</main>
+<script src="lesson.js"></script>
+</body>
+</html>
